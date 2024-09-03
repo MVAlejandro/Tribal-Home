@@ -27,6 +27,8 @@ h1{
 h2{
     font-size: 60px;
     color: #AAB396;
+    text-align: center;
+    font-weight: normal;
 }
 .navbar-toggler{
     width: 35px;
