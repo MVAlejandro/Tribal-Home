@@ -1,0 +1,88 @@
+body{
+    background-color: #FFF8E8 !important;
+    font-family: "Poppins", sans-serif;;
+    font-size: 18px;
+}
+
+.text-justify{
+    text-align: justify;
+}
+
+.portada{
+    width: 100%;
+}
+
+.equipo{
+    width: 100%;
+}
+
+.logo{
+    width: 250px;
+}
+
+h1{
+    font-size: 60px;
+}
+
+h2{
+    font-size: 60px;
+    color: #AAB396;
+}
+.navbar-toggler{
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+}
+.navbar-toggler-icon{
+    width: 20px;
+    height: 20px;
+}
+.color-black{
+    color: black;
+}
+.color-brown{
+    color: #674636;
+}
+footer{
+    font-size: 16px;
+}
+
+@media (max-width: 600px){
+    .logo{
+        width: 170px;
+    }
+    .navbar-toggler{
+        width: 25px;
+        height: 25px;
+        padding: 0px;
+    }
+    .navbar-toggler-icon{
+        width: 20px;
+        height: 20px;
+    }
+    .perfil-car{
+        width: 25px;
+        height: 25px;
+    }
+    .valores-icon{
+        display: none;
+    }
+    h2{
+        font-size: 36px;
+        color: #000000;
+        font-weight: bold;
+        text-align: left !important;
+    }
+    h1{
+        font-size: 36px;
+        color: #000000;
+        font-weight: bold;
+    }
+    footer{
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+    .footer-icon{
+        width: 25px;
+    }
+}
