@@ -92,6 +92,10 @@ footer {
         color: #000000;
         font-weight: bold;
     }
+    h3{
+        font-size: 25px;
+        color: #000000;
+    }
 
     footer {
         font-size: 9px;
@@ -159,4 +163,22 @@ footer {
     margin: 0;
     font-size: 1.2rem;
     color: #000;
+}
+
+/* Se aplica en servicios */
+.card-text{
+    text-align: justify;
+    font-size: 18px;
+}
+.middle_image{
+    margin: 0px 0px 35px 0px;
+}
+.tarjeta_servicios{
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    
+}
+.card-title{
+    text-align: center;
 }
