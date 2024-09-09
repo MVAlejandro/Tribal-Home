@@ -209,7 +209,8 @@ footer {
 
 #formulario-contacto{
     background-color: #FFFFFF;
-    box-shadow: 10px;
+    box-shadow: 0px 4px 25px 0px #00000040;
+    border-radius: 20px;
 }
 .columna-cuestionario{
     margin: 25px;
