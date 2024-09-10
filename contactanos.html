@@ -75,11 +75,13 @@
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="nombre_usuario" class="form-label">Nombre(s)</label>
                                     <input type="text" class="form-control" id="nombre_usuario" placeholder="Nombres">
+                                    <div class="form-text error-text" display="none"><p id="nombresInfo" display="none"></p></div>
                                     
                                 </div>
                                 <div class="col-lg-6 col-sm-12">
                                     <label for="apellidos_usuario" class="form-label">Apellidos</label>
                                     <input type="text" class="form-control" id="apellidos_usuario" placeholder="Apellidos">
+                                    <div class="form-text error-text" display="none"><p id="apellidosInfo" display="none"></p></div>
                                     
                                 </div> 
                             </div>
@@ -87,7 +89,7 @@
                                 <div class="col-12">
                                     <label for="email_usuario" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email_usuario" placeholder="Ejemplo: fernando12@gmail.com">
-                                    <div id="emailInfo" class="form-text" display="none"></div>
+                                    <div class="form-text error-text" display="none"><p id="emailInfo"></p></div>
                                     
                                 </div>
                             </div>
@@ -96,6 +98,7 @@
                                 <div class="input-group col-6">
                                     <span class="input-group-text" id="basic-addon1"><img src="assets/telefono.png" alt="icono de telefono"></span>
                                     <input type="phone" class="form-control" id="telefono_usuario">
+                                    <div class="form-text error-text" display="none"><p id="telefonoInfo"></p></div>
                                     
                                 </div>
                             </div>
@@ -103,6 +106,7 @@
                                 <div class="col-12">
                                     <label for="mensaje" class="form-label">Mensaje</label>
                                     <textarea class="form-control" id="mensaje" rows="10"></textarea>
+                                    <div class="form-text error-text" display="none"><p id="mensajeInfo" ></p></div>
                                     
                                 </div>
                             </div>

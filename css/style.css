@@ -228,3 +228,7 @@ footer {
     color: #FFFFFF;
     background-color: #AAB396;
 }
+.error-text{
+    color: red;
+    font-size: 12px;
+}
