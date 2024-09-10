@@ -1,24 +1,22 @@
-
-
 let nombre_usuario = document.getElementById("nombre_usuario");
 let apellidos_usuario = document.getElementById("apellidos_usuario");
 let email_usuario = document.getElementById("email_usuario");
 let telefono_usuario = document.getElementById("telefono_usuario");
 let mensaje = document.getElementById("mensaje");
-let nombresInfo=document.getElementById("nombresInfo");
-let apellidosInfo=document.getElementById("apellidosInfo");
-let emailInfo=document.getElementById("emailInfo");
-let telefonoInfo=document.getElementById("telefonoInfo");
-let mensajeInfo=document.getElementById("mensajeInfo");
+let nombresInfo = document.getElementById("nombresInfo");
+let apellidosInfo = document.getElementById("apellidosInfo");
+let emailInfo = document.getElementById("emailInfo");
+let telefonoInfo = document.getElementById("telefonoInfo");
+let mensajeInfo = document.getElementById("mensajeInfo");
+let formulario = document.getElementById("formulario");
 let btnEnviar = document.getElementById("btnEnviar");
 let isValid = true
 
 const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
 const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/;
+const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/
 
-
-
-btnEnviar.addEventListener("click", function (e) {
+formulario.addEventListener("submit",function (e) {
     e.preventDefault()
     isValid = true
     nombre_usuario.style.border = "";
@@ -73,13 +71,27 @@ btnEnviar.addEventListener("click", function (e) {
             text: "Favor de corregir las casillas resaltadas en rojo",
           });  
     }else{
+        const serviceID = 'default_service';
+        const templateID = 'template_xtz5zgp';
         emailjs.sendForm(serviceID, templateID, this)
         .then(() => {
-            btn.value = 'Send Email';
-            alert('Sent!');
+            nombre_usuario.value = "";
+            apellidos_usuario.value = "";
+            email_usuario.value = "";
+            telefono_usuario.value = "";
+            Swal.fire({
+                icon: "success",
+                title: "El correo se envió correctamente!",
+                showConfirmButton: false,
+                timer: 1500
+              });
+
         }, (err) => {
-            btn.value = 'Send Email';
-            alert(JSON.stringify(err));
+            Swal.fire({
+                icon: "error",
+                title: "Error al enviar el correo",
+                text: "Intenta enviar el correo más tarde",
+              });  
         });
     }
 })
@@ -139,8 +151,8 @@ function validateMensaje(mensaje) {
         mensajeInfo.display="block";
         return false
     }
-    if (!nombreRegex.test(mensaje.value)) {
-        mensajeInfo.innerHTML=`El mensaje no acepta caracters especiales ni números`;
+    if (!evitarCaracteres.test(mensaje.value)) {
+        mensajeInfo.innerHTML=`El mensaje no acepta caracters especiales`;
         mensajeInfo.display="block";
         return false
     }
