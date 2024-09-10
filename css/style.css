@@ -202,7 +202,7 @@ footer {
         font-weight: bold;
     }
     h3{
-        font-size: 25px;
+        font-size: 26px;
         color: #000000;
     }
     h4{
@@ -232,9 +232,9 @@ footer {
     }
     #formulario-contacto{
         background-color: #FFFFFF;
-        width: 100%;
         border-radius: 0px;
-        margin-left: 0px;
+        margin-left: 0px !important;
+        box-shadow: none;
     }
 
 
