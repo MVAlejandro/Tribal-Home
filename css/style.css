@@ -58,75 +58,6 @@ footer {
     font-size: 16px;
 }
 
-@media (max-width: 600px) {
-    .logo {
-        width: 170px;
-    }
-
-    .navbar-toggler {
-        width: 25px;
-        height: 25px;
-        padding: 0px;
-    }
-
-    .navbar-toggler-icon {
-        width: 20px;
-        height: 20px;
-    }
-
-    .perfil-car {
-        width: 25px;
-        height: 25px;
-    }
-
-    .valores-icon {
-        display: none;
-    }
-
-    h2 {
-        font-size: 36px;
-        color: #000000;
-        font-weight: bold;
-        text-align: left !important;
-    }
-
-    h1 {
-        font-size: 36px;
-        color: #000000;
-        font-weight: bold;
-    }
-    h3{
-        font-size: 25px;
-        color: #000000;
-    }
-    h4{
-        font-size: 30px;
-        color: #000000;
-    }
-
-    footer {
-        font-size: 9px;
-        margin-bottom: 10px;
-    }
-
-    .footer-icon {
-        width: 25px;
-    }
-
-    .titulo_tarjeta{
-        margin: 25px;
-        display: flex;
-        align-items: center;
-        justify-items: center;
-        gap: 10%;
-        height: 25px;
-    }
-    .numero_tarjeta{
-        font-size: 50px;
-    }
-
-}
-
 .card-container {
     perspective: 1000px;
 }
@@ -206,7 +137,7 @@ footer {
     color: #AAB396;
     font-size: 60px;
 }
-
+/* Se aplica en contactanos */
 #formulario-contacto{
     background-color: #FFFFFF;
     box-shadow: 0px 4px 25px 0px #00000040;
@@ -231,4 +162,80 @@ footer {
 .error-text{
     color: red;
     font-size: 12px;
+}
+
+@media (max-width: 600px) {
+    .logo {
+        width: 170px;
+    }
+
+    .navbar-toggler {
+        width: 25px;
+        height: 25px;
+        padding: 0px;
+    }
+
+    .navbar-toggler-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .perfil-car {
+        width: 25px;
+        height: 25px;
+    }
+
+    .valores-icon {
+        display: none;
+    }
+
+    h2 {
+        font-size: 36px;
+        color: #000000;
+        font-weight: bold;
+        text-align: left !important;
+    }
+
+    h1 {
+        font-size: 36px;
+        color: #000000;
+        font-weight: bold;
+    }
+    h3{
+        font-size: 25px;
+        color: #000000;
+    }
+    h4{
+        font-size: 30px;
+        color: #000000;
+    }
+
+    footer {
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+
+    .footer-icon {
+        width: 25px;
+    }
+
+    .titulo_tarjeta{
+        margin: 25px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        gap: 10%;
+        height: 25px;
+    }
+    .numero_tarjeta{
+        font-size: 50px;
+    }
+    #formulario-contacto{
+        background-color: #FFFFFF;
+        width: 100%;
+        border-radius: 0px;
+        margin-left: 0px;
+    }
+
+
 }
