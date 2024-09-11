@@ -79,6 +79,8 @@ formulario.addEventListener("submit",function (e) {
             apellidos_usuario.value = "";
             email_usuario.value = "";
             telefono_usuario.value = "";
+            mensaje.value="";
+
             Swal.fire({
                 icon: "success",
                 title: "El correo se envió correctamente!",
