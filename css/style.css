@@ -65,8 +65,8 @@ footer {
 }
 
 .flip-card {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    height: 341px;
 }
 
 .flip-card-inner {
@@ -238,6 +238,11 @@ footer {
         border-radius: 0px;
         margin-left: 0px !important;
         box-shadow: none;
+    }
+    .imagen-portada{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
     }
 
 
