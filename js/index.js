@@ -17,7 +17,7 @@ window.addEventListener("load",
                       <a class="nav-link" href="servicios.html">Servicios</a>
                   </li>
                   <li class="nav-item ms-4 me-4">
-                      <a class="nav-link" href="contactanos.html">Contactos</a>
+                      <a class="nav-link" href="contactanos.html">Contacto</a>
                   </li>
                   <li class="nav-item ms-4 me-4">
                       <a class="nav-link" href="nosotros.html">Nosotros</a>
@@ -39,7 +39,7 @@ window.addEventListener("load",
     <hr>
     <div class="row align-items-center">
         <div class="col text-start">
-            <p class="mb-0">Tribal-Home © Copyright 2020, Inc. All rights reserved</p>
+            <p class="mb-0">Tribal-Home © Copyright 2024, Inc. All rights reserved</p>
          </div>
         <div class="col text-end">
             <a href="#" class="text-dark me-3"><img src="assets/Path.png" alt="Facebook" class="footer-icon"></a>
