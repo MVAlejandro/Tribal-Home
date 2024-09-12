@@ -25,8 +25,8 @@ window.addEventListener("load",
               </ul>
             </div>
             <div class="col-4 text-end me-5">
-              <a class="text-dark col-1" href="#"><img src="assets/bag-2.png" alt="carrito_de_compras" class="perfil-car" ></a>
-              <a class="text-dark col-1" href="#"><img src="assets/user.png" alt="usuario" class="perfil-car"></a>
+              <a class="text-dark col-1" href="../carrito.html"><img src="assets/bag-2.png" alt="carrito_de_compras" class="perfil-car" ></a>
+              <a class="text-dark col-1" href="../login.html"><img src="assets/user.png" alt="usuario" class="perfil-car"></a>
               <button class="navbar-toggler col-1" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
