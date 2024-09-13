@@ -16,12 +16,11 @@
     </header>
     <main>
         <div class="container">
-            <h1 class="text-center mt-4">Tribal-Home</h1>
-            <h5 class="text-center">Tu espacio, nuestro toque</h5>
-            <br>
-            <p class="text-center">
-                Explora nuestra colección de productos: Muebles y Decoración con personalidad.
-                Cada pieza de nuestra colección ha sido escogida con esmero para reflejar
+            <h1 class="text-center mt-4 mb-0">Tribal-Home</h1>
+            <p class="text-center subtitle">Tu espacio, nuestro toque</p>
+            <p class="text-center p-index">
+                Explora nuestra colección de productos: Muebles y Decoración con personalidad. <br>
+                Cada pieza de nuestra colección ha sido escogida con esmero para reflejar <br>
                 el espíritu libre y creativo del estilo bohemio.
             </p>
 
@@ -47,40 +46,93 @@
                 </button>
             </div>
 
-        <h2 class="text-center mt-5 mb-5">¡Productos en descuento!</h2>
+        <h2 class="text-center mt-5 mb-5 h2-index">¡Productos en descuento!</h2>
+        <div class="carrusel-descuentos">
+            <div id="carouselDescuentos" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <div class="card bg-transparent border border-0">
+                            <img src="./assets/muebles/image-1.png" class="card-img-top" alt="Librero básico tipo boho">
+                            <div class="card-body">
+                                <p class="categoria">Librero</p>
+                                <p class="nombre-producto">Librero básico tipo boho</p>
+                                <p class="descripcion-producto">Uso simple, solido, fácil de acomodar.</p>
+                                <p class="descuento">ANTES $1450.23</p>
+                                <p class="descuento">AHORA $750.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <div class="card bg-transparent border border-0">
+                            <img src="./assets/muebles/image-2.png" class="card-img-top" alt="Silla tradicional tipo boho">
+                            <div class="card-body">
+                                <p class="categoria">Silla</p>
+                                <p class="nombre-producto">Silla tradicional tipo boho</p>
+                                <p class="descripcion-producto">Cómoda, sencilla, muy bonita</p>
+                                <p class="descuento">ANTES $900</p>
+                                <p class="descuento">AHORA $750.99</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="card bg-transparent border border-0">
+                            <img src="./assets/muebles/image-3.png" class="card-img-top" alt="Silla con diseño">
+                            <div class="card-body">
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-producto">Silla con diseño, formas verdes tipo boho</h5>
+                                <p class="descripcion-producto">Diseño único, llamativa, cómoda</p>
+                                <p class="descuento">ANTES $1249.23</p>
+                                <p class="descuento">AHORA $750.99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselDescuentos" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselDescuentos" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
         <div class="row">
-            <div class="card-group">
+            <div class="card-group cards-agrupadas">
                 <div class="card me-4 ms-4 bg-transparent border border-0">
                     <img src="./assets/muebles/image-1.png" class="card-img-top" alt="Librero básico tipo boho">
                     <div class="card-body">
-                        <h5 class="card-title">Librero básico tipo boho</h5>
-                        <p class="card-text">Uso simple, solido, fácil de acomodar.</p>
-                        <p class="card-text"><small class="text-body-secondary">ANTES $1450.23</small></p>
-                        <p class="card-text"><small class="text-body-secondary">AHORA $750.99</small></p>
+                        <p class="categoria">Librero</p>
+                        <p class="nombre-producto">Librero básico tipo boho</p>
+                        <p class="descripcion-producto">Uso simple, solido, fácil de acomodar.</p>
+                        <p class="descuento">ANTES $1450.23</p>
+                        <p class="descuento">AHORA $750.99</p>
                     </div>
                 </div>
                 <div class="card me-4 ms-4 bg-transparent border border-0">
                     <img src="./assets/muebles/image-2.png" class="card-img-top" alt="Silla tradicional tipo boho">
                     <div class="card-body">
-                        <h5 class="card-title">Silla tradicional tipo boho</h5>
-                        <p class="card-text">Cómoda, sencilla, muy bonita</p>
-                        <p class="card-text"><small class="text-body-secondary">ANTES $900</small></p>
-                        <p class="card-text"><small class="text-body-secondary">AHORA $750.99</small></p>
+                        <p class="categoria">Silla</p>
+                        <p class="nombre-producto">Silla tradicional tipo boho</p>
+                        <p class="descripcion-producto">Cómoda, sencilla, muy bonita</p>
+                        <p class="descuento">ANTES $900</p>
+                        <p class="descuento">AHORA $750.99</p>
                     </div>
                 </div>
                 <div class="card me-4 ms-4 bg-transparent border border-0">
                     <img src="./assets/muebles/image-3.png" class="card-img-top" alt="Silla con diseño">
                     <div class="card-body">
-                        <h5 class="card-title">Silla con diseño; formas verdes tipo boho</h5>
-                        <p class="card-text">Diseño único, llamativa, cómoda</p>
-                        <p class="card-text"><small class="text-body-secondary">ANTES $1249.23</small></p>
-                        <p class="card-text"><small class="text-body-secondary">AHORA $750.99</small></p>
+                        <p class="categoria">Silla</p>
+                        <h5 class="nombre-producto">Silla con diseño; formas verdes tipo boho</h5>
+                        <p class="descripcion-producto">Diseño único, llamativa, cómoda</p>
+                        <p class="descuento">ANTES $1249.23</p>
+                        <p class="descuento">AHORA $750.99</p>
                     </div>
                 </div>
             </div>
 
-        <h2 class="text-center mt-5 mb-5">Nuestros productos más populares</h2>
-        <p class="text-center">
+        <h2 class="text-center mt-5 mb-5 productos-populares">Nuestros productos más populares</h2>
+        <p class="text-center mb-5 descripcion-producto-populares">
             Los muebles boho son populares por su enfoque libre y creativo, que permite mezclar colores vibrantes, texturas y elementos naturales. Aportan calidez, autenticidad y un toque de diversidad cultural al hogar, creando espacios únicos y llenos de personalidad.
         </p>
 
@@ -88,94 +140,94 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="card-group">
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png"
                                 class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Silla</small></p>
-                                <h5 class="card-title">Silla de cóctel </h5>
-                                <p class="card-text">Cómoda, hecha a mano.</p>
-                                <p class="card-text"><small class="text-body-secondary">$349.99</small></p>
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-producto">Silla de cóctel </h5>
+                                <p class="descripcion-producto">Cómoda, hecha a mano.</p>
+                                <p class="descuento">$349.99</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-5.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Armario</small></p>
-                                <h5 class="card-title">Armario de madera tradicional</h5>
-                                <p class="card-text">Uso simple, funcional, multiusos.</p>
-                                <p class="card-text"><small class="text-body-secondary">$5679.23</small></p>
+                                <p class="categoria">Armario</p>
+                                <h5 class="nombre-producto">Armario de madera tradicional</h5>
+                                <p class="descripcion-producto">Uso simple, funcional, multiusos.</p>
+                                <p class="descuento">$5679.23</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Sofá</small></p>
-                                <h5 class="card-title">Sofá vintage tipo boho</h5>
-                                <p class="card-text">Cómodo, sencillo, original.</p>
-                                <p class="card-text"><small class="text-body-secondary">$4239.39</small></p>
+                                <p class="categoria">Sofá</p>
+                                <h5 class="nombre-producto">Sofá vintage tipo boho</h5>
+                                <p class="descripcion-producto">Cómodo, sencillo, original.</p>
+                                <p class="descuento">$4239.39</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="card-group">
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Silla</small></p>
-                                <h5 class="card-title">Silla de cóctel </h5>
-                                <p class="card-text">Cómoda, hecha a mano.</p>
-                                <p class="card-text"><small class="text-body-secondary">$349.99</small></p>
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-producto">Silla de cóctel </h5>
+                                <p class="descripcion-producto">Cómoda, hecha a mano.</p>
+                                <p class="descuento">$349.99</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-5.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Armario</small></p>
-                                <h5 class="card-title">Armario de madera tradicional</h5>
-                                <p class="card-text">Uso simple, funcional, multiusos.</p>
-                                <p class="card-text"><small class="text-body-secondary">$5679.23</small></p>
+                                <p class="categoria">Armario</p>
+                                <h5 class="nombre-producto">Armario de madera tradicional</h5>
+                                <p class="descripcion-producto">Uso simple, funcional, multiusos.</p>
+                                <p class="descuento">$5679.23</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Silla</small></p>
-                                <h5 class="card-title">Silla de cóctel </h5>
-                                <p class="card-text">Cómoda, hecha a mano.</p>
-                                <p class="card-text"><small class="text-body-secondary">$349.99</small></p>
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-productobre-producto">Silla de cóctel </h5>
+                                <p class="descripcion-productoscripcion-producto">Cómoda, hecha a mano.</p>
+                                <p class="descuentoscuento">$349.99</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="card-group">
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Silla</small></p>
-                                <h5 class="card-title">Silla de cóctel </h5>
-                                <p class="card-text">Cómoda, hecha a mano.</p>
-                                <p class="card-text"><small class="text-body-secondary">$349.99</small></p>
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-producto">Silla de cóctel </h5>
+                                <p class="descripcion-producto">Cómoda, hecha a mano.</p>
+                                <p class="descuento">$349.99</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-5.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Armario</small></p>
-                                <h5 class="card-title">Armario de madera tradicional</h5>
-                                <p class="card-text">Uso simple, funcional, multiusos.</p>
-                                <p class="card-text"><small class="text-body-secondary">$5679.23</small></p>
+                                <p class="categoria">Armario</p>
+                                <h5 class="nombre-producto">Armario de madera tradicional</h5>
+                                <p class="descripcion-producto">Uso simple, funcional, multiusos.</p>
+                                <p class="descuento">$5679.23</p>
                             </div>
                         </div>
-                        <div class="card mx-4 bg-transparent border border-0">
+                        <div class="card mx-4 bg-transparent border border-0 card-carousel">
                             <img src="./assets/muebles/image-4.png" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <p class="card-text"><small class="text-body-secondary">Silla</small></p>
-                                <h5 class="card-title">Silla de cóctel </h5>
-                                <p class="card-text">Cómoda, hecha a mano.</p>
-                                <p class="card-text"><small class="text-body-secondary">$349.99</small></p>
+                                <p class="categoria">Silla</p>
+                                <h5 class="nombre-productobre-producto">Silla de cóctel </h5>
+                                <p class="descripcion-productoscripcion-producto">Cómoda, hecha a mano.</p>
+                                <p class="descuentoscuento">$349.99</p>
                             </div>
                         </div>
                     </div>
