@@ -11,7 +11,7 @@ window.addEventListener("load",
             <div class="collapse navbar-collapse col-sm-5" id="navbarNavDropdown">
               <ul class="navbar-nav mx-auto">
                   <li class="nav-item ms-4 me-4">
-                      <a class="nav-link active" aria-current="page" href="../productos.html">Productos</a>
+                      <a class="nav-link" aria-current="page" href="../productos.html">Productos</a>
                   </li>
                   <li class="nav-item ms-4 me-4">
                       <a class="nav-link" href="servicios.html">Servicios</a>
