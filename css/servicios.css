@@ -1,0 +1,40 @@
+/* Se aplica en servicios */
+.card-text{
+    text-align: justify;
+    font-size: 18px;
+}
+.middle_image{
+    margin: 0px 0px 35px 0px;
+}
+.tarjeta_servicios{
+    display: flex;
+    align-items:center;
+    flex-direction: column;
+    
+}
+.card-title{
+    text-align: center;
+}
+.numero_tarjeta{
+    color: #AAB396;
+    font-size: 60px;
+}
+
+@media (max-width: 600px) {
+    .titulo_tarjeta{
+        margin: 25px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        gap: 10%;
+        height: 25px;
+    }
+    .numero_tarjeta{
+        font-size: 50px;
+    }
+    .contenedor-fluid{
+        width: 100% !important; 
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+}

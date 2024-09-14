@@ -1,0 +1,82 @@
+/* Se aplica en la pagina de nosotros */
+.equipo {
+    width: 100%;
+}
+#iconos{
+    display: none;
+}
+.card-container {
+    perspective: 1000px;
+}
+
+.flip-card {
+    width: 100%;
+    height: 341px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.flip-card-front {
+    background-color: #fff;
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+.flip-card-back {
+    background-color: #f8f9fa;
+    transform: rotateY(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.equipo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-back p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #000;
+}
+@media (max-width: 600px) {
+    .valores-icon {
+        display: none;
+    }
+    #iconos{
+        display: flex;
+    }
+    h2 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: left !important;
+    }
+    .imagen-portada{
+        width: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+}
