@@ -1,0 +1,34 @@
+
+
+/* Estilos página productos */
+.h2-productos{
+    font-size: 50px;
+    color: #151411;
+}
+.categoria{
+    font-size: 18px;
+    font-weight: bold;
+    color: #AFADB5;
+}
+.nombre-producto{
+    font-size: 26px;
+    font-weight: bold;
+    color: #151411;
+}
+.descripcion-producto{
+    font-size: 18px;
+    font-weight: normal;
+    color: #AFADB5;
+}
+.precio{
+    font-size: 24px;
+    font-weight: bold;
+    color: #151411;
+}
+#products-container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.card{
+    width: 24rem;
+}

@@ -61,6 +61,7 @@ window.addEventListener("load",
                         <a href="#" class="text-dark"><img src="assets/footer/Twitter-icon.png" alt="Instagram"  class="footer-icon"></a>
                     </div>
                 </div>
+                <br>
             </div>`
         );
 
