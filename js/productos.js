@@ -1,17 +1,18 @@
 
 function addItem(product){
     const itemHTML = 
-        '<div class="card me-4 ms-4 mb-3 bg-transparent border border-0">\n' +
-        '    <img src="'+product.img +'" class="card-img-top" alt="image">\n' +
-        '    <div class="card-body">\n' +
-        '        <p class="categoria">'+product.category+'</p>\n' +
-        '        <p class="nombre-producto">'+product.name+'</p>\n' +
-        '        <p class="descripcion-producto">'+product.description+'</p>\n' +
-        '        <p class="precio">'+product.price+'</p>\n' +
-        '        <a href="#" class="btn btn-primary">Agregar al carrito</a>\n' +
-        '    </div>\n' +
-        '</div>\n' +
-        '<br/>';
+        '<div class="col-lg-4 col-sm-6 col-6 product">\n' +
+        '   <div class="card me-auto ms-auto mb-3 bg-transparent border border-0">\n' +
+        '       <img src="'+product.img +'" class="card-img-top" alt="image">\n' +
+        '       <div class="card-body">\n' +
+        '           <p class="categoria">'+product.category+'</p>\n' +
+        '           <p class="nombre-producto">'+product.name+'</p>\n' +
+        '           <p class="descripcion-producto">'+product.description+'</p>\n' +
+        '           <p class="precio">'+product.price+'</p>\n' +
+        '           <!-- <a href="#" class="btn btn-primary">Agregar al carrito</a>-->\n' +
+        '       </div>\n' +
+        '   </div>\n' +
+        '</div>\n';
     const productsContainer = document.getElementById("products-container");
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
 }
