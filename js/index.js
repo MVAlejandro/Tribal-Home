@@ -6,14 +6,14 @@ window.addEventListener("load",
         encabezado.insertAdjacentHTML("afterbegin",
             `<nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="../index.html">
+                    <a class="navbar-brand" href="index.html">
                     <img src="assets/nav-bar/Logo.png" alt="Logo_Tribal-Home" class="logo">
                     </a>
                     <div class="d-lg-none ms-auto">
-                    <a class="text-dark me-2" href="../carrito.html">
+                    <a class="text-dark me-2" href="carrito.html">
                         <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
                     </a>
-                    <a class="text-dark me-2" href="../login.html">
+                    <a class="text-dark me-2" href="login.html">
                         <img src="assets/nav-bar/user.png" alt="usuario" class="perfil-car">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,7 +23,7 @@ window.addEventListener("load",
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mx-auto">
                         <li class="nav-item ms-4 me-4">
-                            <a class="nav-link" href="../productos.html">Productos</a>
+                            <a class="nav-link" href="productos.html">Productos</a>
                         </li>
                         <li class="nav-item ms-4 me-4">
                             <a class="nav-link" href="servicios.html">Servicios</a>
@@ -37,10 +37,10 @@ window.addEventListener("load",
                     </ul>
                     </div>
                     <div class="d-none d-lg-flex align-items-center ms-auto">
-                        <a class="text-dark nav-link me-3" href="../carrito.html">
+                        <a class="text-dark nav-link me-3" href="carrito.html">
                             <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
                         </a>
-                        <a class="text-dark nav-link me-3" href="../login.html">
+                        <a class="text-dark nav-link me-3" href="login.html">
                             <img src="assets/nav-bar/user.png" alt="usuario" class="perfil-car">
                         </a>
                     </div>  
