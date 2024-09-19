@@ -32,8 +32,55 @@
     padding-left: 2.5%;
     padding-right: 2.5%;
 }
-
-@media (max-width: 600px) {
+.modal-content{
+    background-color: #AAB396 !important;
+}
+.form-control{
+    border-radius: 10px !important;
+    margin-right: 3%;
+    background-color: #FFF8E8;
+}
+.form-label{
+    width: 50% !important;
+    text-align: center;
+    font-size: 25px;
+}
+.modal-title{
+    text-align: center !important;
+    font-size: 60px !important;
+    width: 95%;
+}
+.btn-enviar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.btn-agregar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.btn-secondary{
+    background-color: #FFF8E8;
+    color: #674636;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.btn-enviar:hover{
+    background-color: #FFF8E8;
+    color: #674636;
+}
+.btn-agregar:hover{
+    background-color: #FFF8E8;
+    color: #674636;
+}
+.btn-secondary:hover{
+    background-color: #674636;
+    color: #FFF8E8;
+}
+@media (max-width: 778px) {
     .p-productos {
         font-size: 14px;
         color: #AFADB5;
@@ -71,5 +118,20 @@
         padding: 0px;
         
     }
-    
+    .modal-title{
+        text-align: center !important;
+        font-size: 35px !important;
+        width: 95%;
+    }
+    .form-label{
+        width: 50% !important;
+        text-align: center;
+        font-size: 18px;
+    }
+    .btn-enviar,.btn-secondary.btn-agregar{
+        font-size: 15px;
+    }
+    .btn-agregar{
+        font-size: 12px;
+    }
 }

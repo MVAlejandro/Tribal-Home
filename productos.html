@@ -58,12 +58,69 @@
             </div>
         </div>
         <div class="container mt-5" >
-            <h2 class="text-start mt-5 mb-5 h2-productos">Todos los productos</h2>
+            <div class="row mt-5 mb-5">
+                <div class="col-9 mt-auto mb-auto"><h2 class="text-start h2-productos">Todos los productos</h2></div>
+                <div class="col-3 mt-auto mb-auto">
+                    <button type="button" class="btn btn-agregar" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Agregar producto</button>
+                </div>
+            </div>
+            
             <div class="row gx-5 me-auto ms-auto" id="products-container">
 
             </div>
         </div>
-
+        <!-- Modal -->
+        <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h3 class="modal-title fs-5" id="staticBackdropLabel">Agregar Producto</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="formulario">   
+                        <div class="input-group mb-3">
+                                <label for="nombre_producto" class="form-label">Nombre del producto</label>
+                                <input type="text" class="form-control" id="nombre_producto " name="nombre_producto" placeholder="">
+                                <div class="form-text error-text"><p id="nombreInfo"></p></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="descripcion-producto" class="form-label">Descripción del producto</label>
+                            <input type="text" class="form-control" id="descripcion-producto" name="descripcion-producto" placeholder="">
+                            <div class="form-text error-text"><p id="descripcionInfo"></p></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="categoria-producto" class="form-label">Categoria del producto</label>
+                            <input type="text" class="form-control" id="categoria-producto " name="categoria-producto" placeholder="">
+                            <div class="form-text error-text"><p id="categoriaInfo"></p></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="precio-producto" class="form-label">Precio del producto</label>
+                            <input type="number" class="form-control" id="precio-producto" name="precio-producto" placeholder="">
+                            <div class="form-text error-text"><p id="precioInfo"></p></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="unidades-producto" class="form-label">Unidades del producto</label>
+                            <input type="number" class="form-control" id="unidades-producto" name="unidades-producto" placeholder="">
+                            <div class="form-text error-text"><p id="unidadesInfo"></p></div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <label for="imagen-producto" class="form-label">Seleccione una imagen</label>
+                            <input type="file" class="form-control" id="imagen-producto" name="imagen-producto" placeholder="">
+                            <div class="form-text error-text"><p id="imagenInfo"></p></div>
+                        </div>
+                        
+                    
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-enviar">Subir nuevo producto</button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
     </main>
 
 
