@@ -18,7 +18,11 @@ let formulario = document.getElementById("formulario");
 let isValid = true
 // Declaramos las expresiones regulares para validar los datos
 const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regular para el nombre y el apellido
+const numerosRegex = /^[0-9]+$/; // Expresión regular para el nombre y el apellido
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
+
+let datos = new Array()
+
 
 // Agregamos el evento cuando se envie el formulario
 formulario.addEventListener("submit",function (e) {
@@ -60,51 +64,44 @@ formulario.addEventListener("submit",function (e) {
         isValid = false
     }
     // Comprobamos que el precio telefónico proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validarPrecio( precio_usuario, precioInfo)) {
-        precio_usuario.style.border = "solid medium red";
+    if (!validarPrecio( precio_producto, precioInfo)) {
+       precio_producto.style.border = "solid medium red";
         isValid = false;
     }
     // Comprobamos que la unidad proporcionada sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validateUnidades(unidades_producto, unidadesInfo)) {
-        unidades_producto.style.border = "solid medium red";
+    if (!validarCantidad(unidades_producto, unidadesInfo)) {
+       unidades_producto.style.border = "solid medium red";
         isValid = false;
     }
-    // // Comprobamos que el producto proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
+    // // // Comprobamos que el producto proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
     // if (!validateImagen(imagen_producto, imagenInfo)) {
     //     imagen_producto.style.border = "solid medium red";
     //     isValid = false;
     // }
     // Si se pasaron todas las validaciones, se enviará el formulario 
     if (isValid) {
-        const serviceID = 'default_service';
-        const templateID = 'template_xtz5zgp';
-        emailjs.sendForm(serviceID, templateID, this)
-        .then(() => {
+        datos.push(nombre_producto.value, descripcion_producto.value, categoria_producto.value,
+            precio_producto.value,  imagen_producto.value)
+            localStorage.setItem("datos", JSON.stringify(datos))
             nombre_producto.value = "";
             descripcion_producto.value = "";
-            email_usuario.value = "";
-            telefono_usuario.value = "";
-            mensaje.value="";
+            categoria_producto.value = "";
+            precio_producto.value = "";
+            unidades_producto.value="";
+            imagen_producto.value="";
             // Si el correo se envio correctamente lanzará una alerta de que se envio correctamente
             Swal.fire({
                 icon: "success",
-                title: "El correo se envió correctamente!",
+                title: "El producto se subio correctamente",
                 showConfirmButton: false,
                 timer: 1500
               });
             // Si hubo algun error lanzará una alerta diciendo que lo intente más tarde junto con el error
-        }, (err) => {
-            Swal.fire({
-                icon: "error",
-                title: "Error al enviar el correo",
-                text: "Intenta enviar el correo más tarde. \n Error: " + err ,
-              });  
-        });
     // Si no pasó todas las validaciones mandará una alerta diciendo que corriga los datos ingresados
     }else{
         Swal.fire({
             icon: "error",
-            title: "Error en el llenado del formulario",
+            title: "Error en el llenado del producto",
             text: "Favor de corregir las casillas resaltadas en rojo",
           });  
     }
@@ -125,42 +122,34 @@ function validate(data, info) {
     return true
 }
 
-// Función que valida que el correo tenga un formato válido
-function validateEmail(email, info) {
-    if (!emailRegex.test(email.value)) {
-        info.innerHTML=`El correo debe de cumplir con el formato example@example.com`;
-        info.display="block";
-        return false
-    }
-    return true
-}
 
-// Función que valida que sea un número y que tenga de 10 a 13 caracteres 
-function validarCantidad() {
-    if (isNaN(telefono_usuario.value)) {
-        telefonoInfo.innerHTML=`El campo telefono solo puede contener números`;
-        telefonoInfo.display="block";
+// Función que valida que sea un cantidad y precio 
+function validarPrecio() {
+    if (isNaN(precio_producto.value)) {
+        precioInfo.innerHTML=`Este campo solo puede contener números`;
+        precioInfo.display="block";
         return false;
     }//isNaN
-    if (!(Number(telefono_usuario.value.length) <= 13 && Number(telefono_usuario.value.length) >= 10)) {
-        telefonoInfo.innerHTML=`El campo telefono debe contener de 10 a 13 dígitos`;
-        telefonoInfo.display="block";
+    if (!precio_producto.value>0) {
+        precioInfo.innerHTML=`Debe ser mayor a 0`;
+        precioInfo.display="block";
         return false;
     }
 
     return true;
 }
-// Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales 
-function validateMensaje(mensaje) {
-    if (mensaje.value.length < 3) {
-        mensajeInfo.innerHTML=`El mensaje debe de contener al menos 3 carácteres`;
-        mensajeInfo.display="block";
-        return false
+// Función que valida que sea un cantidad y precio 
+function validarCantidad() {
+    if (isNaN(unidades_producto.value)) {
+        unidadesInfo.innerHTML=`Este campo solo puede contener números`;
+        unidadesInfo.display="block";
+        return false;
+    }//isNaN
+    if (!unidades_producto.value>0) {
+       unidadesInfo.innerHTML=`Debe ser mayor a 0`;
+       unidadesInfo.display="block";
+        return false;
     }
-    if (!evitarCaracteres.test(mensaje.value)) {
-        mensajeInfo.innerHTML=`El mensaje no acepta caracters especiales`;
-        mensajeInfo.display="block";
-        return false
-    }
-    return true
+
+    return true;
 }
