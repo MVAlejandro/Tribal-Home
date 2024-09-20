@@ -6,7 +6,7 @@
 .categoria{
     font-size: 18px;
     font-weight: bold;
-    color: #AFADB5;
+    color: #AAB396;
 }
 .nombre-producto{
     font-size: 26px;
@@ -16,7 +16,7 @@
 .descripcion-producto{
     font-size: 18px;
     font-weight: normal;
-    color: #AFADB5;
+    color: #674636;
 }
 .precio{
     font-size: 24px;
@@ -83,7 +83,7 @@
 @media (max-width: 778px) {
     .p-productos {
         font-size: 14px;
-        color: #AFADB5;
+        color: #AAB396;
         padding-right: 37px;
         padding-left: 37px;
     }
@@ -94,7 +94,7 @@
     .categoria{
         font-size: 12px;
         font-weight: bold;
-        color: #AFADB5;
+        color: #AAB396;
     }
     .nombre-producto{
         font-size: 13px;
@@ -104,7 +104,7 @@
     .descripcion-producto{
         font-size: 12px;
         font-weight: normal;
-        color: #AFADB5;
+        color: #674636;
     }
     .precio{
         font-size: 14px;

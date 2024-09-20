@@ -16,7 +16,7 @@
 .categoria{
     font-size: 18px;
     font-weight: bold;
-    color: #AFADB5;
+    color: #AAB396;
 }
 .nombre-producto{
     font-size: 26px;
@@ -26,7 +26,7 @@
 .descripcion-producto{
     font-size: 18px;
     font-weight: normal;
-    color: #AFADB5;
+    color: #674636;
 }
 .descuento{
     font-size: 24px;
@@ -88,7 +88,7 @@ p-index{
     }
     .descripcion-producto-populares{
         font-size: 13px;
-        color: #AFADB5;
+        color: #674636;
         margin-top: 12px !important;
         margin-bottom: 25px !important;
     }
