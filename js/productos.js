@@ -1,10 +1,11 @@
+
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
 let descripcion_producto = document.getElementById("descripcion_producto");
 let categoria_producto = document.getElementById("categoria_producto");
 let precio_producto = document.getElementById("precio_producto");
 let unidades_producto = document.getElementById("unidades_producto");
-let imagen_producto = document.getElementById("imagen_producto");
+let imagen_producto = "";
 // Se obtienen los div para mostrar los mensajes de error
 let nombreInfo = document.getElementById("nombreInfo");
 let descripcionInfo = document.getElementById("descripcionInfo");
@@ -20,7 +21,30 @@ let isValid = true
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 // Creamos una lista de productos
 let datos = new Array()
+const boton_foto = document.getElementById('imagen_producto');
 
+const cloudName = 'ddtwywues';
+const uploadPreset = 'tribal_home' 
+
+const myWidget = cloudinary.createUploadWidget(
+    {
+      cloudName: cloudName,
+      uploadPreset: uploadPreset,
+      clientAllowedFormats: ["jpeg", "jpg", "png", "gif", "webp", "svg", ""], //restrict uploading to image files only
+      
+    },
+    (error, result) => {
+        if (!error && result && result.event === "success") {
+            console.log("Done! Here is the image info: ", result.info);
+            imagen_producto = result.info.secure_url;
+      }
+    }
+  );
+
+boton_foto.addEventListener("click",function (event) {
+    event.preventDefault()
+    myWidget.open();
+},false);
 // Se crea la función para agregar productos en el HTML
 function addItem(product){
     const itemHTML = 
@@ -48,7 +72,7 @@ function listProduct(){
         "category": categoria_producto.value, 
         "price": "$" + precio_producto.value,
         "unidades": unidades_producto.value,
-        "img": "./assets/muebles/product-1.png"//imagen_producto.value
+        "img": imagen_producto
     };
     // Guardamos el objeto en la lista de productos
     datos.push(productos);
@@ -102,11 +126,12 @@ formulario.addEventListener("submit",function (e) {
        unidades_producto.style.border = "solid medium red";
         isValid = false;
     }
-    // // // Comprobamos que el producto proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    // if (!validateImagen(imagen_producto, imagenInfo)) {
-    //     imagen_producto.style.border = "solid medium red";
-    //     isValid = false;
-    // }
+    // Comprobamos que se haya agregado una imagen
+    if (imagen_producto == "") {
+        imagenInfo.innerHTML=`Se requiere una imagen para subir el producto`;
+        imagenInfo.display="block";
+        isValid = false;
+    }
     // Si se pasaron todas las validaciones, se enviará el formulario 
     if (isValid) {
         // Agregamos el producto al localStorage
@@ -117,7 +142,7 @@ formulario.addEventListener("submit",function (e) {
         categoria_producto.value = "";
         precio_producto.value = "";
         unidades_producto.value="";
-        //imagen_producto.value="";
+        imagen_producto="";
         // Agregamos una alerta para avisar que se subio correctamente los datos
         Swal.fire({
             icon: "success",
