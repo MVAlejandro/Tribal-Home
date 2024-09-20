@@ -22,6 +22,9 @@ window.addEventListener("load",
                     </div>
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav mx-auto">
+                     <li class="nav-item ms-4 me-4">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
                         <li class="nav-item ms-4 me-4">
                             <a class="nav-link" href="productos.html">Productos</a>
                         </li>
