@@ -18,45 +18,34 @@
     <main>
         <div class="container">
             <h1 class="text-center mt-4">Productos</h1>
-            <p class="text-justify mb-4 pe-4 ps-4">
-                Explora nuestra colección de productos: Muebles y Decoración con personalidad. Cada pieza ha sido seleccionada con esmero 
-                para reflejar el espíritu libre y creativo del estilo bohemio. Deja que cada rincón de tu hogar cuente una historia única y 
-                te envuelva en una atmósfera cálida y acogedora, donde la belleza se encuentra en los detalles. ¡Descubre la magia que transformará tus espacios!
+            <p class="text-justify mb-5 pe-4 ps-4">
+                Explora nuestra colección de productos: Muebles y Decoración con personalidad. Cada pieza ha sido seleccionada con esmero para reflejar el espíritu 
+                libre y creativo del estilo bohemio. Deja que cada rincón de tu hogar cuente una historia única y te envuelva en una atmósfera cálida y acogedora, 
+                donde la belleza se encuentra en los detalles. ¡Descubre la magia que transformará tus espacios!
             </p>
-        </div>
-        <div class="container-fluid mt-5 mb-5 p-0">
-            <div id="carouselExampleIndicators" class="carousel slide">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
+            
+            <div id="carouselExampleInterval" class="carousel slide " data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="./assets/productos-1.png" class="d-block w-100" alt="Productos 1">
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="./assets/productos-1.png" class="d-block w-100" alt="Index 1">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="./assets/productos-2.jpg" class="d-block w-100" alt="Index 2">
                     </div>
                     <div class="carousel-item">
-                        <img src="./assets/productos-2.jpg" class="d-block w-100" alt="Productos 2">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./assets/productos-3.jpg" class="d-block w-100" alt="Productos 3">
+                        <img src="./assets/productos-3.jpg" class="d-block w-100" alt="Index 3">
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-        </div>
+
         <div class="container mt-5" >
             <div class="row mt-5 mb-5">
                 <div class="col-9 mt-auto mb-auto"><h2 class="text-center h2-productos">Todos los productos</h2></div>

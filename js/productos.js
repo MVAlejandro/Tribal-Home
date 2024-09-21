@@ -195,42 +195,42 @@ function validarNumber(data, info) {
 window.addEventListener("load", function(evenet){
 // Se agregan productos manualmente
     addItem({
-        'img':'./assets/muebles/product-1.png',
+        'img':'./assets/muebles/deco-1.png',
         'category':'Sillas',
         'name':'Silla blanca',
         'description':'Combinación de madera y lana.',
         'price':'$63.47'});
     
     addItem({
-        'img':'./assets/muebles/product-2.png',
+        'img':'./assets/muebles/deco-2.png',
         'category':'Armarios',
         'name':'Armario de madera',
         'description':'Combinación de madera y lana.',
         'price':'$79.88'});
     
     addItem({
-        'img':'./assets/muebles/product-3.png',
+        'img':'./assets/muebles/deco-3.png',
         'category':'Sillas',
         'name':'Sillón minimalista',
         'description':'Combinación de madera y lana.',
         'price':'$55.99'});
     
     addItem({
-        'img':'./assets/muebles/product-4.png',
+        'img':'./assets/muebles/deco-4.png',
         'category':'Mesas',
         'name':'Escritorio de trabajo',
         'description':'Combinación de madera y lana.',
         'price':'$47.90'});
     
     addItem({
-        'img':'./assets/muebles/product-5.png',
+        'img':'./assets/muebles/deco-5.png',
         'category':'Armarios',
         'name':'Armario blanco',
         'description':'Combinación de madera y lana.',
         'price':'$40.73'});
     
     addItem({
-        'img':'./assets/muebles/product-6.png',
+        'img':'./assets/muebles/deco-6.png',
         'category':'Mesas',
         'name':'Mesa de comedor',
         'description':'Combinación de madera y lana.',
