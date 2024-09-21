@@ -196,108 +196,108 @@ window.addEventListener("load", function(evenet){
 // Se agregan productos manualmente
     addItem({
         'img':'./assets/muebles/deco-1.png',
-        'category':'Sillas',
-        'name':'Silla blanca',
-        'description':'Combinación de madera y lana.',
-        'price':'$63.47'});
+        'category':'Decoración',
+        'name':'Enfriador de vino',
+        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
+        'price':'$450.00'});
     
     addItem({
         'img':'./assets/muebles/deco-2.png',
-        'category':'Armarios',
-        'name':'Armario de madera',
-        'description':'Combinación de madera y lana.',
-        'price':'$79.88'});
+        'category':'Decoración',
+        'name':'Enfriador de vino',
+        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
+        'price':'$450.00'});
     
     addItem({
         'img':'./assets/muebles/deco-3.png',
-        'category':'Sillas',
-        'name':'Sillón minimalista',
-        'description':'Combinación de madera y lana.',
-        'price':'$55.99'});
+        'category':'Decoración',
+        'name':'Jarrón cerámica',
+        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
+        'price':'$500.00'});
     
     addItem({
         'img':'./assets/muebles/deco-4.png',
-        'category':'Mesas',
-        'name':'Escritorio de trabajo',
-        'description':'Combinación de madera y lana.',
-        'price':'$47.90'});
+        'category':'Decoración',
+        'name':'Jarrón cerámica',
+        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
+        'price':'$500.00'});
     
     addItem({
         'img':'./assets/muebles/deco-5.png',
-        'category':'Armarios',
-        'name':'Armario blanco',
-        'description':'Combinación de madera y lana.',
-        'price':'$40.73'});
+        'category':'Decoración',
+        'name':'Jarra cerámica',
+        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
+        'price':'$650.00'});
     
     addItem({
         'img':'./assets/muebles/deco-6.png',
-        'category':'Mesas',
-        'name':'Mesa de comedor',
-        'description':'Combinación de madera y lana.',
-        'price':'$16.50'});
+        'category':'Decoración',
+        'name':'Jarra cerámica',
+        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
+        'price':'$650.00'});
+    
+    addItem({
+        'img':'./assets/muebles/product-6.png',
+        'category':'Decoración',
+        'name':'Maceta con pedestal en metal',
+        'description':'Maceta con pedestal en metal pintado, ideal tanto para interiores como exteriores.',
+        'price':'$250.00'});
     
     addItem({
         'img':'./assets/muebles/product-7.png',
         'category':'Decoración',
-        'name':'Jarrón blanco',
-        'description':'Combinación de madera y lana.',
-        'price':'$58.39'});
+        'name':'Maceta de cerámica con barniz jaspeado',
+        'description':'Maceta en cerámica, modelo con un divertido acabado de burbujas y barniz jaspeado que aporta una apariencia única a cada pieza',
+        'price':'$300.00'});
     
     addItem({
         'img':'./assets/muebles/product-8.png',
         'category':'Decoración',
-        'name':'Planta / base de Arcilla',
-        'description':'Combinación de madera y lana.',
-        'price':'$61.49'});
+        'name':'Maceta de concreto',
+        'description':'Maceta de concreto con un diseño moderno y un acabado texturizado que aporta una apariencia única a cada pieza.',
+        'price':'$200.00'});
     
     addItem({
-        'img':'./assets/muebles/product-9.png',
-        'category':'Decoración',
-        'name':'Espejo dorado',
-        'description':'Combinación de madera y lana.',
-        'price':'$32.43'});
+        'img':'./assets/muebles/deco-7.png',
+        'category':'Almacenamiento',
+        'name':'Cesto de yute trenzado',
+        'description':'Cesto hecho a mano en yute con dos asas superiores.',
+        'price':'$600.00'});
     
     addItem({
-        'img':'./assets/muebles/product-10.png',
-        'category':'Decoración',
-        'name':'Espejo de madera',
-        'description':'Combinación de madera y lana.',
-        'price':'$63.47'});
+        'img':'./assets/muebles/deco-8.png',
+        'category':'Almacenamiento',
+        'name':'Cesto en yute',
+        'description':'Cesto para ropa en yute con dos asas superiores.',
+        'price':'$800.00'});
     
     addItem({
-        'img':'./assets/muebles/image-4.png',
-        'category':'Silla',
-        'name':'Silla de cóctel ',
-        'description':'Combinación de madera y lana.',
-        'price':'$34.99'});
-    
-    addItem({
-        'img':'./assets/muebles/image-5.png',
-        'category':'Armarios',
-        'name':'Armario de madera',
-        'description':'Combinación de madera y lana.',
-        'price':'$79.23'});
-    
-    addItem({
-        'img':'./assets/muebles/image-2.png',
-        'category':'Sillas',
-        'name':'Silla tradicional',
-        'description':'Combinación de madera y lana.',
-        'price':'$45.50'});
-    
-    addItem({
-        'img':'./assets/muebles/image-3.png',
-        'category':'Sillas',
-        'name':'Silla con diseño verde',
-        'description':'Combinación de madera y lana.',
-        'price':'$45.99'});
+        'img':'./assets/muebles/deco-9.png',
+        'category':'Almacenamiento',
+        'name':'Cesto de algodón',
+        'description':'Cesto de almacenamiento en tejido grueso de algodón con dos asas superiores.',
+        'price':'$400.00'});
     
     addItem({
         'img':'./assets/muebles/image-1.png',
-        'category':'Libreros',
-        'name':'Librero básico',
-        'description':'Combinación de madera y lana.',
-        'price':'$75.99'});
+        'category':'Decoración',
+        'name':'Funda de cojín en mezcla de lino',
+        'description':'Funda de cojín clásica en tejido de lino y algodón color verde.',
+        'price':'$249.00'});
+    
+    addItem({
+        'img':'./assets/muebles/image-2.png',
+        'category':'Decoración',
+        'name':'Funda de cojín en terciopelo',
+        'description':'Funda de cojín en terciopelo color gris oscuro de algodón con zíper oculto.',
+        'price':'$249.00'});
+    
+    addItem({
+        'img':'./assets/muebles/image-3.png',
+        'category':'Decoración',
+        'name':'Funda de cojín con flecos en terciopelo',
+        'description':'Funda de cojín en terciopelo color gris con borde de flecos y zíper oculto.',
+        'price':'$249.00'});
 // Se comprueba el localStorage
     if (this.localStorage.getItem("datos") != null){
         datos = JSON.parse(this.localStorage.getItem("datos"));

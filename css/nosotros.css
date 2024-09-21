@@ -38,7 +38,7 @@
 }
 
 .flip-card-front {
-    background-color: #fff;
+    background-color: white;
     z-index: 2;
     transform: rotateY(0deg);
 }
