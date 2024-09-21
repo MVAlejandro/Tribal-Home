@@ -11,6 +11,7 @@
 }
 .h2-index{
     font-size: 50px;
+    font-weight: normal;
     color: #151411;
 }
 .categoria{
@@ -22,20 +23,30 @@
     font-size: 26px;
     font-weight: bold;
     color: #151411;
+    text-align: center;
 }
 .descripcion-producto{
     font-size: 18px;
     font-weight: normal;
     color: #674636;
+    text-align: justify;
+}
+.precio-descuento{
+    font-size: 18px;
+    font-weight: normal;
+    color: #151411;
+    text-decoration: line-through;
+    text-align: right;
 }
 .descuento{
     font-size: 18px;
     font-weight: bold;
-    color: #AAB396;
+    color: #151411;
+    text-align: right;
 }
 .productos-populares{
     font-size: 44px;
-    font-weight: bold;
+    font-weight: normal;
     color: #151411;
 }
 .carrusel-descuentos{
