@@ -1,4 +1,3 @@
-
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
 let descripcion_producto = document.getElementById("descripcion_producto");
@@ -207,25 +206,8 @@ window.addEventListener("load", function(evenet){
         'name':'Enfriador de vino',
         'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
         'price':'$450.00'});
-        'img':'./assets/muebles/deco-1.png',
-        'category':'Decoración',
-        'name':'Enfriador de vino',
-        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
-        'price':'$450.00'});
     
     addItem({
-        'img':'./assets/muebles/deco-2.png',
-        'category':'Decoración',
-        'name':'Enfriador de vino',
-        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
-        'price':'$450.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-3.png',
-        'category':'Decoración',
-        'name':'Jarrón cerámica',
-        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
-        'price':'$500.00'});
         'img':'./assets/muebles/deco-3.png',
         'category':'Decoración',
         'name':'Jarrón cerámica',
@@ -238,11 +220,6 @@ window.addEventListener("load", function(evenet){
         'name':'Jarrón cerámica',
         'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
         'price':'$500.00'});
-        'img':'./assets/muebles/deco-4.png',
-        'category':'Decoración',
-        'name':'Jarrón cerámica',
-        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
-        'price':'$500.00'});
     
     addItem({
         'img':'./assets/muebles/deco-5.png',
@@ -250,18 +227,8 @@ window.addEventListener("load", function(evenet){
         'name':'Jarra cerámica',
         'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
         'price':'$650.00'});
-        'img':'./assets/muebles/deco-5.png',
-        'category':'Decoración',
-        'name':'Jarra cerámica',
-        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
-        'price':'$650.00'});
     
     addItem({
-        'img':'./assets/muebles/deco-6.png',
-        'category':'Decoración',
-        'name':'Jarra cerámica',
-        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
-        'price':'$650.00'});
         'img':'./assets/muebles/deco-6.png',
         'category':'Decoración',
         'name':'Jarra cerámica',
@@ -274,17 +241,10 @@ window.addEventListener("load", function(evenet){
         'name':'Maceta con pedestal en metal',
         'description':'Maceta con pedestal en metal pintado, ideal tanto para interiores como exteriores.',
         'price':'$250.00'});
-        'category':'Decoración',
-        'name':'Maceta con pedestal en metal',
-        'description':'Maceta con pedestal en metal pintado, ideal tanto para interiores como exteriores.',
-        'price':'$250.00'});
     
     addItem({
         'img':'./assets/muebles/product-7.png',
         'category':'Decoración',
-        'name':'Maceta de cerámica con barniz jaspeado',
-        'description':'Maceta en cerámica, modelo con un divertido acabado de burbujas y barniz jaspeado que aporta una apariencia única a cada pieza',
-        'price':'$300.00'});
         'name':'Maceta de cerámica con barniz jaspeado',
         'description':'Maceta en cerámica, modelo con un divertido acabado de burbujas y barniz jaspeado que aporta una apariencia única a cada pieza',
         'price':'$300.00'});
@@ -295,16 +255,8 @@ window.addEventListener("load", function(evenet){
         'name':'Maceta de concreto',
         'description':'Maceta de concreto con un diseño moderno y un acabado texturizado que aporta una apariencia única a cada pieza.',
         'price':'$200.00'});
-        'name':'Maceta de concreto',
-        'description':'Maceta de concreto con un diseño moderno y un acabado texturizado que aporta una apariencia única a cada pieza.',
-        'price':'$200.00'});
     
     addItem({
-        'img':'./assets/muebles/deco-7.png',
-        'category':'Almacenamiento',
-        'name':'Cesto de yute trenzado',
-        'description':'Cesto hecho a mano en yute con dos asas superiores.',
-        'price':'$600.00'});
         'img':'./assets/muebles/deco-7.png',
         'category':'Almacenamiento',
         'name':'Cesto de yute trenzado',
@@ -317,11 +269,6 @@ window.addEventListener("load", function(evenet){
         'name':'Cesto en yute',
         'description':'Cesto para ropa en yute con dos asas superiores.',
         'price':'$800.00'});
-        'img':'./assets/muebles/deco-8.png',
-        'category':'Almacenamiento',
-        'name':'Cesto en yute',
-        'description':'Cesto para ropa en yute con dos asas superiores.',
-        'price':'$800.00'});
     
     addItem({
         'img':'./assets/muebles/deco-9.png',
@@ -329,18 +276,8 @@ window.addEventListener("load", function(evenet){
         'name':'Cesto de algodón',
         'description':'Cesto de almacenamiento en tejido grueso de algodón con dos asas superiores.',
         'price':'$400.00'});
-        'img':'./assets/muebles/deco-9.png',
-        'category':'Almacenamiento',
-        'name':'Cesto de algodón',
-        'description':'Cesto de almacenamiento en tejido grueso de algodón con dos asas superiores.',
-        'price':'$400.00'});
     
     addItem({
-        'img':'./assets/muebles/image-1.png',
-        'category':'Decoración',
-        'name':'Funda de cojín en mezcla de lino',
-        'description':'Funda de cojín clásica en tejido de lino y algodón color verde.',
-        'price':'$249.00'});
         'img':'./assets/muebles/image-1.png',
         'category':'Decoración',
         'name':'Funda de cojín en mezcla de lino',
@@ -349,10 +286,6 @@ window.addEventListener("load", function(evenet){
     
     addItem({
         'img':'./assets/muebles/image-2.png',
-        'category':'Decoración',
-        'name':'Funda de cojín en terciopelo',
-        'description':'Funda de cojín en terciopelo color gris oscuro de algodón con zíper oculto.',
-        'price':'$249.00'});
         'category':'Decoración',
         'name':'Funda de cojín en terciopelo',
         'description':'Funda de cojín en terciopelo color gris oscuro de algodón con zíper oculto.',
