@@ -298,6 +298,70 @@ window.addEventListener("load", function(evenet){
         'name':'Funda de cojín con flecos en terciopelo',
         'description':'Funda de cojín en terciopelo color gris con borde de flecos y zíper oculto.',
         'price':'$249.00'});
+
+    addItem({
+        'img':'./assets/muebles/mueble-1.png',
+        'category':'Muebles',
+        'name':'Mesa de centro con cajón de vidrio',
+        'description':'Mesa de centro, auxiliar o de café con estante y cajón de vidrio. Diseño moderno y versátil, elaborado en mdf y vidrio estriado.',
+        'price':'$1500.00'});
+    
+    addItem({
+        'img':'./assets/muebles/mueble-2.png',
+        'category':'Muebles',
+        'name':'Aparador multiusos nórdico',
+        'description':'Aparador moderno estilo nórdico con amplios espacios de almacenamiento y se adapta a cualquier decoración con sus tonos blancos y café.',
+        'price':'$2500.00'});
+
+    addItem({
+        'img':'./assets/muebles/mueble-3.png',
+        'category':'Muebles',
+        'name':'Aparador puertas de vidrio',
+        'description':'Aparador moderno de mdf con puertas de vidrio, diseño color café claro adaptable a cualquier tipo de decoración.',
+        'price':'$1500.00'});
+    
+    addItem({
+        'img':'./assets/muebles/mueble-4.png',
+        'category':'Muebles',
+        'name':'Aparador ratán de 3 puertas',
+        'description':'Aparador de mdf multiusos gran espacio de almacenamiento. Diseño en ratán con colores claros, ideal para obtener un estilo decorativo cálido.',
+        'price':'$3000.00'});
+
+    addItem({
+        'img':'./assets/muebles/mueble-5.png',
+        'category':'Muebles',
+        'name':'Mueble para tv minimalista',
+        'description':'Mueble de tv estilo minimalista cuenta con 2 puertas laterales y 2 entrepaños central, hecho a base de mdf de tonalidad clara.',
+        'price':'$1500.00'});
+    
+    addItem({
+        'img':'./assets/muebles/mueble-6.png',
+        'category':'Muebles',
+        'name':'Mueble para tv',
+        'description':'Mueble de tv rack con estantes y puertas, elaborado en mdf y tratamiento térmico y barnizado, colores claros, ideal para obtener un estilo decorativo cálido y artesanal.',
+        'price':'$2000.00'});
+    
+    addItem({
+        'img':'./assets/muebles/mueble-7.png',
+        'category':'Muebles',
+        'name':'Librero nóridco',
+        'description':'Elegante librero vertical de gran almacenamiento con dos estantes, dos cajones y una puerta. Estilo nórdico de diseño minimalista en tonos de madera clara y blanco.',
+        'price':'$1500.00'});
+
+    addItem({
+        'img':'./assets/muebles/mueble-8.png',
+        'category':'Muebles',
+        'name':'Armario de madera tradicional',
+        'description':'Armario de madera práctico y versátil, se adapta a diversas necesidades de almacenamiento con un diseño clásico.',
+        'price':'$6000.00'});
+    
+    addItem({
+        'img':'./assets/muebles/mueble-9.png',
+        'category':'Muebles',
+        'name':'Aparador moderno',
+        'description':'Elegante aparador nórdico, diseñado para aportar estilo y funcionalidad a tu hogar, de acabado en tonos claros y líneas minimalistas.',
+        'price':'$3000.00'});
+
 // Se comprueba el localStorage
     if (this.localStorage.getItem("datos") != null){
         datos = JSON.parse(this.localStorage.getItem("datos"));
