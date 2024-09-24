@@ -10,10 +10,10 @@ window.addEventListener("load",
                     <img src="assets/nav-bar/Logo.png" alt="Logo_Tribal-Home" class="logo">
                     </a>
                     <div class="d-lg-none ms-auto">
-                    <a class="text-dark me-2" href="carrito.html">
+                    <a class="text-dark me-2" id="carrito2"href="carrito.html">
                         <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
                     </a>
-                    <a class="text-dark me-2" href="login.html">
+                    <a class="text-dark me-2" id="perfil" href="login.html">
                         <img src="assets/nav-bar/user.png" alt="usuario" class="perfil-car">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,10 +40,10 @@ window.addEventListener("load",
                     </ul>
                     </div>
                     <div class="d-none d-lg-flex align-items-center ms-auto">
-                        <a class="text-dark nav-link me-3" href="carrito.html">
+                        <a class="text-dark nav-link me-3" id="carrito" href="carrito.html">
                             <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
                         </a>
-                        <a class="text-dark nav-link me-3" href="login.html">
+                        <a class="text-dark nav-link me-3" id="perfil2" href="login.html">
                             <img src="assets/nav-bar/user.png" alt="usuario" class="perfil-car">
                         </a>
                     </div>  
@@ -70,6 +70,22 @@ window.addEventListener("load",
 
         const currentLocation = window.location.href;
         const menuItems = document.querySelectorAll('.nav-link');
+        const perfil = document.getElementById("perfil");
+        const perfil2 = document.getElementById("perfil2");
+        const carrito = document.getElementById("carrito");
+        const carrito2 = document.getElementById("carrito2");
+
+        if(this.localStorage.getItem("usuario_activo") == null){
+            perfil.href = "./login.html";
+            perfil2.href = "./login.html";
+            carrito.href = "./login.html";
+            carrito2.href = "./login.html";
+        }else{
+            perfil.href = "./perfil.html";            
+            perfil2.href = "./perfil.html";
+            carrito.href = "./carrito.html";
+            carrito2.href = "./carrito.html";
+        }
         
         menuItems.forEach(item => {
             if (item.href === currentLocation) {

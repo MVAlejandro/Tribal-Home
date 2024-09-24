@@ -22,7 +22,7 @@ const passwordConfirmationInfo = document.getElementById("passwordConfirmationIn
 const ubicacion_usuarios= document.getElementById("ubicacion_usuarios");
 //declara arreglos de estado
 const arrEstados=["Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", 
-   " Chiapas", "Chihuahua", "Durango", "Distrito Federal"," Guanajuato", "Guerrero","Hidalgo", "Jalisco", "México", "Michoacán", 
+   " Chiapas", "Chihuahua","Ciudad de México","Durango"," Guanajuato", "Guerrero","Hidalgo", "Jalisco", "México", "Michoacán", 
   " Morelos", "Nayarit","Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", 
   "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"];
 // Obtenemos el formulario
@@ -39,6 +39,7 @@ const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El núm
 // const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/ // Expresión regular para la contraseña
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{6,}$/ // Expresión regular para la contraseña
 const cpRegex = /^\d{5}$/ // Expresión regular para el codigo postal
+let usuarios = new Array();
 
 //*--------------funciones-----------------*
 // Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
@@ -194,8 +195,12 @@ formulario.addEventListener("submit",function (e) {
                    "telefono_usuario": telefono_usuario.value.trim(),
                    "password_usuario": password_usuario.value
         }
-
-        localStorage.setItem("usuario", JSON.stringify(usuario));
+        // Se comprueba el localStorage
+            if (localStorage.getItem("usuario") != null){
+            usuarios = JSON.parse(localStorage.getItem("usuario"));
+    }
+        usuarios.push(usuario);
+        localStorage.setItem("usuario", JSON.stringify(usuarios));
 
         nombre_usuario.value = "";
         apellidos_usuario.value = "";
@@ -226,4 +231,5 @@ formulario.addEventListener("submit",function (e) {
 //*---------------metodo al cargar pagina-----------*
 window.addEventListener("load", function(){
     llenarSelect();
+    
 });

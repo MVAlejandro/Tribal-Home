@@ -18,6 +18,7 @@ let isValid = true
 const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regular para el nombre y el apellido
 const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión regular para el email
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
+const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
 
 // Agregamos el evento cuando se envie el formulario
 formulario.addEventListener("submit",function (e) {
@@ -56,7 +57,7 @@ formulario.addEventListener("submit",function (e) {
         isValid = false
     }
     // Comprobamos que el número telefónico proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validarCantidad()) {
+    if (!validarTelefono(telefono_usuario, telefonoInfo)) {
         telefono_usuario.style.border = "solid medium red";
         isValid = false;
     }
@@ -126,19 +127,13 @@ function validateEmail(email, info) {
     return true
 }
 
-// Función que valida que sea un número y que tenga de 10 a 13 caracteres 
-function validarCantidad() {
-    if (isNaN(telefono_usuario.value)) {
-        telefonoInfo.innerHTML=`El campo telefono solo puede contener números`;
-        telefonoInfo.display="block";
-        return false;
-    }//isNaN
-    if (!(Number(telefono_usuario.value.length) <= 13 && Number(telefono_usuario.value.length) >= 10)) {
-        telefonoInfo.innerHTML=`El campo telefono debe contener de 10 a 13 dígitos`;
-        telefonoInfo.display="block";
-        return false;
+// Función que valida que sea un número telefónico
+function validarTelefono(telefono, info) {
+    if (!numeroTelefonicoRegex.test(telefono.value.trim())) {
+        info.innerHTML=`El número telefónico no es válido`;
+        info.display="block";
+        return false
     }
-
     return true;
 }
 // Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales 

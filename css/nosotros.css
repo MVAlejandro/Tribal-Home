@@ -62,6 +62,12 @@
     font-size: 1.2rem;
     color: #000;
 }
+
+.hidden-text{
+    display: none;
+    
+}
+
 @media (max-width: 600px) {
     .valores-icon {
         display: none;
@@ -78,5 +84,10 @@
         width: 100%;
         margin: 0px;
         padding: 0px;
+    }
+
+    .hidden-text{
+        display: block;
+
     }
 }
