@@ -12,6 +12,3 @@ let isValid=false
 
 //debe validar la existencia del usuario y mandar a la pagina de inicio
 //puede usar url o la sesion storage para mandar informacion del usuario
-btn_cuestionario.addEventListener("click", function() {
-    
-})

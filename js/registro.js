@@ -4,7 +4,7 @@ const btn_cuestionario=document.getElementById("btn_cuestionario");
 const nombre_usuario=document.getElementById("nombre_usuario");
 const apellidos_usuario=document.getElementById("apellidos_usuario");
 const cp_usuario=document.getElementById("cp_usuarioo");
-const direccion_usuario=document.getElementById("direccion_usuarioo");
+const direccion_usuario=document.getElementById("direccion_usuario");
 const email_usuario=document.getElementById("email_usuario");
 const telefono_usuario=document.getElementById("telefono_usuario");
 
@@ -23,23 +23,22 @@ const arrEstados=["Aguascalientes", "Baja California", "Baja California Sur", "C
    " Chiapas", "Chihuahua", "Durango", "Distrito Federal"," Guanajuato", "Guerrero","Hidalgo", "Jalisco", "México", "Michoacán", 
   " Morelos", "Nayarit","Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", 
   "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"];
+
+
 //*--------------funciones-----------------*
 //llena el select con el arreglo de los estados
 function llenarSelect(){
     let cad=""
     arrEstados.forEach(estado => {
                         
-        cad=cad+` <option value="${estado}">${estado}</option>`
+        cad=cad+`<option value="${estado}">${estado}</option>`
         
     });
     ubicacion_usuarios.insertAdjacentHTML("beforeend", cad);
 
 }
 
-//debe de verificar los datos y de ser correcto crear la cuenta por el momento en el local storage
-btn_cuestionario.addEventListener("click", function () {
-    
-})
+//verifica los datos y de ser correcto crear la cuenta por el momento en el local storage
 
 
 //*---------------metodo al cargar pagina-----------*

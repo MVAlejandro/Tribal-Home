@@ -25,6 +25,9 @@ h3{
 }
 .btn-redes{
     margin-bottom: 3%;
+    display: flex;
+
+    padding: 3%;
 }
 #btn-facebook{
     background-color: #3C7BF0;
@@ -32,7 +35,7 @@ h3{
     font-size: 14px;
     border-radius: 60px;
     height: 61px;
-    width: 251px;
+    width: 225px;
 }
 #btn-google{
     background-color: #FFFFFF;
@@ -40,7 +43,7 @@ h3{
     font-size: 14px;
     border-radius: 60px;
     height: 61px;
-    width: 251px;
+    width: 225px;
     
 }
 label{
@@ -77,9 +80,16 @@ span{
     color: #000000;
     text-decoration: none;
 }
-    
 @media (max-width: 600px) {
-    .btn-redes{
+    #btn-facebook, #btn-google{
+        width: 200px;
+        margin-left: 20%;
+    }
+    
+}    
+@media (max-width: 600px) {
+    .botones-login{
+        
         margin-left: 20%;
     }
     
