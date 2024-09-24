@@ -1,0 +1,96 @@
+.fondo{
+    background-image: url(./../assets/fondo_crear_cuenta.png);
+    width: 100%;
+    height: 100%;
+
+}
+
+.formulario-login{
+    background-color: #F9F9F9;
+    box-shadow: 0px 4px 25px 0px #00000040;
+    border-radius: 20px;
+    padding: 5% 2% 5% 2%;
+    margin: 2% 0% 10% 0%;
+}
+
+h3{
+    font-size: 30px;
+    font-weight: 600;
+    color: #000000;
+    text-align: center;
+}
+
+.botones-login{
+    margin: 5% 3% 5% 3%;
+}
+.btn-redes{
+    margin-bottom: 3%;
+    display: flex;
+
+    padding: 3%;
+}
+#btn-facebook{
+    background-color: #3C7BF0;
+    color: #FFFFFF;
+    font-size: 14px;
+    border-radius: 60px;
+    height: 61px;
+    width: 225px;
+}
+#btn-google{
+    background-color: #FFFFFF;
+    color: #282828;
+    font-size: 14px;
+    border-radius: 60px;
+    height: 61px;
+    width: 225px;
+    
+}
+label{
+    display: none;
+}
+
+.form-group.input-material .form-control {
+    border: none;
+    border-bottom: 1px solid #000000;
+    border-radius: 0px;
+    background-color: transparent;
+    padding-left: 5px;
+    box-shadow: none;
+    width: 82%;
+    margin: 1% 0% 1% 5%;
+
+}
+
+.btn_cuestionario{
+    font-size: 25px;
+    color: #FFFFFF;
+    font-weight: 600;
+    background-color: #AAB396;
+    margin: 5% 0% 3% 7%;
+    width: 85%;
+}
+ 
+p{
+    font-size: 14px;
+    margin: 0% 0% 10% 5%;
+}
+span{
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+}
+@media (max-width: 600px) {
+    #btn-facebook, #btn-google{
+        width: 200px;
+        margin-left: 20%;
+    }
+    
+}    
+@media (max-width: 600px) {
+    .botones-login{
+        
+        margin-left: 20%;
+    }
+    
+}    
