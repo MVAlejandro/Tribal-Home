@@ -20,12 +20,6 @@ h3{
     text-align: center;
 }
 
-.botones-login{
-    margin: 5% 3% 5% 3%;
-}
-.btn-redes{
-    margin-bottom: 3%;
-}
 
 #telefono_campo{
     width: 50%;
@@ -37,7 +31,7 @@ h3{
     color: #FFFFFF;
     font-weight: 600;
     background-color: #AAB396;
-    margin: 5% 5% 3% 5%;
+    margin: 5% 0% 3% 7%;
     width: 85%;
 }
  
