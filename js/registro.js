@@ -36,7 +36,8 @@ const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regul
 const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión regular para el email
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/; // Expresión regular para el mensaje
 const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/ // Expresión regular para la contraseña
+// const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/ // Expresión regular para la contraseña
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{6,}$/ // Expresión regular para la contraseña
 const cpRegex = /^\d{5}$/ // Expresión regular para el codigo postal
 
 //*--------------funciones-----------------*
@@ -65,7 +66,7 @@ function validateEmail(email, info) {
 }
 // Función que valida que sea un número telefónico
 function validarTelefono(telefono, info) {
-    if (!numeroTelefonicoRegex.test(telefono.value)) {
+    if (!numeroTelefonicoRegex.test(telefono.value.trim())) {
         info.innerHTML=`El número telefónico no es valido`;
         info.display="block";
         return false
@@ -190,9 +191,12 @@ formulario.addEventListener("submit",function (e) {
                    "email_usuario": email_usuario.value,
                    "cp_usuario": cp_usuario.value,
                    "direccion_usuario": direccion_usuario.value,
-                   "telefono_usuario": telefono_usuario.value,
+                   "telefono_usuario": telefono_usuario.value.trim(),
                    "password_usuario": password_usuario.value
         }
+
+        localStorage.setItem("usuario", JSON.stringify(usuario));
+
         nombre_usuario.value = "";
         apellidos_usuario.value = "";
         ubicacion_usuarios.value = "";
