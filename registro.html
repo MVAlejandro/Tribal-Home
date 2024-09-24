@@ -21,7 +21,7 @@
                 <div class="col-lg-6 col-sm-12   formulario-registro">
                     <h3 class="">Registrate</h3>
                     <div class="row formulario">
-                        <form action="">
+                        <form action="" id="formulario">
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12 mt-4">
                                     <label for="nombre_usuario" class="form-label">Nombre(s)</label>
@@ -37,7 +37,7 @@
                            
                             <div class="row">
                                 <div class="col-lg-6 col-sm-12">
-                                    <label for="ubicacion_usuario" class="form-label">País</label>
+                                    <label for="ubicacion_usuarios" class="form-label">País</label>
                                     <div class="input-group col-lg-6">
                                         <span class="input-group-text" id="basic-addon1"><img src="assets/LeftIcon.png" alt="icono de ubicación" ></span>
                                         <select class="form-select"  id="ubicacion_usuarios">
@@ -56,10 +56,10 @@
                                 <div class="col-12">
                                     <label for="direccion_usuario" class="form-label">Dirección</label>
                                     <input type="text" class="form-control" id="direccion_usuario" name="direccion_usuario">
-                                    <div class="form-text error-text"><p id="direccionInfo"></p></div>
+                                    <div class="form-text error-text"><p id="direccionlInfo"></p></div>
                                 </div>
                             </div>
-                            <div class="row"></div>
+                            <div class="row">
                                 <div class="col-12">
                                     <label for="email_usuario" class="form-label">Email</label>
                                     <input type="email" class="form-control" id="email_usuario" name="email_usuario" placeholder="Ejemplo: fernando12@gmail.com">
@@ -74,8 +74,22 @@
                                 </div>
                                 <div class="form-text error-text"><p id="telefonoInfo"></p></div>
                             </div>
-                            <div class="row ">
-                                <button type="button" class="btn btn_cuestionario btn-lg" id="btnCrear">Crear Cuenta</button>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="password_usuario" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="password_usuario" name="password_usuario">
+                                    <div class="form-text error-text"><p id="passwordInfo"></p></div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <label for="password_confirmation" class="form-label">Confirma tu contraseña</label>
+                                    <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
+                                    <div class="form-text error-text"><p id="passwordConfirmationInfo"></p></div>
+                                </div>
+                            </div>
+                            <div class="row columna-cuestionario"></div>
+                                <button type="submit" class="btn btn_cuestionario btn-lg" id="btnEnviar">Enviar</button>
                             </div>
                         </form>
                     </div>
@@ -85,7 +99,7 @@
         </div>
              
     </main>
-    <footer class="mt-4" id="pie"> 
+    <footer id="pie"> 
     </footer>
 
     <script src="./js/index.js"></script>
