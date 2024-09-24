@@ -29,5 +29,11 @@ btn_cuestionario.addEventListener("click", function(e){
                   }); 
             }
         });
+    }else{
+        Swal.fire({
+            icon: "error",
+            title: "Error al iniciar sesión",
+            text: "Usuario y/o contraseña incorrectos",
+          }); 
     }
 });

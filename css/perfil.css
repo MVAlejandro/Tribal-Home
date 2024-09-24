@@ -1,0 +1,56 @@
+.information{
+    width: 60%;
+    background: #AAB396;
+    border-radius: 38.76px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+.h2-perfil{
+    font-size: 40px;
+    color: #000000;
+    font-weight: bold;
+}
+.foto-perfil{
+    width: 100%;
+    border-radius: 100%;
+}
+.data{
+    text-align: right;
+    font-size: 25px;
+}
+.modificar{
+    color: #674636 !important;
+    background: #F7EED3 !important;
+    font-size: 30px;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 600px){
+    .information{
+        width: 80%;
+        background: #AAB396;
+        border-radius: 38.76px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 12px;
+    }
+    .h2-perfil{
+        font-size: 19px;
+        text-align: center !important;
+    }
+    .data{
+        text-align: center;
+        font-size: 12px;
+    }
+    .modificar{
+        font-size: 14px;
+    }
+    .foto-perfil{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
