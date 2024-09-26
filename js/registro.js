@@ -214,7 +214,7 @@ formulario.addEventListener("submit",function (e) {
         // Si el correo se envio correctamente lanzará una alerta de que se envio correctamente
         Swal.fire({
             icon: "success",
-            title: "Registro conmpletado correctamente",
+            title: "Registro completado correctamente",
             showConfirmButton: false,
             timer: 1500
         });
