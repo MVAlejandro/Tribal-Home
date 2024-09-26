@@ -1,4 +1,9 @@
 /* Se aplica en servicios */
+.row {
+    display: flex;
+    gap: 30px; /* Este gap se aplicará a todos los elementos hijos */
+}
+
 .card-text{
     text-align: justify;
     font-size: 18px;
