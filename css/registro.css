@@ -44,3 +44,12 @@ h3{
     color: #FFFFFF;
 }
  
+p{
+    font-size: 14px;
+    margin: 0% 0% 10% 5%;
+}
+span{
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+}

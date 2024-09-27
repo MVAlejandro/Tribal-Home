@@ -4,7 +4,7 @@ let descripcion_producto = document.getElementById("descripcion_producto");
 let categoria_producto = document.getElementById("categoria_producto");
 let precio_producto = document.getElementById("precio_producto");
 let unidades_producto = document.getElementById("unidades_producto");
-let imagen_producto = "";
+let imagen_producto = document.getElementById("imagen_producto");
 // Se obtienen los div para mostrar los mensajes de error
 let nombreInfo = document.getElementById("nombreInfo");
 let descripcionInfo = document.getElementById("descripcionInfo");
@@ -92,6 +92,7 @@ formulario.addEventListener("submit",function (e) {
     categoria_producto.style.border = "";
     precio_producto.style.border = "";
     unidades_producto.style.border = "";
+   // imagen_producto.style.border="";
     // Inicializamos los mensajes de error con vacio y que no sean visibles
     nombreInfo.innerHTML=""; nombreInfo.display="none";
     descripcionInfo.innerHTML=""; descripcionInfo.display="none";
@@ -126,7 +127,8 @@ formulario.addEventListener("submit",function (e) {
         isValid = false;
     }
     // Comprobamos que se haya agregado una imagen
-    if (imagen_producto == "") {
+    if (imagen_producto.value == "") {
+        imagen_producto.style.border= "solid medium red";
         imagenInfo.innerHTML=`Se requiere una imagen para subir el producto`;
         imagenInfo.display="block";
         isValid = false;
@@ -141,7 +143,7 @@ formulario.addEventListener("submit",function (e) {
         categoria_producto.value = "";
         precio_producto.value = "";
         unidades_producto.value="";
-        imagen_producto="";
+        imagen_producto.value="";
         // Agregamos una alerta para avisar que se subio correctamente los datos
         Swal.fire({
             icon: "success",

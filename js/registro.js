@@ -45,7 +45,7 @@ let usuarios = new Array();
 // Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
 function validate(data, info) {
     if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener almenos 3 carácteres`;
+        info.innerHTML=`El campo debe de tener al menos 3 carácteres`;
         info.display="block";
         return false
     }

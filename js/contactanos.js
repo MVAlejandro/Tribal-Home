@@ -105,12 +105,12 @@ formulario.addEventListener("submit",function (e) {
 // Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
 function validate(data, info) {
     if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener almenos 3 carácteres`;
+        info.innerHTML=`El campo debe de tener al menos 3 carácteres`;
         info.display="block";
         return false
     }
     if (!nombreRegex.test(data.value)) {
-        info.innerHTML=`El campo no acepta caracters especiales ni números`;
+        info.innerHTML=`El campo no acepta carácters especiales ni números`;
         info.display="block";
         return false
     }
@@ -144,7 +144,7 @@ function validateMensaje(mensaje) {
         return false
     }
     if (!evitarCaracteres.test(mensaje.value)) {
-        mensajeInfo.innerHTML=`El mensaje no acepta caracters especiales`;
+        mensajeInfo.innerHTML=`El mensaje no acepta carácters especiales`;
         mensajeInfo.display="block";
         return false
     }
