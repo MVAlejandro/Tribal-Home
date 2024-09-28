@@ -1,5 +1,5 @@
-//botones
-const btn_cuestionario=document.getElementById("btn_cuestionario");
+// Importamos las funciones de validación
+import {validate, validateEmail, validarTelefono, validatePassword, validateCP, validateMensajeDescripcion, existEmail} from "./validaciones.js";
 //campos-input
 const nombre_usuario=document.getElementById("nombre_usuario");
 const apellidos_usuario=document.getElementById("apellidos_usuario");
@@ -31,91 +31,17 @@ const formulario = document.getElementById("formulario");
 let isValid = true;
 // Creamos la variable usuario
 let usuario;
-// Declaramos las expresiones regulares para validar los datos
-const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regular para el nombre y el apellido
-const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión regular para el email
-const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/; // Expresión regular para el mensaje
-const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
-// const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/ // Expresión regular para la contraseña
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.])[A-Za-z\d@$!%*?&.]{6,}$/ // Expresión regular para la contraseña
-const cpRegex = /^\d{5}$/ // Expresión regular para el codigo postal
 let usuarios = new Array();
 
 //*--------------funciones-----------------*
-// Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
-function validate(data, info) {
-    if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener al menos 3 carácteres`;
-        info.display="block";
-        return false
-    }
-    if (!nombreRegex.test(data.value)) {
-        info.innerHTML=`El campo no acepta caracters especiales ni números`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-// Función que valida que el correo tenga un formato válido
-function validateEmail(email, info) {
-    if (!emailRegex.test(email.value)) {
-        info.innerHTML=`El correo debe de cumplir con el formato example@example.com`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-// Función que valida que sea un número telefónico
-function validarTelefono(telefono, info) {
-    if (!numeroTelefonicoRegex.test(telefono.value.trim())) {
-        info.innerHTML=`El número telefónico no es valido`;
-        info.display="block";
-        return false
-    }
-    return true;
-}
-// Función que valida que el correo tenga un formato válido
-function validatePassword(pass, info) {
-    if (!passwordRegex.test(pass.value)) {
-        info.innerHTML=`La contraseña debe de tener almenos 6 carácteres, una mayúscula y un número`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-// Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales 
-function validateDireccion(direccion, info) {
-    if (direccion.value.length < 3) {
-        info.innerHTML=`La dirección debe de contener al menos 3 carácteres`;
-        info.display="block";
-        return false
-    }
-    if (!evitarCaracteres.test(direccion.value)) {
-        info.innerHTML=`La dirección no acepta carácters especiales`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-
-function validateCP (cp, info){
-    if(!cpRegex.test(cp.value)){
-        info.innerHTML=`El código postal no es válido`;
-        info.display="block";
-        return false;
-    }
-    return true;
-}
 //llena el select con el arreglo de los estados
 function llenarSelect(){
     let cad=""
     arrEstados.forEach(estado => {
-                        
         cad=cad+`<option value="${estado}">${estado}</option>`
         
     });
     ubicacion_usuarios.insertAdjacentHTML("beforeend", cad);
-
 }
 
 //verifica los datos y de ser correcto crear la cuenta por el momento en el local storage
@@ -138,7 +64,7 @@ formulario.addEventListener("submit",function (e) {
     apellidosInfo.innerHTML=""; apellidosInfo.display="none";
     emailInfo.innerHTML=""; emailInfo.display="none";
     cpInfo.innerHTML=""; cpInfo.display="none";
-    direccionlInfo.innerHTML=""; direccionlInfo.display="none";
+    direccionInfo.innerHTML=""; direccionInfo.display="none";
     telefonoInfo.innerHTML=""; telefonoInfo.display="none";
     passwordInfo.innerHTML=""; passwordInfo.display="none";
     passwordConfirmationInfo.innerHTML=""; passwordConfirmationInfo.display="none";
@@ -153,12 +79,15 @@ formulario.addEventListener("submit",function (e) {
         isValid = false
     }
     // Comprobamos que la ubicación proporcionada sea válida, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validateDireccion(direccion_usuario, direccionlInfo)) {
+    if (!validateMensajeDescripcion(direccion_usuario, direccionInfo)) {
         direccion_usuario.style.border = "solid red medium";
         isValid = false
     }
-    // Comprobamos que el email proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
+    // Comprobamos que el email proporcionado sea válido y que no haya sido registrado antes, si no es válido cambiamos el estado de nuestra bandera a falso
     if (!validateEmail(email_usuario, emailInfo)) {
+        email_usuario.style.border = "solid red medium";
+        isValid = false
+    }else if (!existEmail(email_usuario, emailInfo)) {
         email_usuario.style.border = "solid red medium";
         isValid = false
     }

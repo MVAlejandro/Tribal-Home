@@ -1,3 +1,6 @@
+// Se importan las funciones de las validaciones 
+import {validate, validarNumber} from "./validaciones.js"
+
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
 let descripcion_producto = document.getElementById("descripcion_producto");
@@ -5,6 +8,7 @@ let categoria_producto = document.getElementById("categoria_producto");
 let precio_producto = document.getElementById("precio_producto");
 let unidades_producto = document.getElementById("unidades_producto");
 let imagen_producto = document.getElementById("imagen_producto");
+let btnCancelar = document.getElementById("btnCancelar");
 // Se obtienen los div para mostrar los mensajes de error
 let nombreInfo = document.getElementById("nombreInfo");
 let descripcionInfo = document.getElementById("descripcionInfo");
@@ -21,6 +25,7 @@ const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el 
 // Creamos una lista de productos
 let datos = new Array()
 const boton_foto = document.getElementById('imagen_producto');
+let imagen_producto_url = "";
 
 const cloudName = 'ddtwywues';
 const uploadPreset = 'tribal_home' 
@@ -35,7 +40,8 @@ const myWidget = cloudinary.createUploadWidget(
     (error, result) => {
         if (!error && result && result.event === "success") {
             console.log("Done! Here is the image info: ", result.info);
-            imagen_producto = result.info.secure_url;
+            imagen_producto.textContent =  result.info.display_name + "." + result.info.format;
+            imagen_producto_url = result.info.secure_url;
       }
     }
   );
@@ -71,7 +77,7 @@ function listProduct(){
         "category": categoria_producto.value, 
         "price": "$" + precio_producto.value,
         "unidades": unidades_producto.value,
-        "img": imagen_producto
+        "img": imagen_producto_url
     };
     // Guardamos el objeto en la lista de productos
     datos.push(productos);
@@ -86,21 +92,8 @@ formulario.addEventListener("submit",function (e) {
     e.preventDefault()
     // Cada que entramos al evento dejamos un estado inicial
     isValid = true
-    // Inicializamos los inputs sin bordes
-    nombre_producto.style.border = "";
-    descripcion_producto.style.border = "";
-    categoria_producto.style.border = "";
-    precio_producto.style.border = "";
-    unidades_producto.style.border = "";
-   // imagen_producto.style.border="";
-    // Inicializamos los mensajes de error con vacio y que no sean visibles
-    nombreInfo.innerHTML=""; nombreInfo.display="none";
-    descripcionInfo.innerHTML=""; descripcionInfo.display="none";
-    categoriaInfo.innerHTML=""; categoriaInfo.display="none";
-    precioInfo.innerHTML=""; precioInfo.display="none";
-    unidadesInfo.innerHTML=""; unidadesInfo.display="none";
-    imagenInfo.innerHTML=""; imagenInfo.display="none";
-    
+    // Inicializamos los valores de los campos
+    inicializarValores();
     // Comprobamos que el nombre del producto proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
     if (!validate(nombre_producto, nombreInfo)) {
         nombre_producto.style.border = "solid red medium";
@@ -127,8 +120,10 @@ formulario.addEventListener("submit",function (e) {
         isValid = false;
     }
     // Comprobamos que se haya agregado una imagen
-    if (imagen_producto.value == "") {
-        imagen_producto.style.border= "solid medium red";
+    if (imagen_producto_url == "") {
+        imagen_producto.style.borderColor= "red";
+        imagen_producto.style.borderWidth = "medium";
+        imagen_producto.style.borderStyle = "solid" ;
         imagenInfo.innerHTML=`Se requiere una imagen para subir el producto`;
         imagenInfo.display="block";
         isValid = false;
@@ -143,7 +138,8 @@ formulario.addEventListener("submit",function (e) {
         categoria_producto.value = "";
         precio_producto.value = "";
         unidades_producto.value="";
-        imagen_producto.value="";
+        imagen_producto.textContent ="";
+        imagen_producto_url = "";
         // Agregamos una alerta para avisar que se subio correctamente los datos
         Swal.fire({
             icon: "success",
@@ -160,37 +156,35 @@ formulario.addEventListener("submit",function (e) {
           });  
     }
 })
+// Evento para el boton cancelar
+btnCancelar.addEventListener("click", function(event){
+    event.preventDefault();
+// Reiniciamos los valores 
+    inicializarValores();
+    nombre_producto.value = "";
+    descripcion_producto.value = "";
+    categoria_producto.value = "";
+    precio_producto.value = "";
+    unidades_producto.value="";
+    imagen_producto.textContent ="";
+    imagen_producto_url = "";
+})
 
-// Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales
-function validate(data, info) {
-    if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener almenos 3 carácteres`;
-        info.display="block";
-        return false
-    }
-    if (!evitarCaracteres.test(data.value)) {
-        info.innerHTML=`El campo no acepta caracters especiales`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-
-
-// Función que valida el precio 
-function validarNumber(data, info) {
-    if (isNaN(data.value)) {
-        info.innerHTML=`Este campo solo puede contener números`;
-        info.display="block";
-        return false;
-    }//isNaN
-    if (!data.value>0) {
-        info.innerHTML=`Debe ser mayor a 0`;
-        info.display="block";
-        return false;
-    }
-
-    return true;
+function inicializarValores(){
+    // Inicializamos los inputs sin bordes
+    nombre_producto.style.border = "";
+    descripcion_producto.style.border = "";
+    categoria_producto.style.border = "";
+    precio_producto.style.border = "";
+    unidades_producto.style.border = "";
+    imagen_producto.style.borderStyle = "none" ;
+    // Inicializamos los mensajes de error con vacio y que no sean visibles
+    nombreInfo.innerHTML=""; nombreInfo.display="none";
+    descripcionInfo.innerHTML=""; descripcionInfo.display="none";
+    categoriaInfo.innerHTML=""; categoriaInfo.display="none";
+    precioInfo.innerHTML=""; precioInfo.display="none";
+    unidadesInfo.innerHTML=""; unidadesInfo.display="none";
+    imagenInfo.innerHTML=""; imagenInfo.display="none";
 }
 
 window.addEventListener("load", function(evenet){

@@ -1,3 +1,6 @@
+// Importamos las funciones de las validaciones
+import {validate, validateEmail, validarTelefono, validateMensajeDescripcion} from "./validaciones.js"
+
 // Se obtienen los inputs del formulario
 let nombre_usuario = document.getElementById("nombre_usuario");
 let apellidos_usuario = document.getElementById("apellidos_usuario");
@@ -12,13 +15,8 @@ let telefonoInfo = document.getElementById("telefonoInfo");
 let mensajeInfo = document.getElementById("mensajeInfo");
 // Obtenemos el formulario
 let formulario = document.getElementById("formulario");
-// Inicializamos nuestra bandera isValid en tru
+// Inicializamos nuestra bandera isValid en true
 let isValid = true
-// Declaramos las expresiones regulares para validar los datos
-const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regular para el nombre y el apellido
-const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión regular para el email
-const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
-const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
 
 // Agregamos el evento cuando se envie el formulario
 formulario.addEventListener("submit",function (e) {
@@ -30,17 +28,11 @@ formulario.addEventListener("submit",function (e) {
     email_usuario.style.border = "";
     telefono_usuario.style.border = "";
     mensaje.style.border = "";
-    nombresInfo.innerHTML="";
-    nombresInfo.display="none";
-    apellidosInfo.innerHTML="";
-    apellidosInfo.display="none";
-    emailInfo.innerHTML="";
-    emailInfo.display="none";
-    telefonoInfo.innerHTML="";
-    telefonoInfo.display="none";
-    mensajeInfo.innerHTML="";
-    mensajeInfo.display="none";
-    
+    nombresInfo.innerHTML=""; nombresInfo.display="none";
+    apellidosInfo.innerHTML=""; apellidosInfo.display="none";
+    emailInfo.innerHTML=""; emailInfo.display="none";
+    telefonoInfo.innerHTML=""; telefonoInfo.display="none";
+    mensajeInfo.innerHTML=""; mensajeInfo.display="none";
     // Comprobamos que el nombre proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
     if (!validate(nombre_usuario, nombresInfo)) {
         nombre_usuario.style.border = "solid red medium";
@@ -62,7 +54,7 @@ formulario.addEventListener("submit",function (e) {
         isValid = false;
     }
     // Comprobamos que el mensaje proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validateMensaje(mensaje)) {
+    if (!validateMensajeDescripcion(mensaje, mensajeInfo)) {
         mensaje.style.border = "solid medium red";
         isValid = false;
     }
@@ -101,55 +93,6 @@ formulario.addEventListener("submit",function (e) {
           });  
     }
 })
-
-// Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
-function validate(data, info) {
-    if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener al menos 3 carácteres`;
-        info.display="block";
-        return false
-    }
-    if (!nombreRegex.test(data.value)) {
-        info.innerHTML=`El campo no acepta carácters especiales ni números`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-
-// Función que valida que el correo tenga un formato válido
-function validateEmail(email, info) {
-    if (!emailRegex.test(email.value)) {
-        info.innerHTML=`El correo debe de cumplir con el formato example@example.com`;
-        info.display="block";
-        return false
-    }
-    return true
-}
-
-// Función que valida que sea un número telefónico
-function validarTelefono(telefono, info) {
-    if (!numeroTelefonicoRegex.test(telefono.value.trim())) {
-        info.innerHTML=`El número telefónico no es válido`;
-        info.display="block";
-        return false
-    }
-    return true;
-}
-// Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales 
-function validateMensaje(mensaje) {
-    if (mensaje.value.length < 3) {
-        mensajeInfo.innerHTML=`El mensaje debe de contener al menos 3 carácteres`;
-        mensajeInfo.display="block";
-        return false
-    }
-    if (!evitarCaracteres.test(mensaje.value)) {
-        mensajeInfo.innerHTML=`El mensaje no acepta carácters especiales`;
-        mensajeInfo.display="block";
-        return false
-    }
-    return true
-}
 
 
 
