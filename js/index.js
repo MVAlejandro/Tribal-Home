@@ -39,7 +39,7 @@ window.addEventListener("load",
                         </li>
                     </ul>
                     </div>
-                    <div class="d-none d-lg-flex align-items-center ms-auto">
+                    <div id="iconos" class="d-none d-lg-flex align-items-center ms-auto">
                         <a class="text-dark nav-link me-3" id="carrito" href="carrito.html">
                             <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
                         </a>
@@ -74,17 +74,41 @@ window.addEventListener("load",
         const perfil2 = document.getElementById("perfil2");
         const carrito = document.getElementById("carrito");
         const carrito2 = document.getElementById("carrito2");
-
+        
         if(this.localStorage.getItem("usuario_activo") == null){
             perfil.href = "./login.html";
             perfil2.href = "./login.html";
             carrito.href = "./login.html";
             carrito2.href = "./login.html";
+            
         }else{
             perfil.href = "./perfil.html";            
             perfil2.href = "./perfil.html";
             carrito.href = "./carrito.html";
             carrito2.href = "./carrito.html";
+
+            perfil2.insertAdjacentHTML("afterend", 
+                `<a class="text-dark nav-link me-3" id="logOut2" href="carrito.html">
+                            <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
+                        </a>`
+            );
+            perfil.insertAdjacentHTML("afterend", 
+                `<a class="text-dark nav-link me-3" id="logOut" href="carrito.html">
+                            <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
+                        </a>`
+            );
+
+            const logOut = document.getElementById("logOut");
+            const logOut2 = document.getElementById("logOut2");
+
+            logOut.addEventListener("click", function(e){
+                e.preventDefault();
+                cerrarSesion();
+            });
+            logOut2.addEventListener("click", function(e){
+                e.preventDefault();
+                cerrarSesion();
+            });
         }
         
         menuItems.forEach(item => {
@@ -95,3 +119,8 @@ window.addEventListener("load",
 
     }
 )
+
+function cerrarSesion (){
+    this.localStorage.removeItem("usuario_activo");
+    location.reload()
+}
