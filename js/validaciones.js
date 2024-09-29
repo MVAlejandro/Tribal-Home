@@ -38,12 +38,12 @@ export  function existEmail(email, info) {
         return true;
     }else{
         usuarios = JSON.parse(localStorage.getItem("usuario"));
-        if (usuarios.some(usuario => usuario.email_usuario.includes(email.value))){
+        if (usuarios.some(usuario => usuario.email_usuario === email.value)){
             info.innerHTML=`El correo que tratas de utilizar ya está registrado`;
             info.display="block";
             return false; 
         }else{
-            true;
+            return true;
         }
     }
     

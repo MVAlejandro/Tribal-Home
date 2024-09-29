@@ -1,0 +1,112 @@
+.carrito-producto{
+    width: 100%;
+    border-radius: 8px;
+}
+.card-carrito{
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.card-importe{
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.10);
+}
+.h3-carrito{
+    color: #000;
+    font-family: Poppins;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+p{
+    color: #000;
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.divide{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+.cupon-img{
+    width: 50%;
+}
+.pagar{
+    display: flex;
+    width: 518px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-style: none;
+    border-radius: 6px;
+    background: #AAB396;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.titulo{
+    color: var(--Black-1, #2F302C);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px; 
+}
+.calificacion{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.star{
+    width: 7%;
+    padding: 0px;
+    padding-left: 1px;
+    fill: #2F302C;
+}
+.numero-productos{
+    display: flex;
+    width: 70%;
+    padding: 0px;
+    align-items: center;
+    background: var(--Black-7, #F6F6F6);
+    gap: 10px;
+}
+.mas-menos{
+    width: 20%;
+    height: 100%;
+    border-style: none;
+    background: var(--Black-7, #F6F6F6);
+    color: var(--Black-3, #7E7F7C);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 18px;
+}
+.cantidad{
+    width: 60%;
+    color: var(--Black-3, #7E7F7C);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; /* 111.111% */
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.number{
+    font-weight: normal;
+    color: var(--Black-3, #7E7F7C);
+    font-weight: 500;
+}

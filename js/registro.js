@@ -90,6 +90,9 @@ formulario.addEventListener("submit",function (e) {
     }else if (!existEmail(email_usuario, emailInfo)) {
         email_usuario.style.border = "solid red medium";
         isValid = false
+    }else{
+        email_usuario.style.border = "";
+        isValid = true
     }
     // Comprobamos que el email proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
     if (!validateCP(cp_usuario, cpInfo)) {

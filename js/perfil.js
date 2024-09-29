@@ -4,7 +4,7 @@ const data = document.getElementById("data");
 window.addEventListener("load", function(event){
     event.preventDefault();
     if(this.localStorage.getItem("usuario_activo") == null){
-        location.href = "./index.html";
+        location.href = "./login.html";
     }else{
         let usuario = JSON.parse(this.localStorage.getItem("usuario_activo"))
         data.insertAdjacentHTML("afterbegin", `
