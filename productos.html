@@ -61,7 +61,7 @@
         </div>
         <!-- Modal -->
         <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                 <h3 class="modal-title fs-5" id="staticBackdropLabel">Agregar Producto</h3>
@@ -69,41 +69,45 @@
                 </div>
                 <div class="modal-body">
                     <form id="formulario">   
-                        <div class="input-group mb-3">
-                                <label for="nombre_producto" class="form-label">Nombre del producto</label>
-                                <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="">
-                                <div class="form-text error-text"><p id="nombreInfo"></p></div>
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="descripcion_producto" class="form-label">Descripción del producto</label>
+                        <div class="container">
+                            <label for="nombre_producto" class="form-label">Nombre del producto:</label>
+                            <input type="text" class="form-control" id="nombre_producto" name="nombre_producto" placeholder="">
+                            <div class="form-text error-text"><p id="nombreInfo"></p></div>
+                        
+                            <label for="descripcion_producto" class="form-label">Descripción del producto:</label>
                             <input type="text" class="form-control" id="descripcion_producto" name="descripcion_producto" placeholder="">
                             <div class="form-text error-text"><p id="descripcionInfo"></p></div>
-                        </div>
-                        <div class="input-group mb-3">
-                            <label for="categoria_producto" class="form-label">Categoría del producto</label>
-                            <input type="text" class="form-control" id="categoria_producto" name="categoria_producto" placeholder="">
-                            <div class="form-text error-text"><p id="categoriaInfo"></p></div>
-                        </div>
-                        <div class="input-group mb-3">
+                        
                             <label for="precio_producto" class="form-label">Precio del producto</label>
                             <input type="number" class="form-control" id="precio_producto" name="precio_producto" step="any" placeholder="">
                             <div class="form-text error-text"><p id="precioInfo"></p></div>
-                        </div>
-                        <div class="input-group mb-3">
+                        
                             <label for="unidades_producto" class="form-label">Unidades del producto</label>
                             <input type="number" class="form-control" id="unidades_producto" name="unidades_producto" placeholder="">
                             <div class="form-text error-text"><p id="unidadesInfo"></p></div>
-                        </div>
-                        <div class="input-group mb-3">
+
+                            <label for="categoria_producto" class="form-label">Seleccione la categoría del producto</label>
+                            <select name="categoria_producto" class="form-control" id="categoria_producto">
+                                <option value=""></option>
+                                <option value="Decoración">Decoración</option>
+                                <option value="Muebles">Muebles</option>
+                                <option value="Almacenamiento">Almacenamiento</option>
+                            </select>
+                            <!-- <input type="text" class="form-control" id="categoria_producto" name="categoria_producto" placeholder=""> -->
+                            <div class="form-text error-text"><p id="categoriaInfo"></p></div>
+                        
                             <label for="imagen_producto" class="form-label">Seleccione una imagen</label>
-                            <button class="form-control" id="imagen_producto"> </button>
+                            <button class="form-control" id="imagen_producto"> 
+                                <img src="./assets/backup.png" alt="nube">
+                                <p class="upload-file">Max 10 MB files are allowed</p>
+                            </button>
                             <!-- <input type="file" class="form-control" id="imagen_producto" name="imagen_producto" placeholder=""> -->
                             <div class="form-text error-text"><p id="imagenInfo"></p></div>
                         </div>
                         
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="btnCancelar">Cancelar</button>
+                    <button type="button" class="btn btn-enviar" data-bs-dismiss="modal" id="btnCancelar">Cancelar</button>
                     <button type="submit" id="btnSubir" class="btn btn-enviar">Subir nuevo producto</button>
                     </div>
                 </form>

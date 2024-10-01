@@ -25,7 +25,9 @@ window.addEventListener("load", function(event){
         carrito.href = "./carrito.html";
         carrito2.href = "./carrito.html";
         
-        crearLogOut()
+        crearLogOut();
+        const logOut = document.getElementById("logOut");
+        const logOut2 = document.getElementById("logOut2");
 
         logOut.addEventListener("click", function(e){
             e.preventDefault();
@@ -120,8 +122,6 @@ function crearFooter(){
 }
 
 function crearLogOut(){
-    const logOut = document.getElementById("logOut");
-    const logOut2 = document.getElementById("logOut2");
     perfil2.insertAdjacentHTML("afterend", `
         <a class="text-dark nav-link me-3" id="logOut2" href="carrito.html">
             <img src="assets/nav-bar/logout.png" alt="logout" class="logout">

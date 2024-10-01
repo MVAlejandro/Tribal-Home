@@ -35,38 +35,60 @@
     padding-right: 2.5%;
 }
 .modal-content{
-    background-color: #AAB396 !important;
+    border-radius: 38.755px;
+    background: #FFF;
 }
 .form-control{
-    border-radius: 10px !important;
-    margin-right: 3%;
-    background-color: #FFF8E8;
+    border-radius: 5px;
+    border: 1px solid #674636;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(66, 80, 102, 0.10);
 }
 .form-label{
-    width: 50% !important;
     text-align: center;
     font-size: 25px;
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+}
+#imagen_producto{
+    display: flex;
+    border-style: dashed !important;
+    border-color: #000;
+    height: 242px;
+    padding: var(--spacing-lg, 24px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-smd, 12px);
+    border-radius: var(--radi-mlg, 8px);
+    border: 1px dashed var(--sds-color-border-neutral-default);
+    background: var(--bgColor-light, #FFF);
 }
 .modal-title{
     text-align: center !important;
-    font-size: 60px !important;
+    font-size: 50px !important;
     width: 95%;
+    color: var(--Text-Color, #151411);
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
 }
 .btn-enviar{
-    background-color: #674636;
-    color: #FFF8E8;
     border-radius: 10px;
-    font-size: 25px;
+    background: #AAB396;
+    color: #FFF8E8;
+    color: #FFF8E8;
+    font-size: 30.612px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
 }
 .btn-agregar{
     background-color: #674636;
     color: #FFF8E8;
-    border-radius: 10px;
-    font-size: 25px;
-}
-.btn-secondary{
-    background-color: #FFF8E8;
-    color: #674636;
     border-radius: 10px;
     font-size: 25px;
 }
@@ -126,12 +148,12 @@
         width: 95%;
     }
     .form-label{
-        width: 50% !important;
+        
         text-align: center;
         font-size: 18px;
     }
-    .btn-enviar,.btn-secondary.btn-agregar{
-        font-size: 15px;
+    .btn-enviar,.btn-agregar{
+        font-size: 15px !important;
     }
     .btn-agregar{
         font-size: 12px;

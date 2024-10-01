@@ -34,7 +34,7 @@ const myWidget = cloudinary.createUploadWidget(
     {
       cloudName: cloudName,
       uploadPreset: uploadPreset,
-      clientAllowedFormats: ["jpeg", "jpg", "png", "gif", "webp", "svg", ""], //restrict uploading to image files only
+      clientAllowedFormats: ["jpeg", "jpg", "png", "gif", "webp", "svg"], //restrict uploading to image files only
       
     },
     (error, result) => {
@@ -139,6 +139,9 @@ formulario.addEventListener("submit",function (e) {
         precio_producto.value = "";
         unidades_producto.value="";
         imagen_producto.textContent ="";
+        imagen_producto.insertAdjacentHTML("afterbegin", 
+            `<img src="./assets/backup.png" alt="nube">
+            <p class="upload-file">Max 10 MB files are allowed</p>`);
         imagen_producto_url = "";
         // Agregamos una alerta para avisar que se subio correctamente los datos
         Swal.fire({
@@ -167,6 +170,9 @@ btnCancelar.addEventListener("click", function(event){
     precio_producto.value = "";
     unidades_producto.value="";
     imagen_producto.textContent ="";
+    imagen_producto.insertAdjacentHTML("afterbegin", 
+        `<img src="./assets/backup.png" alt="nube">
+        <p class="upload-file">Max 10 MB files are allowed</p>`);
     imagen_producto_url = "";
 })
 
@@ -177,7 +183,8 @@ function inicializarValores(){
     categoria_producto.style.border = "";
     precio_producto.style.border = "";
     unidades_producto.style.border = "";
-    imagen_producto.style.borderStyle = "none" ;
+    imagen_producto.style.borderStyle = "dashed" ;
+    imagen_producto.style.borderColor= "#000";    
     // Inicializamos los mensajes de error con vacio y que no sean visibles
     nombreInfo.innerHTML=""; nombreInfo.display="none";
     descripcionInfo.innerHTML=""; descripcionInfo.display="none";
