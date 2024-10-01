@@ -40,7 +40,7 @@ export  function validateEmail(email, info) {
 
 // Función que valida que el correo sea nuevo (que no esté ya registrado)
 export  function existEmail(email, info) {
-    if ((localStorage.getItem("datos") == null)) {
+    if ((localStorage.getItem("usuario") == null)) {
         return true;
     }else{
         usuarios = JSON.parse(localStorage.getItem("usuario"));
