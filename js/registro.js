@@ -1,5 +1,5 @@
 // Importamos las funciones de validación
-import {validate, validateEmail, validarTelefono, validatePassword, validateCP, validateMensajeDescripcion, existEmail} from "./validaciones.js";
+import {validate, validateEmail, validarTelefono, validatePassword, validateCP, validateMensajeDescripcion, existEmail, llenarSelect} from "./validaciones.js";
 //campos-input
 const nombre_usuario=document.getElementById("nombre_usuario");
 const apellidos_usuario=document.getElementById("apellidos_usuario");
