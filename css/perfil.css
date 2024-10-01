@@ -1,4 +1,4 @@
-.information{
+/* .information{
     width: 60%;
     background: #AAB396 !important;
     border-radius: 38.76px;
@@ -55,4 +55,48 @@
         margin-right: auto;
     }
 
+} */
+
+.form-control{
+    border-radius: 5px;
+    border: 1px solid #000;
+    background: #FFF;
+}
+.h1-perfil{
+    color: #000;
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    padding-left: 8.5%;
+}
+.btn-formularia{
+    display: flex;
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 6px;
+    background: #AAB396;
+    box-shadow: 0px 4px 15px 0px rgba(0, 0, 0, 0.10);
+    color: #FFF;
+    text-align: center;
+    font-family: Poppins;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.form-select{
+    border-radius: 5px;
+    border: 1px solid #000;
+    border-left: 0px;
+}
+.input-group-text{
+    border: 1px solid #000;
+    border-right: 0px;
+}
+#estado_usuarios, #guardar, #actual{
+    display: none;
 }

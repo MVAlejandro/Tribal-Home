@@ -7,6 +7,12 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.+])[A-Za-z\d@$!%*?&.+]{
 const cpRegex = /^\d{5}$/ // Expresión regular para el codigo postal
 // Variables
 let usuarios = new Array();
+//declara arreglos de estado
+const arrEstados=["Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Coahuila", "Colima", 
+    " Chiapas", "Chihuahua","Ciudad de México","Durango"," Guanajuato", "Guerrero","Hidalgo", "Jalisco", "México", "Michoacán", 
+   " Morelos", "Nayarit","Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", 
+   "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"];
+   
 // Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
 export function validate(data, info) {
     if (data.value.length < 3) {
@@ -106,4 +112,14 @@ export function validateCP (cp, info){
         return false;
     }
     return true;
+}
+
+//llena el select con el arreglo de los estados
+export function llenarSelect(ubicacion_usuarios){
+    let cad=""
+    arrEstados.forEach(estado => {
+        cad=cad+`<option value="${estado}">${estado}</option>`
+        
+    });
+    ubicacion_usuarios.insertAdjacentHTML("beforeend", cad);
 }
