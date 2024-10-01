@@ -124,12 +124,12 @@ function crearLogOut(){
     const logOut2 = document.getElementById("logOut2");
     perfil2.insertAdjacentHTML("afterend", `
         <a class="text-dark nav-link me-3" id="logOut2" href="carrito.html">
-            <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
+            <img src="assets/nav-bar/logout.png" alt="logout" class="logout">
         </a>`
     );
     perfil.insertAdjacentHTML("afterend", `
         <a class="text-dark me-3" id="logOut" href="carrito.html">
-            <img src="assets/nav-bar/bag-2.png" alt="carrito_de_compras" class="perfil-car">
+            <img src="assets/nav-bar/logout.png" alt="logout" class="logout">
         </a>`
     );
 }
