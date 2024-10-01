@@ -52,7 +52,7 @@ function cerrarSesion (){
 
 function crearNavBar(){
     encabezado.insertAdjacentHTML("afterbegin",
-        `<nav class="navbar navbar-expand-lg bg-body-tertiary">
+        `<nav class="navbar navbar-expand-lg" style="background-color: #FFF;">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.html">
                 <img src="assets/nav-bar/Logo.png" alt="Logo_Tribal-Home" class="logo">
