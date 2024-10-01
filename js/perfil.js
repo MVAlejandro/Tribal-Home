@@ -18,18 +18,18 @@ const nombresInfo=document.getElementById("nombresInfo");
 const apellidosInfo=document.getElementById("apellidosInfo");
 const cpInfo=document.getElementById("cpInfo");
 const direccionInfo=document.getElementById("direccionInfo");
-const emailInfo=document.getElementById("emailInfo");
 const telefonoInfo=document.getElementById("telefonoInfo");                         
 const passwordInfo = document.getElementById("passwordInfo");
 const passwordConfirmationInfo = document.getElementById("passwordConfirmationInfo");                              
 const passwordNowConfirmationInfo = document.getElementById("passwordNowConfirmationInfo");  
-// Declaración de botones 
+// Declaración de botones
 const btn_modificar = document.getElementById("btn-modificar");
-const modificar = document.getElementById("modificar");
 const btn_guardar = document.getElementById("btn-guardar");
-const guardar = document.getElementById("guardar");
+const btn_cancelar = document.getElementById("btn-cancelar");
 const actual= document.getElementById("actual");
-//
+const div_guardar = document.getElementById("div_guardar");
+const div_modificar = document.getElementById("div_modificar");
+// Declaración de bandera
 let isValid = true;
 
 btn_modificar.addEventListener("click", function(evenet){
@@ -37,10 +37,23 @@ btn_modificar.addEventListener("click", function(evenet){
     blockInputs(false);
     estado_usuario.style.display = "none";
     estado_usuarios.style.display = "block";
-    modificar.style.display = "none";
-    guardar.style.display = "block";
+    div_modificar.style.display = "none";
+    div_guardar.style.display = "flex";
     password_usuario_now.display = "block"
     actual.style.display = "flex";
+})
+
+btn_cancelar.addEventListener("click", function(event) {
+    event.preventDefault();
+    blockInputs(true);
+    estado_usuarios.style.display = "none";
+    estado_usuario.style.display = "block";
+    div_modificar.style.display = "flex";
+    div_guardar.style.display = "none";
+    actual.style.display = "none";
+    setTimeout(function(){
+        location.reload()
+    }, 1000);
 })
 
 btn_guardar.addEventListener("click", function(evenet){
@@ -87,6 +100,7 @@ btn_guardar.addEventListener("click", function(evenet){
         telefono_usuario.style.border = "solid medium red";
         isValid = false;
     }
+    // Si se trató de cambiar la contraseña procede a validar la nueva contraseña, de lo contrario no valida los campos
     if (!(password_usuario.value === null || password_usuario.value === "")){
         // Comprobamos que la contraseña sea válida, si no es válida cambiamos el estado de nuestra bandera a falso
         if (!validatePassword(password_usuario, passwordInfo)) {
@@ -101,7 +115,7 @@ btn_guardar.addEventListener("click", function(evenet){
             isValid = false;
         }
     }
-    
+    // Para hacer los cambios comprueba que la contraseña coincida con la del usuario
     if (!(password_usuario_now.value == usuario_activo.password_usuario)) {
         password_usuario_now.style.border = "solid medium red";
         passwordNowConfirmationInfo.innerHTML=`Las contraseña no es correcta`;
@@ -114,8 +128,8 @@ btn_guardar.addEventListener("click", function(evenet){
         blockInputs(true);
         estado_usuarios.style.display = "none";
         estado_usuario.style.display = "block";
-        modificar.style.display = "block";
-        guardar.style.display = "none";
+        div_modificar.style.display = "flex";
+        div_guardar.style.display = "none";
         actual.style.display = "none";
         Swal.fire({
             icon: "success",
