@@ -62,7 +62,7 @@ form.addEventListener("submit", function(e){
             Swal.fire({
                 icon: "error",
                 title: "Error al iniciar sesión",
-                text: "Intentalo más tarde",
+                text: "Inténtalo más tarde",
               }); 
         }
     }else{

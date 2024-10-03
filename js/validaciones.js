@@ -4,7 +4,7 @@ const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión reg
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
 const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.+])[A-Za-z\d@$!%*?&.+]{6,}$/ // Expresión regular para la contraseña
-const cpRegex = /^\d{5}$/ // Expresión regular para el codigo postal
+const cpRegex = /^\d{5}$/ // Expresión regular para el código postal
 // Variables
 let usuarios = new Array();
 //declara arreglos de estado
@@ -13,15 +13,15 @@ const arrEstados=["Aguascalientes", "Baja California", "Baja California Sur", "C
    " Morelos", "Nayarit","Nuevo León", "Oaxaca", "Puebla", "Querétaro", "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", 
    "Tamaulipas", "Tlaxcala", "Veracruz", "Yucatán", "Zacatecas"];
    
-// Función que valida que los campos sean solo letras y que haya almenos 3 caracteres
+// Función que valida que los campos sean solo letras y que haya al menos 3 caracteres
 export function validate(data, info) {
     if (data.value.length < 3) {
-        info.innerHTML=`El campo debe de tener al menos 3 carácteres`;
+        info.innerHTML=`El campo debe de tener al menos 3 caracteres`;
         info.display="block";
         return false;
     }
     if (!nombreRegex.test(data.value)) {
-        info.innerHTML=`El campo no acepta carácters especiales ni números`;
+        info.innerHTML=`El campo no acepta caracteres especiales ni números`;
         info.display="block";
         return false;
     }
@@ -67,12 +67,12 @@ export function validarTelefono(telefono, info) {
 // Función que valida que el mensaje tenga almenos 3 caracteres y que no contenga ciertos caracteres especiales 
 export function validateMensajeDescripcion(mensaje, info) {
     if (mensaje.value.length < 3) {
-        info.innerHTML=`Debe de contener al menos 3 carácteres`;
+        info.innerHTML=`Debe de contener al menos 3 caracteres`;
         info.display="block";
         return false;
     }
     if (!evitarCaracteres.test(mensaje.value)) {
-        info.innerHTML=`No se aceptan carácteres especiales`;
+        info.innerHTML=`No se aceptan caracteres especiales`;
         info.display="block";
         return false;
     }
@@ -98,7 +98,7 @@ export function validarNumber(data, info) {
 // Función que valida que el correo tenga un formato válido
 export function validatePassword(pass, info) {
     if (!passwordRegex.test(pass.value)) {
-        info.innerHTML=`La contraseña debe de tener almenos 6 carácteres, una mayúscula y un número`;
+        info.innerHTML=`La contraseña debe de tener al menos 6 caracteres, una mayúscula y un número`;
         info.display="block";
         return false;
     }

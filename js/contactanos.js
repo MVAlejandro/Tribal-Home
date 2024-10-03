@@ -84,7 +84,7 @@ formulario.addEventListener("submit",function (e) {
                 text: "Intenta enviar el correo más tarde. \n Error: " + err ,
               });  
         });
-    // Si no pasó todas las validaciones mandará una alerta diciendo que corriga los datos ingresados
+    // Si no pasó todas las validaciones mandará una alerta diciendo que corrija los datos ingresados
     }else{
         Swal.fire({
             icon: "error",

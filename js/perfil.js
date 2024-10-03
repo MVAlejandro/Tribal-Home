@@ -32,8 +32,8 @@ const div_modificar = document.getElementById("div_modificar");
 // Declaración de bandera
 let isValid = true;
 
-btn_modificar.addEventListener("click", function(evenet){
-    evenet.preventDefault();
+btn_modificar.addEventListener("click", function(event){
+    event.preventDefault();
     blockInputs(false);
     estado_usuario.style.display = "none";
     estado_usuarios.style.display = "block";
@@ -56,8 +56,8 @@ btn_cancelar.addEventListener("click", function(event) {
     }, 1000);
 })
 
-btn_guardar.addEventListener("click", function(evenet){
-    evenet.preventDefault();
+btn_guardar.addEventListener("click", function(event){
+    event.preventDefault();
     isValid = true
     nombre_usuario.style.border = "";
     apellido_usuario.style.border = "";
@@ -118,7 +118,7 @@ btn_guardar.addEventListener("click", function(evenet){
     // Para hacer los cambios comprueba que la contraseña coincida con la del usuario
     if (!(password_usuario_now.value == usuario_activo.password_usuario)) {
         password_usuario_now.style.border = "solid medium red";
-        passwordNowConfirmationInfo.innerHTML=`Las contraseña no es correcta`;
+        passwordNowConfirmationInfo.innerHTML=`La contraseña no es correcta`;
         passwordNowConfirmationInfo.display="block";
         isValid = false;
     }
@@ -133,7 +133,7 @@ btn_guardar.addEventListener("click", function(evenet){
         actual.style.display = "none";
         Swal.fire({
             icon: "success",
-            title: "Se actulizaron los datos correctamente",
+            title: "Se actualizaron los datos correctamente",
             showConfirmButton: false,
             timer: 1500
         });

@@ -18,7 +18,7 @@ let unidadesInfo = document.getElementById("unidadesInfo");
 let imagenInfo = document.getElementById("imagenInfo");
 // Obtenemos el formulario
 let formulario = document.getElementById("formulario");
-// Inicializamos nuestra bandera isValid en tru
+// Inicializamos nuestra bandera isValid en true
 let isValid = true
 // Declaramos las expresiones regulares para validar los datos
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
@@ -146,7 +146,7 @@ formulario.addEventListener("submit",function (e) {
         // Agregamos una alerta para avisar que se subio correctamente los datos
         Swal.fire({
             icon: "success",
-            title: "El producto se subio correctamente",
+            title: "El producto se subió correctamente",
             showConfirmButton: false,
             timer: 1500
         });
@@ -194,7 +194,7 @@ function inicializarValores(){
     imagenInfo.innerHTML=""; imagenInfo.display="none";
 }
 
-window.addEventListener("load", function(evenet){
+window.addEventListener("load", function(event){
 // Se agregan productos manualmente
     addItem({
         'img':'./assets/muebles/deco-1.png',
