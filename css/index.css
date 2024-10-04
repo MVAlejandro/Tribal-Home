@@ -54,7 +54,7 @@ p-index{
     color: #000000;
 }
 
-@media (max-width: 600px){
+@media (max-width: 800px){
     /* Estilos para index */
     .carrusel-descuentos{
         display: block;
