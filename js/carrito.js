@@ -23,7 +23,12 @@ function calcTotal(){
     }
     precioTotal = total + descuento;
     precio_parcial.textContent = `$${total.toFixed(2)}`;
-    precio_total.textContent = `$${precioTotal.toFixed(2)}`;
+    if (precioTotal < 0){
+        precio_total.textContent = "$0"    
+    }else{
+        precio_total.textContent = `$${precioTotal.toFixed(2)}`;
+    }
+    
 
 }
 
