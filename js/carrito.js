@@ -21,7 +21,7 @@ function calcTotal(){
         const price = Number(card.querySelector(".price strong").textContent.replace('$',''));
         total += price;
     }
-    precioTotal = total + descuento;
+    let precioTotal = total + descuento;
     precio_parcial.textContent = `$${total.toFixed(2)}`;
     if (precioTotal < 0){
         precio_total.textContent = "$0"    

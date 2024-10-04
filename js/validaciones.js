@@ -3,7 +3,7 @@ const nombreRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/; // Expresión regul
 const emailRegex = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+$/; // Expresión regular para el email
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 const numeroTelefonicoRegex = /^[1-9]\d{9}$/; // Expresión regular para El número telefónico
-const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.+])[A-Za-z\d@$!%*?&.+]{6,}$/ // Expresión regular para la contraseña
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.+/<#_-])[A-Za-z\d@$!%*?&.+/<#_-]{6,}$/ // Expresión regular para la contraseña
 const cpRegex = /^\d{5}$/ // Expresión regular para el código postal
 // Variables
 let usuarios = new Array();
