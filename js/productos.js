@@ -1,5 +1,5 @@
 // Se importan las funciones de las validaciones 
-import {validate, validarNumber} from "./validaciones.js"
+import {validate, validarNumber, validateMensajeDescripcion} from "./validaciones.js"
 
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
@@ -95,12 +95,12 @@ formulario.addEventListener("submit",function (e) {
     // Inicializamos los valores de los campos
     inicializarValores();
     // Comprobamos que el nombre del producto proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validate(nombre_producto, nombreInfo)) {
+    if (!validateMensajeDescripcion(nombre_producto, nombreInfo)) {
         nombre_producto.style.border = "solid red medium";
         isValid = false
     }
     // Comprobamos que la descripción proporcionada sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
-    if (!validate(descripcion_producto, descripcionInfo)) {
+    if (!validateMensajeDescripcion(descripcion_producto, descripcionInfo)) {
         descripcion_producto.style.border = "solid red medium";
         isValid = false
     }
