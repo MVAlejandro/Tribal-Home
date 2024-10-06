@@ -92,6 +92,10 @@ footer {
         width: 100%; 
     }
 }
+.logout {
+    filter: invert(0.1) brightness(2.3);
+}
+
 .nav-link.active {
     color: #AAB396 !important;
     font-weight: bold;
@@ -115,11 +119,15 @@ footer {
     width: 20px;
     height: 20px;
 }
-@media (max-width: 600px) {
+@media (max-width: 900px) {
     .logo {
         width: 170px;
     }
 
+    .logout {
+        filter: invert(0.2) brightness(2.3);
+    }
+    
     .navbar-toggler {
         width: 25px;
         height: 25px;

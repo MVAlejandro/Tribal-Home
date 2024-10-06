@@ -124,12 +124,12 @@ function crearFooter(){
 function crearLogOut(){
     perfil2.insertAdjacentHTML("afterend", `
         <a class="text-dark nav-link me-3" id="logOut2" href="carrito.html">
-            <img src="assets/nav-bar/logout.png" alt="logout" class="logout">
+            <img src="assets/nav-bar/logout.png" alt="logout" class="logout perfil-car">
         </a>`
     );
     perfil.insertAdjacentHTML("afterend", `
         <a class="text-dark me-3" id="logOut" href="carrito.html">
-            <img src="assets/nav-bar/logout.png" alt="logout" class="logout">
+            <img src="assets/nav-bar/logout.png" alt="logout" class="logout perfil-car">
         </a>`
     );
 }
