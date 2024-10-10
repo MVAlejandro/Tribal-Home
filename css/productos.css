@@ -104,6 +104,13 @@
     background-color: #674636;
     color: #FFF8E8;
 }
+.btn-carrito{
+    width: 80%;
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+}
 @media (max-width: 778px) {
     .p-productos {
         font-size: 14px;
@@ -156,6 +163,9 @@
         font-size: 15px !important;
     }
     .btn-agregar{
+        font-size: 12px;
+    }
+    .btn-carrito{
         font-size: 12px;
     }
 }

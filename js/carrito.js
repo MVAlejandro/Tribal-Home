@@ -1,10 +1,15 @@
+let carrito = new Array();
 // Validamos que haya un usuario activo, si no lo mandamos a que inicie sesión 
 window.addEventListener("load", function(event){
     event.preventDefault();
     if(this.localStorage.getItem("usuario_activo") == null){
         location.href = "./login.html";
-    }else{
-        
+    }
+    if(!(this.localStorage.getItem("carrito") == null)){
+        carrito = JSON.parse(localStorage.getItem("carrito"));
+        carrito.forEach(producto => {
+            addItem(producto);
+        });
     }
     calcTotal()
 })
@@ -114,26 +119,29 @@ function addItem(producto){
     btn_eliminar.addEventListener("click", function() {
         const card = document.getElementById(`card-carrito${producto.id}`);
         card.remove(); // Eliminar el producto del DOM
+        carrito = carrito.filter(item => item.id !== producto.id);
+        // Actualizar el localStorage con el carrito actualizado
+        localStorage.setItem("carrito", JSON.stringify(carrito));
         calcTotal() // Actualizamos el precio en el resumen del carrito
     });
 
 }
 
-// Se agregan productos manualmente
-addItem({
-    'id': 1,
-    'img':'./assets/muebles/deco-8.png',
-    'name':'Cesto en yute',
-    'price':800.00});
+// // Se agregan productos manualmente
+// addItem({
+//     'id': 1,
+//     'img':'./assets/muebles/deco-8.png',
+//     'name':'Cesto en yute',
+//     'price':800.00});
 
-addItem({
-    'id': 2,
-    'img':'./assets/muebles/image-3.png',
-    'name':'Funda de cojín con flecos en terciopelo',
-    'price':249.00});
+// addItem({
+//     'id': 2,
+//     'img':'./assets/muebles/image-3.png',
+//     'name':'Funda de cojín con flecos en terciopelo',
+//     'price':249.00});
 
-addItem({
-    'id': 3,
-    'img':'./assets/muebles/mueble-8.png',
-    'name':'Armario de madera tradicional',
-    'price':6000.00});
+// addItem({
+//     'id': 3,
+//     'img':'./assets/muebles/mueble-8.png',
+//     'name':'Armario de madera tradicional',
+//     'price':6000.00});

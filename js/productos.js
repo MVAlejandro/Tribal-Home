@@ -23,7 +23,11 @@ let isValid = true
 // Declaramos las expresiones regulares para validar los datos
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 // Creamos una lista de productos
-let datos = new Array()
+let datos = new Array();
+let contadorCarrito = 0;
+let contadorProducto = 1;
+// Creamos una lista de productos agregadas al carrito
+let carrito = new Array();
 const boton_foto = document.getElementById('imagen_producto');
 let imagen_producto_url = "";
 
@@ -53,20 +57,40 @@ boton_foto.addEventListener("click",function (event) {
 // Se crea la función para agregar productos en el HTML
 function addItem(product){
     const itemHTML = 
-        '<div class="col-lg-4 col-sm-6 col-6 product">\n' +
-        '   <div class="card me-auto ms-auto mb-3 bg-transparent border border-0">\n' +
-        '       <img src="'+product.img +'" class="card-img-top" alt="image">\n' +
-        '       <div class="card-body">\n' +
-        '           <p class="categoria">'+product.category+'</p>\n' +
-        '           <p class="nombre-producto">'+product.name+'</p>\n' +
-        '           <p class="descripcion-producto">'+product.description+'</p>\n' +
-        '           <p class="precio">'+product.price+'</p>\n' +
-        '           <!-- <a href="#" class="btn btn-primary">Agregar al carrito</a>-->\n' +
-        '       </div>\n' +
-        '   </div>\n' +
-        '</div>\n';
+        `<div class="col-lg-4 col-sm-6 col-6 product d-flex flex-column">
+            <div class="card me-auto ms-auto mb-3 bg-transparent border border-0">
+                <img src="${product.img}" class="card-img-top" alt="image">
+                <div class="card-body d-flex flex-column">
+                    <p class="categoria">${product.category}</p>
+                    <p class="nombre-producto">${product.name}</p>
+                    <p class="descripcion-producto">${product.description}</p>
+                    <p class="descripcion-producto">Disponibles: ${product.stock}</p>
+                    <p class="precio">$ ${product.price}</p>
+                </div>
+            </div>
+                <button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id}">Agregar al carrito</button>
+        </div>`
     const productsContainer = document.getElementById("products-container");
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
+    const id_producto = product.id;
+    const imagen_producto = product.img;
+    const categoria_producto = product.category;
+    const nombre_producto = product.name;
+    const descripcion_producto = product.description;
+    const stock_producto = product.stock;
+    const precio_producto = product.price;
+    const btn_carrito = document.getElementById(`carrito${id_producto}`);
+
+    btn_carrito.addEventListener("click", function(event){
+        event.preventDefault();
+        carrito.push({
+            "id": ++contadorCarrito,
+            "img": imagen_producto,
+            "name": nombre_producto,
+            "price": precio_producto});
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+    })
+    contadorProducto++;
 }
 
 // Función para agregar el producto a la lista
@@ -196,173 +220,223 @@ function inicializarValores(){
 
 window.addEventListener("load", function(event){
 // Se agregan productos manualmente
-    addItem({
-        'img':'./assets/muebles/deco-1.png',
-        'category':'Decoración',
-        'name':'Enfriador de vino',
-        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
-        'price':'$450.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-2.png',
-        'category':'Decoración',
-        'name':'Enfriador de vino',
-        'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
-        'price':'$450.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-3.png',
-        'category':'Decoración',
-        'name':'Jarrón cerámica',
-        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
-        'price':'$500.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-4.png',
-        'category':'Decoración',
-        'name':'Jarrón cerámica',
-        'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
-        'price':'$500.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-5.png',
-        'category':'Decoración',
-        'name':'Jarra cerámica',
-        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
-        'price':'$650.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-6.png',
-        'category':'Decoración',
-        'name':'Jarra cerámica',
-        'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
-        'price':'$650.00'});
-    
-    addItem({
-        'img':'./assets/muebles/product-6.png',
-        'category':'Decoración',
-        'name':'Maceta con pedestal en metal',
-        'description':'Maceta con pedestal en metal pintado, ideal tanto para interiores como exteriores.',
-        'price':'$250.00'});
-    
-    addItem({
-        'img':'./assets/muebles/product-7.png',
-        'category':'Decoración',
-        'name':'Maceta de cerámica con barniz jaspeado',
-        'description':'Maceta en cerámica, modelo con un divertido acabado de burbujas y barniz jaspeado que aporta una apariencia única a cada pieza',
-        'price':'$300.00'});
-    
-    addItem({
-        'img':'./assets/muebles/product-8.png',
-        'category':'Decoración',
-        'name':'Maceta de concreto',
-        'description':'Maceta de concreto con un diseño moderno y un acabado texturizado que aporta una apariencia única a cada pieza.',
-        'price':'$200.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-7.png',
-        'category':'Almacenamiento',
-        'name':'Cesto de yute trenzado',
-        'description':'Cesto hecho a mano en yute con dos asas superiores.',
-        'price':'$600.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-8.png',
-        'category':'Almacenamiento',
-        'name':'Cesto en yute',
-        'description':'Cesto para ropa en yute con dos asas superiores.',
-        'price':'$800.00'});
-    
-    addItem({
-        'img':'./assets/muebles/deco-9.png',
-        'category':'Almacenamiento',
-        'name':'Cesto de algodón',
-        'description':'Cesto de almacenamiento en tejido grueso de algodón con dos asas superiores.',
-        'price':'$400.00'});
-    
-    addItem({
-        'img':'./assets/muebles/image-1.png',
-        'category':'Decoración',
-        'name':'Funda de cojín en mezcla de lino',
-        'description':'Funda de cojín clásica en tejido de lino y algodón color verde.',
-        'price':'$249.00'});
-    
-    addItem({
-        'img':'./assets/muebles/image-2.png',
-        'category':'Decoración',
-        'name':'Funda de cojín en terciopelo',
-        'description':'Funda de cojín en terciopelo color gris oscuro de algodón con zíper oculto.',
-        'price':'$249.00'});
-    
-    addItem({
-        'img':'./assets/muebles/image-3.png',
-        'category':'Decoración',
-        'name':'Funda de cojín con flecos en terciopelo',
-        'description':'Funda de cojín en terciopelo color gris con borde de flecos y zíper oculto.',
-        'price':'$249.00'});
-
-    addItem({
-        'img':'./assets/muebles/mueble-1.png',
-        'category':'Muebles',
-        'name':'Mesa de centro con cajón de vidrio',
-        'description':'Mesa de centro, auxiliar o de café con estante y cajón de vidrio. Diseño moderno y versátil, elaborado en mdf y vidrio estriado.',
-        'price':'$1500.00'});
-    
-    addItem({
-        'img':'./assets/muebles/mueble-2.png',
-        'category':'Muebles',
-        'name':'Aparador multiusos nórdico',
-        'description':'Aparador moderno estilo nórdico con amplios espacios de almacenamiento y se adapta a cualquier decoración con sus tonos blancos y café.',
-        'price':'$2500.00'});
-
-    addItem({
-        'img':'./assets/muebles/mueble-3.png',
-        'category':'Muebles',
-        'name':'Aparador puertas de vidrio',
-        'description':'Aparador moderno de mdf con puertas de vidrio, diseño color café claro adaptable a cualquier tipo de decoración.',
-        'price':'$1500.00'});
-    
-    addItem({
-        'img':'./assets/muebles/mueble-4.png',
-        'category':'Muebles',
-        'name':'Aparador ratán de 3 puertas',
-        'description':'Aparador de mdf multiusos gran espacio de almacenamiento. Diseño en ratán con colores claros, ideal para obtener un estilo decorativo cálido.',
-        'price':'$3000.00'});
-
-    addItem({
-        'img':'./assets/muebles/mueble-5.png',
-        'category':'Muebles',
-        'name':'Mueble para tv minimalista',
-        'description':'Mueble de tv estilo minimalista cuenta con 2 puertas laterales y 2 entrepaños central, hecho a base de mdf de tonalidad clara.',
-        'price':'$1500.00'});
-    
-    addItem({
-        'img':'./assets/muebles/mueble-6.png',
-        'category':'Muebles',
-        'name':'Mueble para tv',
-        'description':'Mueble de tv rack con estantes y puertas, elaborado en mdf y tratamiento térmico y barnizado, colores claros, ideal para obtener un estilo decorativo cálido y artesanal.',
-        'price':'$2000.00'});
-    
-    addItem({
-        'img':'./assets/muebles/mueble-7.png',
-        'category':'Muebles',
-        'name':'Librero nóridco',
-        'description':'Elegante librero vertical de gran almacenamiento con dos estantes, dos cajones y una puerta. Estilo nórdico de diseño minimalista en tonos de madera clara y blanco.',
-        'price':'$1500.00'});
-
-    addItem({
-        'img':'./assets/muebles/mueble-8.png',
-        'category':'Muebles',
-        'name':'Armario de madera tradicional',
-        'description':'Armario de madera práctico y versátil, se adapta a diversas necesidades de almacenamiento con un diseño clásico.',
-        'price':'$6000.00'});
-    
-    addItem({
-        'img':'./assets/muebles/mueble-9.png',
-        'category':'Muebles',
-        'name':'Aparador moderno',
-        'description':'Elegante aparador nórdico, diseñado para aportar estilo y funcionalidad a tu hogar, de acabado en tonos claros y líneas minimalistas.',
-        'price':'$3000.00'});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-1.png',
+    'category':'Decoración',
+    'name':'Enfriador de vino',
+    'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
+    'price':'450.00',
+    'stock':'40'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-2.png',
+    'category':'Decoración',
+    'name':'Enfriador de vino',
+    'description':'Elegante enfriador de mármol ideal para mantener la temperatura de tu botella de vino.',
+    'price':'450.00',
+    'stock':'30'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-3.png',
+    'category':'Decoración',
+    'name':'Jarrón cerámica',
+    'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
+    'price':'500.00',
+    'stock':'39'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-4.png',
+    'category':'Decoración',
+    'name':'Jarrón cerámica',
+    'description':'Jarrón pequeño en cerámica de gres esmaltada. Modelo con diseño irregular.',
+    'price':'500.00',
+    'stock':'34'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-5.png',
+    'category':'Decoración',
+    'name':'Jarra cerámica',
+    'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
+    'price':'650.00',
+    'stock':'20'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-6.png',
+    'category':'Decoración',
+    'name':'Jarra cerámica',
+    'description':'Jarra en cerámica con pico vertedor y asa de diseño orgánico.',
+    'price':'650.00',
+    'stock':'15'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/product-6.png',
+    'category':'Decoración',
+    'name':'Maceta con pedestal en metal',
+    'description':'Maceta con pedestal en metal pintado, ideal tanto para interiores como exteriores.',
+    'price':'250.00',
+    'stock':'12'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/product-7.png',
+    'category':'Decoración',
+    'name':'Maceta de cerámica con barniz jaspeado',
+    'description':'Maceta en cerámica, modelo con un divertido acabado de burbujas y barniz jaspeado que aporta una apariencia única a cada pieza',
+    'price':'300.00',
+    'stock':'13'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/product-8.png',
+    'category':'Decoración',
+    'name':'Maceta de concreto',
+    'description':'Maceta de concreto con un diseño moderno y un acabado texturizado que aporta una apariencia única a cada pieza.',
+    'price':'200.00',
+    'stock':'33'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-7.png',
+    'category':'Almacenamiento',
+    'name':'Cesto de yute trenzado',
+    'description':'Cesto hecho a mano en yute con dos asas superiores.',
+    'price':'600.00',
+    'stock':'25'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-8.png',
+    'category':'Almacenamiento',
+    'name':'Cesto en yute',
+    'description':'Cesto para ropa en yute con dos asas superiores.',
+    'price':'800.00',
+    'stock':'25'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/deco-9.png',
+    'category':'Almacenamiento',
+    'name':'Cesto de algodón',
+    'description':'Cesto de almacenamiento en tejido grueso de algodón con dos asas superiores.',
+    'price':'400.00',
+    'stock':'25'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/image-1.png',
+    'category':'Decoración',
+    'name':'Funda de cojín en mezcla de lino',
+    'description':'Funda de cojín clásica en tejido de lino y algodón color verde.',
+    'price':'249.00',
+    'stock':'15'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/image-2.png',
+    'category':'Decoración',
+    'name':'Funda de cojín en terciopelo',
+    'description':'Funda de cojín en terciopelo color gris oscuro de algodón con zíper oculto.',
+    'price':'249.00',
+    'stock':'15'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/image-3.png',
+    'category':'Decoración',
+    'name':'Funda de cojín con flecos en terciopelo',
+    'description':'Funda de cojín en terciopelo color gris con borde de flecos y zíper oculto.',
+    'price':'249.00',
+    'stock':'15'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-1.png',
+    'category':'Muebles',
+    'name':'Mesa de centro con cajón de vidrio',
+    'description':'Mesa de centro, auxiliar o de café con estante y cajón de vidrio. Diseño moderno y versátil, elaborado en mdf y vidrio estriado.',
+    'price':'1500.00',
+    'stock':'9'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-2.png',
+    'category':'Muebles',
+    'name':'Aparador multiusos nórdico',
+    'description':'Aparador moderno estilo nórdico con amplios espacios de almacenamiento y se adapta a cualquier decoración con sus tonos blancos y café.',
+    'price':'2500.00',
+    'stock':'10'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-3.png',
+    'category':'Muebles',
+    'name':'Aparador puertas de vidrio',
+    'description':'Aparador moderno de mdf con puertas de vidrio, diseño color café claro adaptable a cualquier tipo de decoración.',
+    'price':'1500.00',
+    'stock':'6'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-4.png',
+    'category':'Muebles',
+    'name':'Aparador ratán de 3 puertas',
+    'description':'Aparador de mdf multiusos gran espacio de almacenamiento. Diseño en ratán con colores claros, ideal para obtener un estilo decorativo cálido.',
+    'price':'3000.00',
+    'stock':'8'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-5.png',
+    'category':'Muebles',
+    'name':'Mueble para tv minimalista',
+    'description':'Mueble de tv estilo minimalista cuenta con 2 puertas laterales y 2 entrepaños central, hecho a base de mdf de tonalidad clara.',
+    'price':'1500.00',
+    'stock':'8'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-6.png',
+    'category':'Muebles',
+    'name':'Mueble para tv',
+    'description':'Mueble de tv rack con estantes y puertas, elaborado en mdf y tratamiento térmico y barnizado, colores claros, ideal para obtener un estilo decorativo cálido y artesanal.',
+    'price':'2000.00',
+    'stock':'9'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-7.png',
+    'category':'Muebles',
+    'name':'Librero nórdico',
+    'description':'Elegante librero vertical de gran almacenamiento con dos estantes, dos cajones y una puerta. Estilo nórdico de diseño minimalista en tonos de madera clara y blanco.',
+    'price':'1500.00',
+    'stock':'11'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-8.png',
+    'category':'Muebles',
+    'name':'Armario de madera tradicional',
+    'description':'Armario de madera práctico y versátil, se adapta a diversas necesidades de almacenamiento con un diseño clásico.',
+    'price':'6000.00',
+    'stock':'10'
+});
+addItem({
+    'id':contadorProducto,
+    'img':'./assets/muebles/mueble-9.png',
+    'category':'Muebles',
+    'name':'Aparador moderno',
+    'description':'Elegante aparador nórdico, diseñado para aportar estilo y funcionalidad a tu hogar, de acabado en tonos claros y líneas minimalistas.',
+    'price':'3000.00',
+    'stock':'15'
+});
+        
 
 // Se comprueba el localStorage
     if (this.localStorage.getItem("datos") != null){
