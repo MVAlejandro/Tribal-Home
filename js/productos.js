@@ -230,7 +230,7 @@ addItem({
     'stock':'40'
 });
 addItem({
-    'id':contadorProducto,
+    'id':30,
     'img':'./assets/muebles/deco-2.png',
     'category':'Decoración',
     'name':'Enfriador de vino',
