@@ -1,4 +1,7 @@
 let carrito = new Array();
+let  btn_pagar = document.getElementById("btn-pagar")
+const carritoContainer = document.getElementById("carrito-container");
+
 // Validamos que haya un usuario activo, si no lo mandamos a que inicie sesión 
 window.addEventListener("load", function(event){
     event.preventDefault();
@@ -18,7 +21,6 @@ window.addEventListener("load", function(event){
 function calcTotal(){
     const precio_parcial = document.getElementById("precio_parcial");
     const precio_total = document.getElementById("precio_total");
-    const descuento = Number(document.getElementById("descuento").textContent.replace('$',''));
     const card_carrito = document.getElementsByClassName("card-carrito");
     let total = 0;
     
@@ -26,7 +28,7 @@ function calcTotal(){
         const price = Number(card.querySelector(".price strong").textContent.replace('$',''));
         total += price;
     }
-    let precioTotal = total + descuento;
+    let precioTotal = total;
     precio_parcial.textContent = `$${total.toFixed(2)}`;
     if (precioTotal < 0){
         precio_total.textContent = "$0"    
@@ -80,7 +82,7 @@ function addItem(producto){
             </div>                
         </div>
         `
-    const carritoContainer = document.getElementById("carrito-container");
+    
     carritoContainer.insertAdjacentHTML("beforeend", itemCarr);
     const cantidadElem = document.getElementById(`cantidad${producto.id}`);
     const price = document.getElementById(`price${producto.id}`)
@@ -126,6 +128,14 @@ function addItem(producto){
     });
 
 }
+// Evento del boton pagar
+btn_pagar.addEventListener("click", function(event){
+    event.preventDefault();
+    if(localStorage.getItem("carrito") != null){
+        localStorage.removeItem("carrito");
+        carritoContainer.replaceChildren();
+    }
+})
 
 // // Se agregan productos manualmente
 // addItem({
