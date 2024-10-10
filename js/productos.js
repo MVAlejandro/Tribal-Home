@@ -72,23 +72,24 @@ function addItem(product){
         </div>`
     const productsContainer = document.getElementById("products-container");
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
+    // Se crean variables para con los datos que utilizaremos para el carrito
     const id_producto = product.id;
     const imagen_producto = product.img;
-    const categoria_producto = product.category;
     const nombre_producto = product.name;
-    const descripcion_producto = product.description;
-    const stock_producto = product.stock;
     const precio_producto = product.price;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
-
+    
+    // Se creo el evento para el boton de Agregar al carrito
     btn_carrito.addEventListener("click", function(event){
         event.preventDefault();
-        
+        // Cuando se presiona el botón se guarda en nuestro arreglo carrito el nombre, precio e imagen del producto
         carrito.push({
+            // Aumentamos el contador de productos agregados al Carrito
             "id": ++contadorCarrito,
             "img": imagen_producto,
             "name": nombre_producto,
             "price": precio_producto});
+        // Actualizamos el localStorage con el nuevo producto que agregamos al carrito 
         localStorage.setItem("carrito", JSON.stringify(carrito));
 
         // Agregamos una alerta para avisar que se agregó al carrito el producto
@@ -98,6 +99,7 @@ function addItem(product){
             showConfirmButton: true,
         });
     })
+    // Aumentamos el contador de productos creados
     contadorProducto++;
 }
 
@@ -457,6 +459,7 @@ addItem({
 // Se comprueba el localStorage del carrito
     if(!(this.localStorage.getItem("carrito") == null)){
         carrito = JSON.parse(localStorage.getItem("carrito"));
+        // Si hay elementos en el carrito cambiamos el valor inicial de nuestra variable contadorCarrito
         contadorCarrito = carrito.length
     }
 
