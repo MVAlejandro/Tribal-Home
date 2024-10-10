@@ -83,12 +83,20 @@ function addItem(product){
 
     btn_carrito.addEventListener("click", function(event){
         event.preventDefault();
+        
         carrito.push({
             "id": ++contadorCarrito,
             "img": imagen_producto,
             "name": nombre_producto,
             "price": precio_producto});
         localStorage.setItem("carrito", JSON.stringify(carrito));
+
+        // Agregamos una alerta para avisar que se agregó al carrito el producto
+        Swal.fire({
+            icon: "success",
+            title: "Se agregó " + nombre_producto + " al carrito" ,
+            showConfirmButton: true,
+        });
     })
     contadorProducto++;
 }
@@ -99,7 +107,7 @@ function listProduct(){
     let productos = {"name": nombre_producto.value, 
         "description": descripcion_producto.value, 
         "category": categoria_producto.value, 
-        "price": "$" + precio_producto.value,
+        "price": precio_producto.value,
         "unidades": unidades_producto.value,
         "img": imagen_producto_url
     };
@@ -445,6 +453,11 @@ addItem({
         datos.forEach(product => {
             addItem(product);
         });
+    }
+// Se comprueba el localStorage del carrito
+    if(!(this.localStorage.getItem("carrito") == null)){
+        carrito = JSON.parse(localStorage.getItem("carrito"));
+        contadorCarrito = carrito.length
     }
 
 });
