@@ -39,20 +39,22 @@ export  function validateEmail(email, info) {
 }
 
 // Función que valida que el correo sea nuevo (que no esté ya registrado)
-export  function existEmail(email, info) {
-    if ((localStorage.getItem("usuario") == null)) {
-        return true;
-    }else{
-        usuarios = JSON.parse(localStorage.getItem("usuario"));
-        if (usuarios.some(usuario => usuario.email_usuario === email.value)){
-            info.innerHTML=`El correo que tratas de utilizar ya está registrado`;
-            info.display="block";
-            return false; 
-        }else{
-            return true;
-        }
+export async function existEmail(email) {
+    let existEmail = false;
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+
+    try {
+        const response = await fetch(`http://localhost:8080/api/usuarios/validar-registro?correo=${email.value}`, requestOptions);
+        const result = await response.json();
+        existEmail = Boolean(result);
+    } catch (error) {
+        console.error(error);
+    }finally{
+        return existEmail;
     }
-    
 }
 
 // Función que valida que sea un número telefónico

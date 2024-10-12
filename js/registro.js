@@ -33,7 +33,7 @@ let usuarios = new Array();
 
 //verifica los datos y de ser correcto crear la cuenta por el momento en el local storage
 // Agregamos el evento cuando se envie el formulario
-formulario.addEventListener("submit",function (e) {
+formulario.addEventListener("submit",async function (e) {
     e.preventDefault()
     // Cada que entramos al evento dejamos un estado inicial
     isValid = true
@@ -74,12 +74,13 @@ formulario.addEventListener("submit",function (e) {
     if (!validateEmail(email_usuario, emailInfo)) {
         email_usuario.style.border = "solid red medium";
         isValid = false
-    }else if (!existEmail(email_usuario, emailInfo)) {
-        email_usuario.style.border = "solid red medium";
-        isValid = false
-    }else{
-        email_usuario.style.border = "";
-        isValid = true
+    }else {
+        const emailExists = await existEmail(email_usuario);
+        if (!emailExists) {
+            emailInfo.innerHTML = `El correo que tratas de utilizar ya está registrado`;
+            email_usuario.style.border = "solid red medium";
+            isValid = false;
+        }
     }
     // Comprobamos que el email proporcionado sea válido, si no es válido cambiamos el estado de nuestra bandera a falso
     if (!validateCP(cp_usuario, cpInfo)) {
@@ -105,21 +106,19 @@ formulario.addEventListener("submit",function (e) {
     }
     // Si se pasaron todas las validaciones, se enviará el formulario 
     if (isValid) {
-        usuario = {"nombre_usuario": nombre_usuario.value,
-                   "apellidos_usuario": apellidos_usuario.value,
-                   "ubicacion_usuarios": ubicacion_usuarios.value,
-                   "email_usuario": email_usuario.value,
-                   "cp_usuario": cp_usuario.value,
-                   "direccion_usuario": direccion_usuario.value,
-                   "telefono_usuario": telefono_usuario.value.trim(),
-                   "password_usuario": password_usuario.value
-        }
-        // Se comprueba el localStorage
-            if (localStorage.getItem("usuario") != null){
-            usuarios = JSON.parse(localStorage.getItem("usuario"));
-    }
-        usuarios.push(usuario);
-        localStorage.setItem("usuario", JSON.stringify(usuarios));
+        const raw = JSON.stringify({
+            "nombre": nombre_usuario.value,
+            "apellidos": apellidos_usuario.value,
+            "estado": ubicacion_usuarios.value,
+            "codigo_postal": cp_usuario.value,
+            "direccion": direccion_usuario.value,
+            "telefono": telefono_usuario.value.trim(),
+            "correo": email_usuario.value,
+            "contrasenia": password_usuario.value,
+            "rol": "cliente"
+            });
+
+        setUsuario(raw);
 
         nombre_usuario.value = "";
         apellidos_usuario.value = "";
@@ -146,6 +145,24 @@ formulario.addEventListener("submit",function (e) {
           });  
     }
 })
+
+function setUsuario(raw){
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    
+    const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+    };
+
+    fetch("http://localhost:8080/api/usuarios/registro", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
+}
 
 //*---------------metodo al cargar pagina-----------*
 window.addEventListener("load", function(){
