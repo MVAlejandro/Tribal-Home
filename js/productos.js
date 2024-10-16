@@ -1,5 +1,6 @@
 // Se importan las funciones de las validaciones 
 import {validate, validarNumber, validateMensajeDescripcion} from "./validaciones.js"
+//variable para obtener el tipo de usuario
 
 //obtiene los campos de los filtros
 let filtro_categoria=document.getElementById("filtro_categoria");
@@ -7,6 +8,9 @@ let filtro_nombre=document.getElementById("filtro_nombre");
 let btn_filtrar=document.getElementById("btn_filtrar");
 let btn_Nofiltrar=document.getElementById("btn_Nofiltrar");
 //bandera filtros no quedo 
+let isAny=false;
+//bandera que verifica si el usuario es administrador
+let isAdmi=false;
 //div del contenedor de productos
 let products_container=document.getElementById("products-container");
 // Se obtienen los inputs del formulario
@@ -28,6 +32,8 @@ let imagenInfo = document.getElementById("imagenInfo");
 let formulario = document.getElementById("formulario");
 // Inicializamos nuestra bandera isValid en true
 let isValid = true
+//obtenemos el boton del modal
+let btn_modal= document.getElementById("btn_modal");
 // Declaramos las expresiones regulares para validar los datos
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 // Creamos una lista de productos
@@ -234,6 +240,21 @@ function inicializarValores(){
 window.addEventListener("load", function(event){    
     // Cuando carga la pantalla mandamos la solicitud a la API para obtener los productos
     getProductos();
+    //verifica si es admi
+    if (sessionStorage.getItem('usuario')!="") {
+        console.log("Usuario existe");
+        let sesionSto= sessionStorage.getItem('usuarioActivo');
+        console.log(sesionSto)
+        if (sesionSto.rol=="admi") {
+            console.log("es admi");
+            isAdmi=true;
+
+           btn_modal.removeAttribute("hidden");
+            
+        }
+        
+    }
+   
 });
 //añadde todos los productos
 function getProductos(){
@@ -277,18 +298,21 @@ function setProducto(raw){
 //funcion filtar productos
 btn_filtrar.addEventListener("click", async function (e) {
     e.preventDefault()
+   
     let resultado = new Array();
     if(filtro_categoria.value==""&& filtro_nombre.value==""){
         Swal.fire({
             icon: "error",
-            title: "No se encontraron filtros",
-            text: "Favor de establecer al menos un filtro",
+            title: "Error al llenar los filtros",
+            text: "Favor de establecer al menos un filtro antes de buscar",
           }); 
     }else
     {
+        isAny=false;
         products_container.innerHTML="";
-        btn_Nofiltrar.removeAttribute("hidden")
+        btn_Nofiltrar.removeAttribute("hidden");
         if (filtro_nombre.value=="Wahaha") {
+            isAny=true;
             products_container.innerHTML=`<img src="./assets/wahahaBoho.png"></img>`
             
         } else {
@@ -297,6 +321,7 @@ btn_filtrar.addEventListener("click", async function (e) {
             if (filtro_categoria.value!="" && filtro_nombre.value!="") {
                 resultado.forEach((producto => {
                     if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())&&producto.categoria==filtro_categoria.value){
+                        isAny=true;
                         addItem(producto)
                     }
                 }))
@@ -305,6 +330,7 @@ btn_filtrar.addEventListener("click", async function (e) {
                 if (filtro_categoria.value!="") {
                     resultado.forEach((producto => {
                         if(producto.categoria==filtro_categoria.value){
+                            isAny=true;
                             addItem(producto);
                         }                           
                     }))
@@ -313,11 +339,15 @@ btn_filtrar.addEventListener("click", async function (e) {
                 if (filtro_nombre.value!="") {
                     resultado.forEach((producto => {
                         if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())){
+                            isAny=true;
                             addItem(producto);
                         }
                     }))
 
                 }
+            }
+            if(!isAny){
+                 products_container.innerHTML=`<p>No se encontro ningun producto</p>`
             }
         }
     } 
