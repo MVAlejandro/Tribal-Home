@@ -77,6 +77,7 @@ function addItem(product){
     const imagen_producto = product.img;
     const nombre_producto = product.name;
     const precio_producto = product.price;
+    const stock_producto = product.stock;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
     
     // Se creo el evento para el boton de Agregar al carrito
@@ -110,7 +111,7 @@ function listProduct(){
         "description": descripcion_producto.value, 
         "category": categoria_producto.value, 
         "price": precio_producto.value,
-        "unidades": unidades_producto.value,
+        "stock": unidades_producto.value,
         "img": imagen_producto_url
     };
     // Guardamos el objeto en la lista de productos
