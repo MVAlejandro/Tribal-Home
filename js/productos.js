@@ -243,9 +243,10 @@ window.addEventListener("load", function(event){
     //verifica si es admi
     if (sessionStorage.getItem('usuario')!="") {
         console.log("Usuario existe");
-        let sesionSto= sessionStorage.getItem('usuarioActivo');
+        let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
         console.log(sesionSto)
-        if (sesionSto.rol=="admi") {
+        console.log(sesionSto.usuario.rol); 
+        if (sesionSto.usuario.rol === "admin") {
             console.log("es admi");
             isAdmi=true;
 
@@ -347,7 +348,7 @@ btn_filtrar.addEventListener("click", async function (e) {
                 }
             }
             if(!isAny){
-                 products_container.innerHTML=`<p>No se encontro ningun producto</p>`
+                 products_container.innerHTML=`<p>No se encontró ningún producto</p>`
             }
         }
     } 
