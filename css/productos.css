@@ -108,6 +108,7 @@
     width: 250px;
     margin-bottom: 2%; 
 }
+
 .btn-enviar:hover{
     background-color: #FFF8E8;
     color: #674636;
@@ -127,11 +128,21 @@
     border-radius: 10px;
     font-size: 25px;
 }
+#filtro_nombre{
+    width: 100%;
+}
 .filtros{
     display:flex;
     gap: 50px;
     align-items: end;
     margin-bottom: 3%;
+}
+.div_btn{
+    display: flex;
+    padding: 0% 0% 0% 2%;
+    gap: 5%;
+    justify-content: row;
+    align-items: center;
 }
 @media (max-width: 778px) {
     .p-productos {
@@ -191,15 +202,25 @@
         font-size: 12px;
     }
     .filtros{
-        gap: 15px;
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
         font-size: 12px;
     }
     .btn-filtrar{
-        width: 100px;
+        width: 150px;
         font-size: 12px;
     }
     .btn-Nofiltrar{
         width: 150px;
         font-size: 12px;
+    }
+    #filtro_nombre{
+        width: 100%;
+    }
+    .div_btn{
+        
+        justify-content: center;
+        align-items: center;
     }
 }
