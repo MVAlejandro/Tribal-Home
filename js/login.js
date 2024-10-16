@@ -13,14 +13,13 @@ const emailInfo=document.getElementById("emailInfo");
 const passwordInfo = document.getElementById("passwordInfo");
 //variables
 let isValid=false 
-let usuarios = new Array();
 let isValiid = true;
 let userValid = false;
-
+let usuario = null;
 //debe validar la existencia del usuario y mandar a la pagina de inicio
 //puede usar url o la sesion storage para mandar informacion del usuario
 
-form.addEventListener("submit", function(e){
+form.addEventListener("submit", async function(e){
     e.preventDefault();
     // Cada que entramos al evento dejamos un estado inicial
     isValid = true;
@@ -41,23 +40,26 @@ form.addEventListener("submit", function(e){
         isValid = false;
     }
     if(isValid){
-        if(!(localStorage.getItem("usuario") == null)){
-            usuarios = JSON.parse(localStorage.getItem("usuario"));
-            usuarios.forEach((user) => {
-                if(user.email_usuario == email_field.value && password_field.value == user.password_usuario) {
-                    userValid = true;
-                    localStorage.setItem("usuario_activo", JSON.stringify(user));
-                }
-            });
-            if(userValid){
-                location.href = "index.html";
-            }else{
-                Swal.fire({
-                    icon: "error",
-                    title: "Error al iniciar sesión",
-                    text: "Usuario y/o contraseña incorrectos",
-                }); 
-            }
+        
+        const raw = JSON.stringify({
+            "correo": email_field.value,
+            "contrasenia": password_field.value
+        });
+
+        await validateUser(raw)
+
+        if(usuario != null){
+            userValid = true;
+            sessionStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+        if(userValid){
+            location.href = "index.html";
+        }else{
+            Swal.fire({
+                icon: "error",
+                title: "Error al iniciar sesión",
+                text: "Usuario y/o contraseña incorrectos",
+            }); 
+        }
         }else{
             Swal.fire({
                 icon: "error",
@@ -74,3 +76,22 @@ form.addEventListener("submit", function(e){
     }
     
 });
+
+async function validateUser(raw){
+
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+    method: "POST",
+    body: raw,
+    headers: myHeaders,
+    redirect: "follow"
+    };
+
+     await fetch("http://localhost:8080/api/login/", requestOptions)
+    .then((response) => response.json())
+    .then((result) => usuario = result)
+    .catch((error) => console.error(error));
+    
+}

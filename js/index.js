@@ -13,7 +13,7 @@ window.addEventListener("load", function(event){
     const carrito = document.getElementById("carrito");
     const carrito2 = document.getElementById("carrito2");
     
-    if(this.localStorage.getItem("usuario_activo") == null){
+    if(this.sessionStorage.getItem("usuarioActivo") == null){
         perfil.href = "./login.html";
         perfil2.href = "./login.html";
         carrito.href = "./login.html";
@@ -48,7 +48,7 @@ window.addEventListener("load", function(event){
 });
 
 function cerrarSesion (){
-    this.localStorage.removeItem("usuario_activo");
+    this.sessionStorage.removeItem("usuarioActivo");
     location.href = "index.html";
 }
 
