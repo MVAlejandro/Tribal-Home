@@ -1,6 +1,14 @@
 // Se importan las funciones de las validaciones 
 import {validate, validarNumber, validateMensajeDescripcion} from "./validaciones.js"
 
+//obtiene los campos de los filtros
+let filtro_categoria=document.getElementById("filtro_categoria");
+let filtro_nombre=document.getElementById("filtro_nombre");
+let btn_filtrar=document.getElementById("btn_filtrar");
+let btn_Nofiltrar=document.getElementById("btn_Nofiltrar");
+//bandera filtros no quedo 
+//div del contenedor de productos
+let products_container=document.getElementById("products-container");
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
 let descripcion_producto = document.getElementById("descripcion_producto");
@@ -23,7 +31,7 @@ let isValid = true
 // Declaramos las expresiones regulares para validar los datos
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 // Creamos una lista de productos
-let datos = new Array();
+
 let contadorCarrito = 0;
 // Creamos una lista de productos agregadas al carrito
 let carrito = new Array();
@@ -227,7 +235,7 @@ window.addEventListener("load", function(event){
     // Cuando carga la pantalla mandamos la solicitud a la API para obtener los productos
     getProductos();
 });
-
+//añadde todos los productos
 function getProductos(){
     // Se hace la petición a la api para obtener los datos
     const requestOptions = {
@@ -238,7 +246,6 @@ function getProductos(){
   fetch("http://localhost:8080/api/productos/", requestOptions)
     .then((response) => response.json())
     .then((result) => {
-        console.log(result)
         // Se manda a imprimir en pantalla cada producto
         result.forEach((producto => {
             addItem(producto)
@@ -266,4 +273,82 @@ function setProducto(raw){
         addItem(result);
     })
     .catch((error) => console.error(error));
+}
+//funcion filtar productos
+btn_filtrar.addEventListener("click", async function (e) {
+    e.preventDefault()
+    let resultado = new Array();
+    if(filtro_categoria.value==""&& filtro_nombre.value==""){
+        Swal.fire({
+            icon: "error",
+            title: "No se encontraron filtros",
+            text: "Favor de establecer al menos un filtro",
+          }); 
+    }else
+    {
+        products_container.innerHTML="";
+        btn_Nofiltrar.removeAttribute("hidden")
+        if (filtro_nombre.value=="Wahaha") {
+            products_container.innerHTML=`<img src="./assets/wahahaBoho.png"></img>`
+            
+        } else {
+            resultado = await getAllProdutcs();
+            console.log(resultado)
+            if (filtro_categoria.value!="" && filtro_nombre.value!="") {
+                resultado.forEach((producto => {
+                    if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())&&producto.categoria==filtro_categoria.value){
+                        addItem(producto)
+                    }
+                }))
+            
+            } else {
+                if (filtro_categoria.value!="") {
+                    resultado.forEach((producto => {
+                        if(producto.categoria==filtro_categoria.value){
+                            addItem(producto);
+                        }                           
+                    }))
+                }
+                    
+                if (filtro_nombre.value!="") {
+                    resultado.forEach((producto => {
+                        if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())){
+                            addItem(producto);
+                        }
+                    }))
+
+                }
+            }
+        }
+    } 
+    
+})
+//función para quitar los filtros de los productos
+btn_Nofiltrar.addEventListener("click", function(e){
+    e.preventDefault()
+    products_container.innerHTML="";
+    btn_Nofiltrar.setAttribute("hidden", "");
+    filtro_categoria.value="";
+    filtro_nombre.value="";
+    getProductos();
+
+})
+//funcion que retorna todos los productos en un arrgelos para los filtros
+async function getAllProdutcs(){
+    let resultado = null
+    // Se hace la petición a la api para obtener los datos
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+
+    try {
+        const response = await fetch("http://localhost:8080/api/productos/", requestOptions)
+        const result = await response.json();
+        resultado = result;
+    } catch (error) {
+        console.error(error);
+    }finally{
+        return resultado;
+    }
 }
