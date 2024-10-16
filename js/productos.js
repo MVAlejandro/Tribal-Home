@@ -344,7 +344,7 @@ btn_Nofiltrar.addEventListener("click", function(e){
 
 })
 //funcion que retorna todos los productos en un arrgelos para los filtros
-function getAllProducts(){
+function getAllProdutcs(){
     // Se hace la petición a la api para obtener los datos
     const requestOptions = {
         method: "GET",
