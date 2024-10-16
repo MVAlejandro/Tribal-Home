@@ -98,6 +98,7 @@
     border-radius: 10px;
     font-size: 25px;
     width: 250px;
+    margin-bottom: 2%;
 }
 .btn-Nofiltrar{
     background-color: #674636;
@@ -105,6 +106,7 @@
     border-radius: 10px;
     font-size: 25px;
     width: 250px;
+    margin-bottom: 2%; 
 }
 .btn-enviar:hover{
     background-color: #FFF8E8;
