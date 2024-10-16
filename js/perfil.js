@@ -31,18 +31,19 @@ const div_guardar = document.getElementById("div_guardar");
 const div_modificar = document.getElementById("div_modificar");
 // Declaración de bandera
 let isValid = true;
-
+// Evento para cuando se toca el botón de modificar
 btn_modificar.addEventListener("click", function(event){
     event.preventDefault();
     blockInputs(false);
     estado_usuario.style.display = "none";
     estado_usuarios.style.display = "block";
+    estado_usuarios.value = usuarioActivo.usuario.estado;
     div_modificar.style.display = "none";
     div_guardar.style.display = "flex";
     password_usuario_now.display = "block"
     actual.style.display = "flex";
 })
-
+// Evento para cuando se toca el botón de cancelar
 btn_cancelar.addEventListener("click", function(event) {
     event.preventDefault();
     blockInputs(true);
@@ -55,7 +56,7 @@ btn_cancelar.addEventListener("click", function(event) {
         location.reload()
     }, 1000);
 })
-
+// Evento para cuando se toca el botón de guardar
 btn_guardar.addEventListener("click", async function(event){
     event.preventDefault();
     isValid = true
@@ -214,7 +215,7 @@ function setData(){
 
     fetch(`http://localhost:8080/api/usuarios/${usuarioActivo.usuario.id}/edit-usuario`, requestOptions)
     .then((response) => response.json())
-    .then((result) => {console.log(result)
+    .then((result) => {
         usuarioActivo.usuario = result
         sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo))
     })
