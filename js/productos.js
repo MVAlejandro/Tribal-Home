@@ -293,66 +293,40 @@ btn_filtrar.addEventListener("click", function (e) {
             
         } else {
             if (filtro_categoria.value!="" && filtro_nombre.value!="") {
-                // Se hace la petición a la api para obtener los datos
-                const requestOptions = {
-                    method: "GET",
-                    redirect: "follow"
-                };
-                fetch("http://localhost:8080/api/productos/", requestOptions)
-                .then((response) => response.json())
-                .then((result) => {
-                console.log(result)
-                // Se manda a imprimir en pantalla cada producto
+                
+                let result=getAllProdutcs();
                 result.forEach((producto => {
                 
-                    if(producto.nombre_producto.includes(filtro_nombre.value)&&producto.categoria==filtro_categoria.value){
+                    if(producto.nombre_producto.toLowercase().includes(filtro_nombre.value.toLowercase())&&producto.categoria==filtro_categoria.value){
                         
                         addItem(producto)
                     }
                 }))
-                })
-            .catch((error) => console.error(error));
+            
             } else {
                 if (filtro_categoria.value!="") {
-                        // Se hace la petición a la api para obtener los datos
-                        const requestOptions = {
-                            method: "GET",
-                            redirect: "follow"
-                        };
-                        fetch("http://localhost:8080/api/productos/", requestOptions)
-                        .then((response) => response.json())
-                        .then((result) => {
-                        console.log(result)
-                        // Se manda a imprimir en pantalla cada producto
-                        result.forEach((producto => {
-                            if(producto.categoria==filtro_categoria.value){
+                    let result=getAllProdutcs();
+                    result.forEach((producto => {
+                        if(producto.categoria==filtro_categoria.value){
                                 
-                                addItem(producto);
-                            }
-                           
-                            
-                        }))
-                        })
+                            addItem(producto);
+                        }                           
+                    }))
+                
                        
                     }
                     
                 if (filtro_nombre.value!="") {
-                    const requestOptions = {
-                        method: "GET",
-                        redirect: "follow"
-                    };
-                    fetch("http://localhost:8080/api/productos/", requestOptions)
-                    .then((response) => response.json())
-                    .then((result) => {
-                    console.log(result)
-                    // Se manda a imprimir en pantalla cada producto
+                    let result=getAllProdutcs();
                     result.forEach((producto => {
-                        if(producto.nombre_producto.includes(filtro_nombre.value)){
+                        if(producto.nombre_producto.toLowercase().includes(filtro_nombre.value.toLowercase())){
                             addItem(producto);
                         }
+                        let a="as"
+                        a.toLowercase()
                         
                     }))
-                    })
+
                 }
             }
         }
@@ -369,3 +343,19 @@ btn_Nofiltrar.addEventListener("click", function(e){
     getProductos();
 
 })
+//funcion que retorna todos los productos en un arrgelos para los filtros
+function getAllProducts(){
+    // Se hace la petición a la api para obtener los datos
+    const requestOptions = {
+        method: "GET",
+        redirect: "follow"
+    };
+    fetch("http://localhost:8080/api/productos/", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+    console.log(result)
+    // Se retorna un arreglo con todos los productos
+    return result;
+    })
+.catch((error) => console.error(error)); 
+}
