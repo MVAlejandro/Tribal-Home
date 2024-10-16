@@ -31,7 +31,7 @@ let isValid = true
 // Declaramos las expresiones regulares para validar los datos
 const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
 // Creamos una lista de productos
-let datos = new Array();
+
 let contadorCarrito = 0;
 // Creamos una lista de productos agregadas al carrito
 let carrito = new Array();
@@ -246,7 +246,6 @@ function getProductos(){
   fetch("http://localhost:8080/api/productos/", requestOptions)
     .then((response) => response.json())
     .then((result) => {
-        console.log(result)
         // Se manda a imprimir en pantalla cada producto
         result.forEach((producto => {
             addItem(producto)
@@ -276,8 +275,9 @@ function setProducto(raw){
     .catch((error) => console.error(error));
 }
 //funcion filtar productos
-btn_filtrar.addEventListener("click", function (e) {
+btn_filtrar.addEventListener("click", async function (e) {
     e.preventDefault()
+    let resultado = new Array();
     if(filtro_categoria.value==""&& filtro_nombre.value==""){
         Swal.fire({
             icon: "error",
@@ -292,39 +292,29 @@ btn_filtrar.addEventListener("click", function (e) {
             products_container.innerHTML=`<img src="./assets/wahahaBoho.png"></img>`
             
         } else {
+            resultado = await getAllProdutcs();
+            console.log(resultado)
             if (filtro_categoria.value!="" && filtro_nombre.value!="") {
-                
-                let result=getAllProdutcs();
-                result.forEach((producto => {
-                
-                    if(producto.nombre_producto.toLowercase().includes(filtro_nombre.value.toLowercase())&&producto.categoria==filtro_categoria.value){
-                        
+                resultado.forEach((producto => {
+                    if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())&&producto.categoria==filtro_categoria.value){
                         addItem(producto)
                     }
                 }))
             
             } else {
                 if (filtro_categoria.value!="") {
-                    let result=getAllProdutcs();
-                    result.forEach((producto => {
+                    resultado.forEach((producto => {
                         if(producto.categoria==filtro_categoria.value){
-                                
                             addItem(producto);
                         }                           
                     }))
-                
-                       
-                    }
+                }
                     
                 if (filtro_nombre.value!="") {
-                    let result=getAllProdutcs();
-                    result.forEach((producto => {
-                        if(producto.nombre_producto.toLowercase().includes(filtro_nombre.value.toLowercase())){
+                    resultado.forEach((producto => {
+                        if(producto.nombre_producto.toLowerCase().includes(filtro_nombre.value.toLowerCase())){
                             addItem(producto);
                         }
-                        let a="as"
-                        a.toLowercase()
-                        
                     }))
 
                 }
@@ -344,18 +334,21 @@ btn_Nofiltrar.addEventListener("click", function(e){
 
 })
 //funcion que retorna todos los productos en un arrgelos para los filtros
-function getAllProdutcs(){
+async function getAllProdutcs(){
+    let resultado = null
     // Se hace la petición a la api para obtener los datos
     const requestOptions = {
         method: "GET",
         redirect: "follow"
     };
-    fetch("http://localhost:8080/api/productos/", requestOptions)
-    .then((response) => response.json())
-    .then((result) => {
-    console.log(result)
-    // Se retorna un arreglo con todos los productos
-    return result;
-    })
-.catch((error) => console.error(error)); 
+
+    try {
+        const response = await fetch("http://localhost:8080/api/productos/", requestOptions)
+        const result = await response.json();
+        resultado = result;
+    } catch (error) {
+        console.error(error);
+    }finally{
+        return resultado;
+    }
 }
