@@ -86,11 +86,25 @@
     font-weight: 400;
     line-height: 180%;
 }
-.btn-agregar{
+.btn-agregar {
     background-color: #674636;
     color: #FFF8E8;
     border-radius: 10px;
     font-size: 25px;
+}
+.btn-filtrar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 250px;
+}
+.btn-Nofiltrar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 250px;
 }
 .btn-enviar:hover{
     background-color: #FFF8E8;
@@ -110,6 +124,12 @@
     color: #FFF8E8;
     border-radius: 10px;
     font-size: 25px;
+}
+.filtros{
+    display:flex;
+    gap: 50px;
+    align-items: end;
+    margin-bottom: 3%;
 }
 @media (max-width: 778px) {
     .p-productos {
@@ -166,6 +186,18 @@
         font-size: 12px;
     }
     .btn-carrito{
+        font-size: 12px;
+    }
+    .filtros{
+        gap: 15px;
+        font-size: 12px;
+    }
+    .btn-filtrar{
+        width: 100px;
+        font-size: 12px;
+    }
+    .btn-Nofiltrar{
+        width: 150px;
         font-size: 12px;
     }
 }

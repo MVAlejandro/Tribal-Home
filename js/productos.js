@@ -1,6 +1,14 @@
 // Se importan las funciones de las validaciones 
 import {validate, validarNumber, validateMensajeDescripcion} from "./validaciones.js"
 
+//obtiene los campos de los filtros
+let filtro_categoria=document.getElementById("filtro_categoria");
+let filtro_nombre=document.getElementById("filtro_nombre");
+let btn_filtrar=document.getElementById("btn_filtrar");
+let btn_Nofiltrar=document.getElementById("btn_Nofiltrar");
+//bandera filtros no quedo 
+//div del contenedor de productos
+let products_container=document.getElementById("products-container");
 // Se obtienen los inputs del formulario
 let nombre_producto = document.getElementById("nombre_producto");
 let descripcion_producto = document.getElementById("descripcion_producto");
@@ -227,7 +235,7 @@ window.addEventListener("load", function(event){
     // Cuando carga la pantalla mandamos la solicitud a la API para obtener los productos
     getProductos();
 });
-
+//añadde todos los productos
 function getProductos(){
     // Se hace la petición a la api para obtener los datos
     const requestOptions = {
@@ -267,3 +275,97 @@ function setProducto(raw){
     })
     .catch((error) => console.error(error));
 }
+//funcion filtar productos
+btn_filtrar.addEventListener("click", function (e) {
+    e.preventDefault()
+    if(filtro_categoria.value==""&& filtro_nombre.value==""){
+        Swal.fire({
+            icon: "error",
+            title: "No se encontraron filtros",
+            text: "Favor de establecer al menos un filtro",
+          }); 
+    }else
+    {
+        products_container.innerHTML="";
+        btn_Nofiltrar.removeAttribute("hidden")
+        if (filtro_nombre.value=="Wahaha") {
+            products_container.innerHTML=`<img src="./assets/wahahaBoho.png"></img>`
+            
+        } else {
+            if (filtro_categoria.value!="" && filtro_nombre.value!="") {
+                // Se hace la petición a la api para obtener los datos
+                const requestOptions = {
+                    method: "GET",
+                    redirect: "follow"
+                };
+                fetch("http://localhost:8080/api/productos/", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                console.log(result)
+                // Se manda a imprimir en pantalla cada producto
+                result.forEach((producto => {
+                
+                    if(producto.nombre_producto.includes(filtro_nombre.value)&&producto.categoria==filtro_categoria.value){
+                        
+                        addItem(producto)
+                    }
+                }))
+                })
+            .catch((error) => console.error(error));
+            } else {
+                if (filtro_categoria.value!="") {
+                        // Se hace la petición a la api para obtener los datos
+                        const requestOptions = {
+                            method: "GET",
+                            redirect: "follow"
+                        };
+                        fetch("http://localhost:8080/api/productos/", requestOptions)
+                        .then((response) => response.json())
+                        .then((result) => {
+                        console.log(result)
+                        // Se manda a imprimir en pantalla cada producto
+                        result.forEach((producto => {
+                            if(producto.categoria==filtro_categoria.value){
+                                
+                                addItem(producto);
+                            }
+                           
+                            
+                        }))
+                        })
+                       
+                    }
+                    
+                if (filtro_nombre.value!="") {
+                    const requestOptions = {
+                        method: "GET",
+                        redirect: "follow"
+                    };
+                    fetch("http://localhost:8080/api/productos/", requestOptions)
+                    .then((response) => response.json())
+                    .then((result) => {
+                    console.log(result)
+                    // Se manda a imprimir en pantalla cada producto
+                    result.forEach((producto => {
+                        if(producto.nombre_producto.includes(filtro_nombre.value)){
+                            addItem(producto);
+                        }
+                        
+                    }))
+                    })
+                }
+            }
+        }
+    } 
+    
+})
+//función para quitar los filtros de los productos
+btn_Nofiltrar.addEventListener("click", function(e){
+    e.preventDefault()
+    products_container.innerHTML="";
+    btn_Nofiltrar.setAttribute("hidden", "");
+    filtro_categoria.value="";
+    filtro_nombre.value="";
+    getProductos();
+
+})

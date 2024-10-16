@@ -54,11 +54,37 @@
                     Agregar producto</button>
                 </div>
             </div>
+            <!--elementos para buscar-->
+        <div class="row filtros">
+            <div class="col-sm-4">
+                <label for="filtro_categoria" class="col-form-label">Seleccione la categoría</label>
+                    <select name="filtro_categoria" class="form-control" id="filtro_categoria">
+                        <option value=""></option>
+                        <option value="Decoración">Decoración</option>
+                        <option value="Muebles">Muebles</option>
+                        <option value="Almacenamiento">Almacenamiento</option>
+                    </select>
+            </div>
+            <div class="col-sm-4">
+                <label for="filtro_nombre" class="col-form-label">Buscar por nombre</label>
+                <div>
+                  <input type="text" class="form-control" id="filtro_nombre">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <button type="button" id="btn_filtrar" class="btn btn-filtrar" >
+                    Filtrar</button>
+            </div>
+
+        </div>
+            <button type="button" id="btn_Nofiltrar" class="btn btn-Nofiltrar" hidden>
+                Quitar Filtros</button>
             
             <div class="row gx-5 me-auto ms-auto" id="products-container">
 
             </div>
         </div>
+        
         <!-- Modal -->
         <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
