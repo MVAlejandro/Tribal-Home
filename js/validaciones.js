@@ -116,6 +116,34 @@ export function validateCP (cp, info){
     return true;
 }
 
+// Comprueba que la contraseña actual sea la misma que la que está en la bd
+export async function samePassword(token, password, id){
+    let samePassword = false;
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer: ${token}`);
+    myHeaders.append("Content-Type", "application/json");
+    const raw = JSON.stringify({
+    "currentPassword": password
+    });
+
+    const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+    };
+
+    try {
+        const response = await fetch(`http://localhost:8080/api/usuarios/validar-cambio/${id}`, requestOptions)
+        const result = await response.json();
+        samePassword = Boolean(result);
+    } catch (error) {
+        console.error(error);
+    }finally{
+        return samePassword;
+    }
+}
+
 //llena el select con el arreglo de los estados
 export function llenarSelect(ubicacion_usuarios){
     let cad=""

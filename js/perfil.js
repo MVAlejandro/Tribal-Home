@@ -1,6 +1,6 @@
-import {validate, validarTelefono, validatePassword, validateCP, validateMensajeDescripcion, llenarSelect} from "./validaciones.js";
+import {validate, validarTelefono, validatePassword, validateCP, validateMensajeDescripcion, llenarSelect, samePassword} from "./validaciones.js";
 // Se obtiene la sesión activa
-let usuario_activo = JSON.parse(localStorage.getItem("usuario_activo"))
+let usuarioActivo = JSON.parse(sessionStorage.getItem("usuarioActivo"))
 // Se agregan campos
 const nombre_usuario = document.getElementById("nombre_usuario");
 const apellido_usuario = document.getElementById("apellido_usuario");
@@ -56,7 +56,7 @@ btn_cancelar.addEventListener("click", function(event) {
     }, 1000);
 })
 
-btn_guardar.addEventListener("click", function(event){
+btn_guardar.addEventListener("click", async function(event){
     event.preventDefault();
     isValid = true
     nombre_usuario.style.border = "";
@@ -116,7 +116,7 @@ btn_guardar.addEventListener("click", function(event){
         }
     }
     // Para hacer los cambios comprueba que la contraseña coincida con la del usuario
-    if (!(password_usuario_now.value == usuario_activo.password_usuario)) {
+    if (! await samePassword(usuarioActivo.token.accessToken, password_usuario_now.value, usuarioActivo.usuario.id)) {
         password_usuario_now.style.border = "solid medium red";
         passwordNowConfirmationInfo.innerHTML=`La contraseña no es correcta`;
         passwordNowConfirmationInfo.display="block";
@@ -138,7 +138,7 @@ btn_guardar.addEventListener("click", function(event){
             timer: 1500
         });
         setTimeout(function(){
-            location.reload()
+            loadData();
         }, 1000);
     }else{
         Swal.fire({
@@ -154,7 +154,7 @@ window.addEventListener("load", function(event){
     event.preventDefault();
     email_usuario.disabled = true;
     llenarSelect(estado_usuarios);
-    if(this.localStorage.getItem("usuario_activo") == null){
+    if(this.sessionStorage.getItem("usuarioActivo") == null){
         location.href = "./login.html";
     }else{
         loadData();
@@ -174,33 +174,51 @@ function blockInputs(status){
 }
 
 function loadData(){
-    nombre_usuario.value = usuario_activo.nombre_usuario;
-    apellido_usuario.value = usuario_activo.apellidos_usuario;
-    email_usuario.value = usuario_activo.email_usuario;
-    telefono_usuario.value = usuario_activo.telefono_usuario;
-    cp_usuario.value = usuario_activo.cp_usuario;
-    direccion_usuario.value = usuario_activo.direccion_usuario;
-    // password_usuario.value = 
-    estado_usuario.value = usuario_activo.ubicacion_usuarios;
+    nombre_usuario.value = usuarioActivo.usuario.nombre;
+    apellido_usuario.value = usuarioActivo.usuario.apellidos;
+    email_usuario.value = usuarioActivo.usuario.correo;
+    telefono_usuario.value = usuarioActivo.usuario.telefono;
+    cp_usuario.value = usuarioActivo.usuario.codigo_postal;
+    direccion_usuario.value = usuarioActivo.usuario.direccion;
+    estado_usuario.value = usuarioActivo.usuario.estado;
 }
 
 function setData(){
-    let usuario = [];
     let pass;
     if (!(password_usuario.value == null || password_usuario.value == "")){
         pass = password_usuario.value;
     }else{
-        pass = usuario_activo.password_usuario;
+        pass = null
     }
-    usuario = {
-        "nombre_usuario": nombre_usuario.value,
-        "apellidos_usuario": apellido_usuario.value,
-        "email_usuario": usuario_activo.email_usuario,
-        "telefono_usuario": telefono_usuario.value,
-        "cp_usuario": cp_usuario.value,
-        "direccion_usuario": direccion_usuario.value,
-        "password_usuario": pass,
-        "ubicacion_usuarios": estado_usuarios.value
+    const myHeaders = new Headers();
+    myHeaders.append("Authorization", "Bearer: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqb3NlZGJhcnJlcmExQGdtYWlsLmNvbSIsInJvbGUiOiJjbGllbnRlIiwiaWF0IjoxNzI5MDY0MjUyLCJleHAiOjE3MjkxMDc0NTJ9.b7TvqqZH0q1SJsKbvkB4HpFiCrfZCEMgc-U-CwWwEu4");
+    myHeaders.append("Content-Type", "application/json");
+
+    const raw = JSON.stringify({
+    "nombre": nombre_usuario.value,
+    "apellidos": apellido_usuario.value,
+    "codigo_postal": cp_usuario.value,
+    "direccion": direccion_usuario.value,
+    "telefono": telefono_usuario.value,
+    "estado": estado_usuarios.value,
+    "currentPassword": password_usuario_now.value,
+    "newPassword": pass
+    });
+
+    const requestOptions = {
+    method: "PUT",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
     };
-    localStorage.setItem("usuario_activo", JSON.stringify(usuario));
+
+    fetch(`http://localhost:8080/api/usuarios/${usuarioActivo.usuario.id}/edit-usuario`, requestOptions)
+    .then((response) => response.json())
+    .then((result) => {console.log(result)
+        usuarioActivo.usuario = result
+        sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioActivo))
+    })
+    .catch((error) => console.error(error));
+
+    // localStorage.setItem("usuario_activo", JSON.stringify(usuario));
 }

@@ -40,33 +40,24 @@ form.addEventListener("submit", async function(e){
         isValid = false;
     }
     if(isValid){
-        
+        // Guardamos los datos del correo y la contraseña en una variable raw
         const raw = JSON.stringify({
             "correo": email_field.value,
             "contrasenia": password_field.value
         });
-
+        // Mandamos a llamar a la función validateUser con los datos raw y esperamos (await) a que nos regrese un valor 
         await validateUser(raw)
-
+        // Si el valor que nos devuelve no es nulo guardamos al usuario en el session storage
         if(usuario != null){
             userValid = true;
             sessionStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+            usuario = null;
+        }
         if(userValid){
+            // Enviamos al usuario al index 
             location.href = "index.html";
-        }else{
-            Swal.fire({
-                icon: "error",
-                title: "Error al iniciar sesión",
-                text: "Usuario y/o contraseña incorrectos",
-            }); 
         }
-        }else{
-            Swal.fire({
-                icon: "error",
-                title: "Error al iniciar sesión",
-                text: "Inténtalo más tarde",
-              }); 
-        }
+        
     }else{
         Swal.fire({
             icon: "error",
@@ -89,9 +80,33 @@ async function validateUser(raw){
     redirect: "follow"
     };
 
-     await fetch("http://localhost:8080/api/login/", requestOptions)
-    .then((response) => response.json())
-    .then((result) => usuario = result)
-    .catch((error) => console.error(error));
+    try {
+        const response = await fetch("http://localhost:8080/api/login/", requestOptions);
+
+        if (response.status === 401) {
+            // Si recibimos un 401, significa que el usuario o contraseña son incorrectos
+            Swal.fire({
+                icon: "error",
+                title: "Autenticación fallida",
+                text: "Usuario y/o contraseña incorrectos",
+            });
+            return;
+        } else if (!response.ok) {
+            // Si es otro tipo de error (500, etc.), lo manejamos como error de servidor
+            throw new Error(`Error ${response.status}: ${response.statusText}`);
+        }
+
+        const result = await response.json();
+        usuario = result;
+        
+    } catch (error) {
+        console.error(error);   
+        // Mostrar un mensaje de error general para el usuario
+        Swal.fire({
+            icon: "error",
+            title: "Error de Servidor",
+            text: "Hubo un problema al procesar tu solicitud. Por favor, intenta más tarde.",
+        });
+    }
     
 }
