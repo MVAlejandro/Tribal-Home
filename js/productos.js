@@ -11,6 +11,8 @@ let btn_Nofiltrar=document.getElementById("btn_Nofiltrar");
 let isAny=false;
 //bandera que verifica si el usuario es administrador
 let isAdmi=false;
+//bandera que verifica si ya hay un registroen productos
+let isRepeat=false;
 //div del contenedor de productos
 let products_container=document.getElementById("products-container");
 // Se obtienen los inputs del formulario
@@ -87,30 +89,79 @@ function addItem(product){
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
     // Se crean variables para con los datos que utilizaremos para el carrito
     const id_producto = product.id_producto;
-    const imagen_producto = product.imagen;
-    const nombre_producto = product.nombre_producto;
+   // const imagen_producto = product.imagen;
+    //const nombre_producto = product.nombre_producto;
     const precio_producto = product.precio;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
     
     // Se creo el evento para el boton de Agregar al carrito
     btn_carrito.addEventListener("click", function(event){
         event.preventDefault();
+        //consulta los registros en el carrito
+        const myHeaders = new Headers();
+        let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+        myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
+    
+        const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
+        };
+    
+        fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+        .then((response) =>  response.json())
+        .then((result) =>{
+        isRepeat=false;
+        let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+         
+            
+            //Consultamos los datos en el carrito para buscar si hay un registro previo
+            result.forEach((element => {
+                if(element.usuario_id_usuario==sesionSto.usuario.id && element.producto_id_producto==product.id_producto && element.estado=="pendiente"){
+                    console.log(element);
+                    isRepeat=true;
+                    let cantidad_total= element.cantidad+1;
+                    let axuprecio=element.precio_total/element.cantidad;
+                    let precio_total= axuprecio*cantidad_total;
+                    const raw = JSON.stringify({
+                        "cantidad": cantidad_total,
+                        "precio_total": precio_total,
+                        "estado": "pendiente",
+                        "usuario_id_usuario": sesionSto.usuario.id,
+                        "producto_id_producto" : id_producto
+                     });
+                    putCarrito(raw, element.id_carrito)
+                }
+                }));
+                if(!isRepeat){
+                    const raw = JSON.stringify({
+                        "cantidad": 1,
+                        "precio_total": precio_producto.value,
+                        "estado": "pendiente",
+                        "usuario_id_usuario": sesionSto.usuario.id,
+                        "producto_id_producto" : id_producto
+                    });
+                    
+                    addCarrito(raw);
+                    
+    
+                }
+            
+        } )
+        .catch((error) => console.error(error));
+        
         // Cuando se presiona el botón se guarda en nuestro arreglo carrito el nombre, precio e imagen del producto
-        carrito.push({
+       // carrito.push({
             // Aumentamos el contador de productos agregados al Carrito
-            "id": ++contadorCarrito,
-            "img": imagen_producto,
-            "name": nombre_producto,
-            "price": precio_producto});
+           // "id": ++contadorCarrito,
+           // "img": imagen_producto,
+           // "name": nombre_producto,
+           // "price": precio_producto});
         // Actualizamos el localStorage con el nuevo producto que agregamos al carrito 
-        localStorage.setItem("carrito", JSON.stringify(carrito));
+       // localStorage.setItem("carrito", JSON.stringify(carrito));
 
         // Agregamos una alerta para avisar que se agregó al carrito el producto
-        Swal.fire({
-            icon: "success",
-            title: "Se agregó " + nombre_producto + " al carrito" ,
-            showConfirmButton: true,
-        });
+       
     })
 }
 
@@ -257,6 +308,8 @@ window.addEventListener("load", function(event){
     }
    
 });
+
+
 //añadde todos los productos
 function getProductos(){
     // Se hace la petición a la api para obtener los datos
@@ -269,6 +322,7 @@ function getProductos(){
     .then((response) => response.json())
     .then((result) => {
         // Se manda a imprimir en pantalla cada producto
+        console.log(result);
         result.forEach((producto => {
             addItem(producto)
         }))
@@ -296,6 +350,8 @@ function setProducto(raw){
     })
     .catch((error) => console.error(error));
 }
+
+
 //funcion filtar productos
 btn_filtrar.addEventListener("click", async function (e) {
     e.preventDefault()
@@ -382,4 +438,55 @@ async function getAllProdutcs(){
     }finally{
         return resultado;
     }
+}
+//funcion para añadir un producto al carrito
+// Función para agregar el producto a la lista
+function addCarrito(raw){
+    
+    const myHeaders = new Headers();
+    let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+    myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
+    myHeaders.append("Content-Type", "application/json");
+
+    const requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow"
+    };
+
+    fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+    .then((response) => response.text())
+    .then((result) => exitoAlert()
+    ).catch((error) => console.error(error));
+
+    console.log(raw);
+    
+   
+}
+function putCarrito(raw, id_pedido) {
+    const myHeaders = new Headers();
+    let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+    myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
+    myHeaders.append("Content-Type", "application/json");
+    
+    
+    const requestOptions = {
+      method: "PUT",
+      headers: myHeaders,
+      body: raw,
+      redirect: "follow"
+    };
+    
+    fetch(`http://127.0.0.1:8080/api/carrito/actualizar/${id_pedido}`, requestOptions)
+      .then((response) => response.text())
+      .then((result) => exitoAlert())
+      .catch((error) => console.error(error)); 
+}
+function exitoAlert(){
+    Swal.fire({
+        icon: "success",
+        title: "Se agregó el producto  al carrito exitosamente" ,
+        showConfirmButton: true,
+    });
 }
