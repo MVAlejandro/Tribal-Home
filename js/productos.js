@@ -71,7 +71,7 @@ boton_foto.addEventListener("click",function (event) {
 },false);
 // Se crea la función para agregar productos en el HTML
 function addItem(product){
-    const itemHTML = 
+    let itemHTML = 
         `<div class="col-lg-4 col-sm-6 col-6 product d-flex flex-column">
             <div class="card me-auto ms-auto mb-3 bg-transparent border border-0">
                 <img src="${product.imagen}" class="card-img-top" alt="image">
@@ -82,9 +82,16 @@ function addItem(product){
                     <p class="descripcion-producto">Disponibles: ${product.stock}</p>
                     <p class="precio">$ ${product.precio}</p>
                 </div>
-            </div>
-                <button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id_producto}">Agregar al carrito</button>
-        </div>`
+            </div>`
+                if (!isAdmi) {
+        
+                    itemHTML=itemHTML+ `<button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id_producto}">Agregar al carrito</button>
+                    </div>`
+                    
+                }else
+                {
+                    itemHTML=itemHTML+`</div>` 
+                }
     const productsContainer = document.getElementById("products-container");
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
     // Se crean variables para con los datos que utilizaremos para el carrito
@@ -93,7 +100,7 @@ function addItem(product){
     //const nombre_producto = product.nombre_producto;
     const precio_producto = product.precio;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
-    
+    if (!isAdmi) {
     // Se creo el evento para el boton de Agregar al carrito
     btn_carrito.addEventListener("click", function(event){
         event.preventDefault();
@@ -149,7 +156,9 @@ function addItem(product){
             
         } )
         .catch((error) => console.error(error));
-    })
+    }
+    )
+    }
 }
 
 // Función para agregar el producto a la lista
