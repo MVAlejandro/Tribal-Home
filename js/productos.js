@@ -10,7 +10,7 @@ let btn_Nofiltrar=document.getElementById("btn_Nofiltrar");
 //bandera filtros no quedo 
 let isAny=false;
 //bandera que verifica si el usuario es administrador
-let isAdmi=false;
+let isClient=false;
 //bandera que verifica si ya hay un registroen productos
 let isRepeat=false;
 //div del contenedor de productos
@@ -83,7 +83,9 @@ function addItem(product){
                     <p class="precio">$ ${product.precio}</p>
                 </div>
             </div>`
-                if (!isAdmi) {
+
+                if (isClient) {
+                    console.log("es cliente");
         
                     itemHTML=itemHTML+ `<button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id_producto}">Agregar al carrito</button>
                     </div>`
@@ -100,7 +102,8 @@ function addItem(product){
     //const nombre_producto = product.nombre_producto;
     const precio_producto = product.precio;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
-    if (!isAdmi) {
+
+    if (isClient) {
     // Se creo el evento para el boton de Agregar al carrito
     btn_carrito.addEventListener("click", function(event){
         event.preventDefault();
@@ -295,10 +298,13 @@ window.addEventListener("load", function(event){
         console.log(sesionSto.usuario.rol); 
         if (sesionSto.usuario.rol === "admin") {
             console.log("es admi");
-            isAdmi=true;
+            isClient=false;
 
            btn_modal.removeAttribute("hidden");
             
+        }else
+        {
+            isClient=true;
         }
         
     }
