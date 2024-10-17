@@ -25,7 +25,7 @@ function cargaCarrito(){
     redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+    fetch("http://3.16.138.251/api/carrito/", requestOptions)
     .then((response) =>  response.json())
     .then((result) =>{
     let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
@@ -61,7 +61,7 @@ function calcTotal(){
     redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+    fetch("http://3.16.138.251/api/carrito/", requestOptions)
     .then((response) =>  response.json())
     .then((result) =>{
     let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
@@ -81,14 +81,6 @@ function calcTotal(){
             }
     } )
     .catch((error) => console.error(error));
-    
-    
-   // for (let card of card_carrito){
-  //      const price = Number(card.querySelector(".price strong").textContent.replace('$',''));
-  //      total += price;
-  //  }
-    
-    
 
 }
 
@@ -142,69 +134,44 @@ function addItem(producto, carrito){
     const btn_menos = document.getElementById(`btn-menos${carrito.id_carrito}`);
     const btn_mas = document.getElementById(`btn-mas${carrito.id_carrito}`);
     const btn_eliminar = document.getElementById(`btn-eliminar${carrito.id_carrito}`)
-    //actualizarPrecio();
 
-     // Función para actualizar el precio basado en la cantidad
-     function actualizarPrecio() {
-      //  const cantidad = Number(cantidadElem.textContent); // Convertir cantidad a número
-       // let total = producto.price * cantidad;
-      //  price.textContent = `$${total.toFixed(2)}`;
-       // calcTotal() // Actualizamos el precio en el resumen del carrito
-    }
-
-    // Event listener para el botón de "menos"
+   // Event listener para el botón de "menos"
     btn_menos.addEventListener("click", function() {
-        //console.log(carrito);
-       // let cantidad = parseInt(cantidadElem.textContent);
-         if (carrito.cantidad > 1) {
+        if (carrito.cantidad > 1) {
             const raw = JSON.stringify({
-                "cantidad": carrito.cantidad-1,
-                "precio_total": carrito.precio_total-producto.precio,
+                "cantidad": carrito.cantidad - 1,
+                "precio_total": carrito.precio_total - producto.precio,
                 "estado": "pendiente",
                 "usuario_id_usuario": carrito.usuario_id_usuario,
-                "producto_id_producto" : carrito.producto_id_producto
+                "producto_id_producto": carrito.producto_id_producto
             });
-        //console.log("raww"+raw);
-           putCarrito(raw, carrito.id_carrito)
-          
-       //     cantidad--;
-       //     cantidadElem.textContent = cantidad;
-        //    actualizarPrecio(); // Actualizar el precio al reducir la cantidad
-        }else{
+            putCarrito(raw, carrito.id_carrito, cargaCarrito);
+        } else {
             Swal.fire({
                 icon: "error",
                 title: "No se puede reducir más el número de productos",
-                text: "Si desea eliminar el producto del carrito pulso el icono de x en la parte superior derecha de la tarjeta",
-            }); 
+                text: "Si desea eliminar el producto del carrito, pulse el icono de x en la parte superior derecha de la tarjeta",
+            });
         }
-        cargaCarrito();
-
     });
 
     // Event listener para el botón de "más"
     btn_mas.addEventListener("click", function() {
-        if (carrito.cantidad+1 <= producto.stock) {
+        if (carrito.cantidad + 1 <= producto.stock) {
             const raw = JSON.stringify({
-                "cantidad": carrito.cantidad+1,
-                "precio_total": carrito.precio_total+producto.precio,
+                "cantidad": carrito.cantidad + 1,
+                "precio_total": carrito.precio_total + producto.precio,
                 "estado": "pendiente",
                 "usuario_id_usuario": carrito.usuario_id_usuario,
-                "producto_id_producto" : carrito.producto_id_producto
+                "producto_id_producto": carrito.producto_id_producto
             });
-        
-           putCarrito(raw, carrito.id_carrito)
-           cargaCarrito();
-        }else{
+            putCarrito(raw, carrito.id_carrito, cargaCarrito);
+        } else {
             Swal.fire({
                 icon: "error",
                 title: "Límite de inventario excedido",
-                //text: "Favor de establecer al menos un filtro antes de buscar",
-            }); 
+            });
         }
-       // let cantidad = parseInt(cantidadElem.textContent);
-      //  cantidad++;
-       // cantidadElem.textContent = cantidad;
-       // actualizarPrecio(); // Actualizar el precio al aumentar la cantidad
     });
 
     // Event listener para el botón de "eliminar"
@@ -213,83 +180,69 @@ function addItem(producto, carrito){
         myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
 
         const requestOptions = {
-         method: "DELETE",
-        headers: myHeaders,
-        redirect: "follow"
+            method: "DELETE",
+            headers: myHeaders,
+            redirect: "follow"
         };
 
-        fetch(`http://127.0.0.1:8080/api/carrito/eliminar/${carrito.id_carrito}`, requestOptions)
+        fetch(`http://3.16.138.251/api/carrito/eliminar/${carrito.id_carrito}`, requestOptions)
         .then((response) => response.text())
-        .then((result) => console.log(result))
+        .then((result) => {
+            console.log(result);
+            // Actualiza el carrito solo después de eliminar el elemento
+            cargaCarrito();
+        })
         .catch((error) => console.error(error));
-        cargaCarrito();
-      //  const card = document.getElementById(`card-carrito${producto.id}`);
-       // card.remove(); // Eliminar el producto del DOM
-       // carrito = carrito.filter(item => item.id !== producto.id);
-        // Actualizar el localStorage con el carrito actualizado
-      //  localStorage.setItem("carrito", JSON.stringify(carrito));
-       // calcTotal() // Actualizamos el precio en el resumen del carrito
     });
 
 }
-// Evento del boton pagar
+
+// Evento del botón pagar
 btn_pagar.addEventListener("click", function(event){
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
 
     const requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow"
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
-    .then((response) =>  response.json())
-    .then((result) =>{
-    let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
-        //Consultamos los datos en el carrito para buscar si hay un registro previo
-        result.forEach((async element => {
-            if(element.usuario_id_usuario==sesionSto.usuario.id  && element.estado=="pendiente"){
+    fetch("http://3.16.138.251/api/carrito/", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+        let sesionSto = JSON.parse(sessionStorage.getItem('usuarioActivo'));
+        
+        // Usamos Promise.all para esperar a que todos los fetch se completen antes de llamar a cargaCarrito()
+        return Promise.all(result.map(async (element) => {
+            if (element.usuario_id_usuario == sesionSto.usuario.id && element.estado == "pendiente") {
                 const raw = JSON.stringify({
                     "cantidad": element.cantidad,
                     "precio_total": element.precio_total,
                     "estado": "pago",
                     "usuario_id_usuario": element.usuario_id_usuario,
-                    "producto_id_producto" : element.producto_id_producto
+                    "producto_id_producto": element.producto_id_producto
                 });
-            //console.log("raww"+raw);
-               putCarrito(raw, element.id_carrito)
+                await putCarrito(raw, element.id_carrito);
             }
-            }));
-        }) .catch((error) => console.error(error));
-   // event.preventDefault();
-    //if(localStorage.getItem("carrito") != null){
-    //    localStorage.removeItem("carrito");
-   ///    carritoContainer.replaceChildren();
-   // }
-   Swal.fire({
-    icon: "success",
-    title: "Pago realizado con exito",
-    showConfirmButton: false,
-    timer: 1500
-    });
-    cargaCarrito();
-})
+        }));
+    })
+    .then(() => {
+        // Muestra la alerta y luego recarga la página
+        Swal.fire({
+            icon: "success",
+            title: "Pago realizado con éxito",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(() => {
+            // Recarga la página después de que la alerta se cierre
+            window.location.reload();
+        });
+    })
+    .catch((error) => console.error(error));
+});
+
 //Obtiene el producto mediante el id
-// function obtenerProducto()
-// {
-//     let producto=null;
-//     const requestOptions = {
-//         method: "GET",
-//         redirect: "follow"
-//       };
-      
-//       fetch(`http://127.0.0.1:8080/api/productos/${id_producto}`, requestOptions)
-//         .then((response) => response.text())
-//         .then((result) => producto=result)
-//         .catch((error) => console.error(error));
-//     return producto
-// }
 async function obtenerProducto(id_producto){
     let resultado = null
     // Se hace la petición a la api para obtener los datos
@@ -299,7 +252,7 @@ async function obtenerProducto(id_producto){
     };
 
     try {
-        const response = await fetch(`http://127.0.0.1:8080/api/productos/${id_producto}`, requestOptions)
+        const response = await fetch(`http://3.16.138.251/api/productos/${id_producto}`, requestOptions)
         const result = await response.json();
         resultado = result;
     } catch (error) {
@@ -308,41 +261,26 @@ async function obtenerProducto(id_producto){
         return resultado;
     }
 }
-function putCarrito(raw, id_pedido) {
+
+// Se actualiza el carrito
+function putCarrito(raw, id_pedido, callback) {
     const myHeaders = new Headers();
-    let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+    let sesionTok = JSON.parse(sessionStorage.getItem('usuarioActivo'));
     myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
     myHeaders.append("Content-Type", "application/json");
-    
-    
+
     const requestOptions = {
       method: "PUT",
       headers: myHeaders,
       body: raw,
       redirect: "follow"
     };
-    
-    fetch(`http://127.0.0.1:8080/api/carrito/actualizar/${id_pedido}`, requestOptions)
+
+    fetch(`http://3.16.138.251/api/carrito/actualizar/${id_pedido}`, requestOptions)
       .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.error(error)); 
+      .then((result) => {
+          console.log(result);
+          if (callback) callback();  // Llamar a cargaCarrito() después de completar la solicitud
+      })
+      .catch((error) => console.error(error));
 }
-//f
-// // Se agregan productos manualmente
-// addItem({
-//     'id': 1,
-//     'img':'./assets/muebles/deco-8.png',
-//     'name':'Cesto en yute',
-//     'price':800.00});
-
-// addItem({
-//     'id': 2,
-//     'img':'./assets/muebles/image-3.png',
-//     'name':'Funda de cojín con flecos en terciopelo',
-//     'price':249.00});
-
-// addItem({
-//     'id': 3,
-//     'img':'./assets/muebles/mueble-8.png',
-//     'name':'Armario de madera tradicional',
-//     'price':6000.00});

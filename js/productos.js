@@ -108,7 +108,7 @@ function addItem(product){
         redirect: "follow"
         };
     
-        fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+        fetch("http://3.16.138.251/api/carrito/", requestOptions)
         .then((response) =>  response.json())
         .then((result) =>{
         isRepeat=false;
@@ -149,19 +149,6 @@ function addItem(product){
             
         } )
         .catch((error) => console.error(error));
-        
-        // Cuando se presiona el botón se guarda en nuestro arreglo carrito el nombre, precio e imagen del producto
-       // carrito.push({
-            // Aumentamos el contador de productos agregados al Carrito
-           // "id": ++contadorCarrito,
-           // "img": imagen_producto,
-           // "name": nombre_producto,
-           // "price": precio_producto});
-        // Actualizamos el localStorage con el nuevo producto que agregamos al carrito 
-       // localStorage.setItem("carrito", JSON.stringify(carrito));
-
-        // Agregamos una alerta para avisar que se agregó al carrito el producto
-       
     })
 }
 
@@ -318,7 +305,7 @@ function getProductos(){
         redirect: "follow"
     };
     
-  fetch("http://localhost:8080/api/productos/", requestOptions)
+  fetch("http://3.16.138.251/api/productos/", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         // Se manda a imprimir en pantalla cada producto
@@ -331,7 +318,9 @@ function getProductos(){
 }
 
 function setProducto(raw){
+    let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
     const myHeaders = new Headers();
+    myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
     myHeaders.append("Content-Type", "application/json");
     
     const requestOptions = {
@@ -341,7 +330,7 @@ function setProducto(raw){
     redirect: "follow"
     };
 
-    fetch("http://localhost:8080/api/productos/agregar", requestOptions)
+    fetch("http://3.16.138.251/api/productos/agregar", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         console.log(result);
@@ -430,7 +419,7 @@ async function getAllProdutcs(){
     };
 
     try {
-        const response = await fetch("http://localhost:8080/api/productos/", requestOptions)
+        const response = await fetch("http://3.16.138.251/api/productos/", requestOptions)
         const result = await response.json();
         resultado = result;
     } catch (error) {
@@ -455,7 +444,7 @@ function addCarrito(raw){
     redirect: "follow"
     };
 
-    fetch("http://127.0.0.1:8080/api/carrito/", requestOptions)
+    fetch("http://3.16.138.251/api/carrito/", requestOptions)
     .then((response) => response.text())
     .then((result) => exitoAlert()
     ).catch((error) => console.error(error));
@@ -478,7 +467,7 @@ function putCarrito(raw, id_pedido) {
       redirect: "follow"
     };
     
-    fetch(`http://127.0.0.1:8080/api/carrito/actualizar/${id_pedido}`, requestOptions)
+    fetch(`http://3.16.138.251/api/carrito/actualizar/${id_pedido}`, requestOptions)
       .then((response) => response.text())
       .then((result) => exitoAlert())
       .catch((error) => console.error(error)); 

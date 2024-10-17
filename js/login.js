@@ -81,7 +81,7 @@ async function validateUser(raw){
     };
 
     try {
-        const response = await fetch("http://localhost:8080/api/login/", requestOptions);
+        const response = await fetch("http://3.16.138.251/api/login/", requestOptions);
 
         if (response.status === 401) {
             // Si recibimos un 401, significa que el usuario o contraseña son incorrectos
