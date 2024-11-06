@@ -158,7 +158,7 @@ function setUsuario(raw){
     redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/usuarios/registro", requestOptions)
+    fetch("http://18.220.121.181/api/usuarios/registro", requestOptions)
     .then((response) => response.text())
     .then((result) => console.log(result))
     .catch((error) => console.error(error));

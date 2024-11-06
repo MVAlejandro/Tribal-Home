@@ -213,7 +213,7 @@ function setData(){
     redirect: "follow"
     };
 
-    fetch(`http://3.16.138.251/api/usuarios/${usuarioActivo.usuario.id}/edit-usuario`, requestOptions)
+    fetch(`http://18.220.121.181/api/usuarios/${usuarioActivo.usuario.id}/edit-usuario`, requestOptions)
     .then((response) => response.json())
     .then((result) => {
         usuarioActivo.usuario = result

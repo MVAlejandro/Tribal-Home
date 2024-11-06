@@ -74,14 +74,14 @@ async function validateUser(raw){
     myHeaders.append("Content-Type", "application/json");
 
     const requestOptions = {
-    method: "POST",
-    body: raw,
-    headers: myHeaders,
-    redirect: "follow"
+        method: "POST",
+        body: raw,
+        headers: myHeaders,
+        redirect: "follow"
     };
 
     try {
-        const response = await fetch("http://3.16.138.251/api/login/", requestOptions);
+        const response = await fetch("http://18.220.121.181/api/login/", requestOptions);
 
         if (response.status === 401) {
             // Si recibimos un 401, significa que el usuario o contraseña son incorrectos

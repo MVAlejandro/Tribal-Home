@@ -1,6 +1,7 @@
 // Se importan las funciones de las validaciones 
 import {validate, validarNumber, validateMensajeDescripcion} from "./validaciones.js"
 //variable para obtener el tipo de usuario
+let sesionTok
 
 //obtiene los campos de los filtros
 let filtro_categoria=document.getElementById("filtro_categoria");
@@ -36,13 +37,6 @@ let formulario = document.getElementById("formulario");
 let isValid = true
 //obtenemos el boton del modal
 let btn_modal= document.getElementById("btn_modal");
-// Declaramos las expresiones regulares para validar los datos
-const evitarCaracteres = /^[^'";<>\\\/&()\[\]]+$/ // Expresión regular para el mensaje
-// Creamos una lista de productos
-
-let contadorCarrito = 0;
-// Creamos una lista de productos agregadas al carrito
-let carrito = new Array();
 const boton_foto = document.getElementById('imagen_producto');
 let imagen_producto_url = "";
 
@@ -69,6 +63,32 @@ boton_foto.addEventListener("click",function (event) {
     event.preventDefault()
     myWidget.open();
 },false);
+
+// Función para que obtenga los datos del usuario cuando carga la ventana
+window.addEventListener("load", function(event){    
+    // Cuando carga la pantalla mandamos la solicitud a la API para obtener los productos
+    getProductos();
+    //verifica si es admi
+    if (sessionStorage.getItem('usuario')!="") {
+        console.log("Usuario existe");
+        let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+        console.log(sesionSto)
+        console.log(sesionSto.usuario.rol); 
+        if (sesionSto.usuario.rol === "admin") {
+            console.log("es admi");
+            isClient=false;
+
+           btn_modal.removeAttribute("hidden");
+            
+        }else
+        {
+            isClient=true;
+        }
+        
+    }
+   
+});
+
 // Se crea la función para agregar productos en el HTML
 function addItem(product){
     let itemHTML = 
@@ -82,24 +102,17 @@ function addItem(product){
                     <p class="descripcion-producto">Disponibles: ${product.stock}</p>
                     <p class="precio">$ ${product.precio}</p>
                 </div>
-            </div>`
-
-                if (isClient) {
-                    console.log("es cliente");
-        
-                    itemHTML=itemHTML+ `<button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id_producto}">Agregar al carrito</button>
-                    </div>`
-                    
-                }else
-                {
-                    itemHTML=itemHTML+`</div>` 
-                }
+            </div>`;
+    if (isClient) {
+        itemHTML=itemHTML+ `<button class="btn btn-carrito mt-auto mb-5 mx-auto" id="carrito${product.id_producto}">Agregar al carrito</button>
+        </div>`
+    }else{
+        itemHTML=itemHTML+`</div>` 
+    }
     const productsContainer = document.getElementById("products-container");
     productsContainer.insertAdjacentHTML("beforeend", itemHTML);
     // Se crean variables para con los datos que utilizaremos para el carrito
     const id_producto = product.id_producto;
-   // const imagen_producto = product.imagen;
-    //const nombre_producto = product.nombre_producto;
     const precio_producto = product.precio;
     const btn_carrito = document.getElementById(`carrito${id_producto}`);
 
@@ -117,15 +130,13 @@ function addItem(product){
         headers: myHeaders,
         redirect: "follow"
         };
-    
-        fetch("http://3.16.138.251/api/carrito/", requestOptions)
+
+        fetch("http://18.220.121.181/api/carrito/", requestOptions)
         .then((response) =>  response.json())
         .then((result) =>{
-        isRepeat=false;
-        let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
-         
-            
-            //Consultamos los datos en el carrito para buscar si hay un registro previo
+            isRepeat=false;
+            let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+            // Consultamos los datos en el carrito para buscar si hay un registro previo
             result.forEach((element => {
                 if(element.usuario_id_usuario==sesionSto.usuario.id && element.producto_id_producto==product.id_producto && element.estado=="pendiente"){
                     console.log(element);
@@ -139,28 +150,23 @@ function addItem(product){
                         "estado": "pendiente",
                         "usuario_id_usuario": sesionSto.usuario.id,
                         "producto_id_producto" : id_producto
-                     });
+                        });
                     putCarrito(raw, element.id_carrito)
                 }
-                }));
-                if(!isRepeat){
-                    const raw = JSON.stringify({
-                        "cantidad": 1,
-                        "precio_total": precio_producto.value,
-                        "estado": "pendiente",
-                        "usuario_id_usuario": sesionSto.usuario.id,
-                        "producto_id_producto" : id_producto
-                    });
-                    
-                    addCarrito(raw);
-                    
-    
-                }
+            }));
             
-        } )
-        .catch((error) => console.error(error));
-    }
-    )
+            if(!isRepeat){
+                const raw = JSON.stringify({
+                    "cantidad": 1,
+                    "precio_total": precio_producto.value,
+                    "estado": "pendiente",
+                    "usuario_id_usuario": sesionSto.usuario.id,
+                    "producto_id_producto" : id_producto
+                });
+                addCarrito(raw);
+            }   
+            }).catch((error) => console.error(error));
+        })
     }
 }
 
@@ -287,32 +293,8 @@ function inicializarValores(){
     imagenInfo.innerHTML=""; imagenInfo.display="none";
 }
 
-window.addEventListener("load", function(event){    
-    // Cuando carga la pantalla mandamos la solicitud a la API para obtener los productos
-    getProductos();
-    //verifica si es admi
-    if (sessionStorage.getItem('usuario')!="") {
-        console.log("Usuario existe");
-        let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
-        console.log(sesionSto)
-        console.log(sesionSto.usuario.rol); 
-        if (sesionSto.usuario.rol === "admin") {
-            console.log("es admi");
-            isClient=false;
 
-           btn_modal.removeAttribute("hidden");
-            
-        }else
-        {
-            isClient=true;
-        }
-        
-    }
-   
-});
-
-
-//añadde todos los productos
+// Se renderizan todos los productos de la respuesta de la API
 function getProductos(){
     // Se hace la petición a la api para obtener los datos
     const requestOptions = {
@@ -320,7 +302,7 @@ function getProductos(){
         redirect: "follow"
     };
     
-  fetch("http://3.16.138.251/api/productos/", requestOptions)
+  fetch("http://18.220.121.181/api/productos/", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         // Se manda a imprimir en pantalla cada producto
@@ -332,8 +314,10 @@ function getProductos(){
     .catch((error) => console.error(error));
 }
 
+// Se mandan a guardar nuevos productos en la DB mediante la API
 function setProducto(raw){
     let sesionTok= JSON.parse(sessionStorage.getItem('usuarioActivo'));
+    
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Bearer: ${sesionTok.token.accessToken}`);
     myHeaders.append("Content-Type", "application/json");
@@ -345,7 +329,7 @@ function setProducto(raw){
     redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/productos/agregar", requestOptions)
+    fetch("http://18.220.121.181/api/productos/agregar", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         console.log(result);
@@ -434,7 +418,7 @@ async function getAllProdutcs(){
     };
 
     try {
-        const response = await fetch("http://3.16.138.251/api/productos/", requestOptions)
+        const response = await fetch("http://18.220.121.181/api/productos/", requestOptions)
         const result = await response.json();
         resultado = result;
     } catch (error) {
@@ -443,7 +427,7 @@ async function getAllProdutcs(){
         return resultado;
     }
 }
-//funcion para añadir un producto al carrito
+
 // Función para agregar el producto a la lista
 function addCarrito(raw){
     
@@ -459,7 +443,7 @@ function addCarrito(raw){
     redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/carrito/", requestOptions)
+    fetch("http://18.220.121.181/api/carrito/", requestOptions)
     .then((response) => response.text())
     .then((result) => exitoAlert()
     ).catch((error) => console.error(error));
@@ -482,7 +466,7 @@ function putCarrito(raw, id_pedido) {
       redirect: "follow"
     };
     
-    fetch(`http://3.16.138.251/api/carrito/actualizar/${id_pedido}`, requestOptions)
+    fetch(`http://18.220.121.181/api/carrito/actualizar/${id_pedido}`, requestOptions)
       .then((response) => response.text())
       .then((result) => exitoAlert())
       .catch((error) => console.error(error)); 

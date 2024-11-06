@@ -47,7 +47,7 @@ export async function existEmail(email) {
     };
 
     try {
-        const response = await fetch(`http://3.16.138.251/api/usuarios/validar-registro?correo=${email.value}`, requestOptions);
+        const response = await fetch(`http://18.220.121.181/api/usuarios/validar-registro?correo=${email.value}`, requestOptions);
         const result = await response.json();
         existEmail = Boolean(result);
     } catch (error) {
@@ -134,7 +134,7 @@ export async function samePassword(token, password, id){
     };
 
     try {
-        const response = await fetch(`http://3.16.138.251/api/usuarios/validar-cambio/${id}`, requestOptions)
+        const response = await fetch(`http://18.220.121.181/api/usuarios/validar-cambio/${id}`, requestOptions)
         const result = await response.json();
         samePassword = Boolean(result);
     } catch (error) {

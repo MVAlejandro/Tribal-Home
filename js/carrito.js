@@ -25,7 +25,7 @@ function cargaCarrito(){
     redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/carrito/", requestOptions)
+    fetch("http://18.220.121.181/api/carrito/", requestOptions)
     .then((response) =>  response.json())
     .then((result) =>{
     let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
@@ -61,7 +61,7 @@ function calcTotal(){
     redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/carrito/", requestOptions)
+    fetch("http://18.220.121.181/api/carrito/", requestOptions)
     .then((response) =>  response.json())
     .then((result) =>{
     let sesionSto= JSON.parse(sessionStorage.getItem('usuarioActivo'));
@@ -185,7 +185,7 @@ function addItem(producto, carrito){
             redirect: "follow"
         };
 
-        fetch(`http://3.16.138.251/api/carrito/eliminar/${carrito.id_carrito}`, requestOptions)
+        fetch(`http://18.220.121.181/api/carrito/eliminar/${carrito.id_carrito}`, requestOptions)
         .then((response) => response.text())
         .then((result) => {
             console.log(result);
@@ -208,7 +208,7 @@ btn_pagar.addEventListener("click", function(event){
         redirect: "follow"
     };
 
-    fetch("http://3.16.138.251/api/carrito/", requestOptions)
+    fetch("http://18.220.121.181/api/carrito/", requestOptions)
     .then((response) => response.json())
     .then((result) => {
         let sesionSto = JSON.parse(sessionStorage.getItem('usuarioActivo'));
@@ -252,7 +252,7 @@ async function obtenerProducto(id_producto){
     };
 
     try {
-        const response = await fetch(`http://3.16.138.251/api/productos/${id_producto}`, requestOptions)
+        const response = await fetch(`http://18.220.121.181/api/productos/${id_producto}`, requestOptions)
         const result = await response.json();
         resultado = result;
     } catch (error) {
@@ -276,7 +276,7 @@ function putCarrito(raw, id_pedido, callback) {
       redirect: "follow"
     };
 
-    fetch(`http://3.16.138.251/api/carrito/actualizar/${id_pedido}`, requestOptions)
+    fetch(`http://18.220.121.181/api/carrito/actualizar/${id_pedido}`, requestOptions)
       .then((response) => response.text())
       .then((result) => {
           console.log(result);
