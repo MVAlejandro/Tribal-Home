@@ -1,0 +1,181 @@
+body {
+    background-color: #FFF8E8 !important;
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+}
+a{
+    text-decoration: none;
+}
+.text-justify {
+    text-align: justify;
+}
+.portada {
+    width: 100%;
+}
+.logo {
+    width: 250px;
+}
+h1 {
+    font-size: 60px;
+}
+
+h2 {
+    font-size: 60px;
+    color: #AAB396;
+    text-align: center;
+    font-weight: normal;
+}
+
+span{
+    font-weight: 800;
+}
+
+.color-black {
+    color: black;
+}
+
+.color-brown {
+    color: #674636;
+}
+
+footer {
+    font-size: 16px;
+}
+/* Se aplica para la barra de navegación */
+@media (min-width: 992px){
+
+    .nav-link {
+        position: relative;
+        color: #000; 
+        transition: color 0.3s ease;
+    }
+    .nav-link:hover {
+        color: #AAB396; 
+    }
+    .nav-link::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #AAB396; 
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+    .nav-link::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #AAB396; 
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+    .nav-link-icon{
+        transition: color 0.3s ease;
+    }
+    .nav-link-icon::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 2px;
+        background: #AAB396; 
+        transition: width 0.3s;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+    }
+    .nav-link:hover::after {
+        width: 100%; 
+    }
+}
+.logout {
+    filter: invert(0.1) brightness(2.3);
+}
+
+.nav-link.active {
+    color: #AAB396 !important;
+    font-weight: bold;
+}
+.nav-link.active::after {
+    width: 100%;
+}       
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+    display: none; 
+}
+.navbar-toggler[aria-expanded="true"]::before {
+    content: "×"; 
+    font-size: 1.5rem;
+}
+.navbar-toggler {
+    width: 35px;
+    height: 35px;
+    padding: 0px;
+}
+.navbar-toggler-icon {
+    width: 20px;
+    height: 20px;
+}
+@media (max-width: 900px) {
+    .logo {
+        width: 170px;
+    }
+
+    .logout {
+        filter: invert(0.2) brightness(2.3);
+    }
+    
+    .navbar-toggler {
+        width: 25px;
+        height: 25px;
+        padding: 0px;
+    }
+
+    .navbar-toggler-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .perfil-car {
+        width: 25px;
+        height: 25px;
+    }
+
+    .valores-icon {
+        display: none;
+    }
+    #iconos{
+        display: flex;
+    }
+    h2 {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: left !important;
+    }
+
+    h1 {
+        font-size: 36px;
+        color: #000000;
+        font-weight: bold;
+    }
+    h3{
+        font-size: 25px;
+        color: #000000;
+    }
+    h4{
+        font-size: 30px;
+        color: #000000;
+    }
+
+    footer {
+        font-size: 9px;
+        margin-bottom: 10px;
+    }
+
+    .footer-icon {
+        width: 25px;
+    }
+}

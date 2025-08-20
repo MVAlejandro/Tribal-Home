@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="icon" href="./assets/footer/icono.png">
+</head>
+<body>
+    <header id="encabezado">
+    </header>
+
+    <main class="container p-5">
+        <h1 class="h1-perfil">Mi Perfil</h1>
+        <div class="row mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="nombre_usuario">Nombre(s)</label>
+                <input class="form-control" type="text" name="nombre_usuario" id="nombre_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="nombresInfo"></p></div>
+            </div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="apellido_usuario">Apellido(s)</label>
+                <input class="form-control" type="text" name="apellido_usuario" id="apellido_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="apellidosInfo"></p></div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="email_usuario">Email</label>
+                <input class="form-control" type="email" name="email_usuario" id="email_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="emailInfo"></p></div>
+            </div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="telefono_usuario">Teléfono</label>
+                <input class="form-control" type="tel" name="telefono_usuario" id="telefono_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="telefonoInfo"></p></div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="estado_usuario">Estado</label>
+                <div class="input-group col-lg-lg-6">
+                    <span class="input-group-text" id="basic-addon1"><img src="assets/LeftIcon.png" alt="icono de ubicación" ></span>
+                    <input class="form-select" type="text" name="estado_usuario" id="estado_usuario" value="" disabled>
+                    <select class="form-select"  name="estado_usuarios" id="estado_usuarios" disabled>
+
+                    </select>
+            </div>
+            </div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="cp_usuario">Código Postal</label>
+                <input class="form-control" type="number" name="cp_usuario" id="cp_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="cpInfo"></p></div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <label class="form-label" for="direccion_usuario">Dirección</label>
+                <input class="form-control" type="text" name="direccion_usuario" id="direccion_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="direccionInfo"></p></div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="password_usuario">Nueva Contraseña</label>
+                <input class="form-control"  type="password" name="password_usuario" id="password_usuario" value="" disabled>
+                <div class="form-text error-text"><p id="passwordInfo"></p></div>
+            </div>
+            <div class="col-lg-5 mt-1 mt-md-2">
+                <label class="form-label" for="password_usuario_new">Confirmar Nueva Contraseña</label>
+                <input class="form-control" type="password" name="password_usuario_new" id="password_usuario_new" value="" disabled>
+                <div class="form-text error-text"><p id="passwordConfirmationInfo"></p></div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+        <div class="row mt-3" id="actual">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <label class="form-label" for="password_now">Para confirmar tus cambios coloca tu contraseña actual</label>
+                <input class="form-control" type="password" name="password_now" id="password_now"   >
+                <div class="form-text error-text"><p id="passwordNowConfirmationInfo"></p></div>
+            </div>
+        </div>
+        <div class="row mt-3" id="div_modificar">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6 mt-1 mt-md-2 d-flex justify-content-center">
+                <button class="btn btn-formularia" id="btn-modificar">Modificar</button>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+        <div class="row mt-3" id="div_guardar">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-5 mt-1 mt-md-2 d-flex justify-content-center">
+                <button class="btn btn-formularia" id="btn-cancelar">Cancelar</button>
+            </div>
+            <div class="col-lg-5 mt-1 mt-md-2 d-flex justify-content-center">
+                <button class="btn btn-formularia" id="btn-guardar">Guardar Cambios</button>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </main>
+
+    <footer class="mt-4" id="pie"> 
+    </footer>
+
+    <script src="./js/index.js"></script>
+    <script src="./js/perfil.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>

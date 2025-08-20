@@ -1,0 +1,226 @@
+/* Estilos página productos */
+.h2-productos{
+    font-size: 50px;
+    color: #151411;
+}
+.categoria{
+    font-size: 18px;
+    font-weight: bold;
+    color: #AAB396;
+}
+.nombre-producto{
+    font-size: 26px;
+    font-weight: bold;
+    color: #151411;
+    text-align: center;
+}
+.descripcion-producto{
+    font-size: 18px;
+    font-weight: normal;
+    color: #674636;
+    text-align: justify;
+}
+.precio{
+    font-size: 24px;
+    font-weight: bold;
+    color: #151411;
+}
+#products-container {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.card{
+    width: 100%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+}
+.modal-content{
+    border-radius: 38.755px;
+    background: #FFF;
+}
+.form-control{
+    border-radius: 5px;
+    border: 1px solid #674636;
+    background: #FFF;
+    box-shadow: 0px 2px 4px 0px rgba(66, 80, 102, 0.10);
+}
+.form-label{
+    text-align: center;
+    font-size: 25px;
+    color: #000;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+}
+#imagen_producto{
+    display: flex;
+    border-style: dashed !important;
+    border-color: #000;
+    height: 242px;
+    padding: var(--spacing-lg, 24px);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-smd, 12px);
+    border-radius: var(--radi-mlg, 8px);
+    border: 1px dashed var(--sds-color-border-neutral-default);
+    background: var(--bgColor-light, #FFF);
+}
+.modal-title{
+    text-align: center !important;
+    font-size: 50px !important;
+    width: 95%;
+    color: var(--Text-Color, #151411);
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+}
+.btn-enviar{
+    border-radius: 10px;
+    background: #AAB396;
+    color: #FFF8E8;
+    color: #FFF8E8;
+    font-size: 30.612px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 180%;
+}
+.btn-agregar {
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+}
+.btn-filtrar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 250px;
+    margin-bottom: 2%;
+}
+.btn-Nofiltrar{
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+    width: 250px;
+    margin-bottom: 2%; 
+}
+
+.btn-enviar:hover{
+    background-color: #FFF8E8;
+    color: #674636;
+}
+.btn-agregar:hover{
+    background-color: #FFF8E8;
+    color: #674636;
+}
+.btn-secondary:hover{
+    background-color: #674636;
+    color: #FFF8E8;
+}
+.btn-carrito{
+    width: 80%;
+    background-color: #674636;
+    color: #FFF8E8;
+    border-radius: 10px;
+    font-size: 25px;
+}
+#filtro_nombre{
+    width: 100%;
+}
+.filtros{
+    display:flex;
+    gap: 50px;
+    align-items: end;
+    margin-bottom: 3%;
+}
+.div_btn{
+    display: flex;
+    padding: 0% 0% 0% 2%;
+    gap: 5%;
+    justify-content: row;
+    align-items: center;
+}
+@media (max-width: 778px) {
+    .p-productos {
+        font-size: 14px;
+        color: #AAB396;
+        padding-right: 37px;
+        padding-left: 37px;
+    }
+    .h2-productos{
+        font-size: 18px;
+        color: #151411;
+    }
+    .categoria{
+        font-size: 12px;
+        font-weight: bold;
+        color: #AAB396;
+    }
+    .nombre-producto{
+        font-size: 13px;
+        font-weight: bold;
+        color: #151411;
+    }
+    .descripcion-producto{
+        font-size: 12px;
+        font-weight: normal;
+        color: #674636;
+    }
+    .precio{
+        font-size: 14px;
+        font-weight: bold;
+        color: #151411;
+    }
+    .card{
+        margin: 0px !important;
+    }
+    .product{
+        padding: 0px;
+        
+    }
+    .modal-title{
+        text-align: center !important;
+        font-size: 35px !important;
+        width: 95%;
+    }
+    .form-label{
+        
+        text-align: center;
+        font-size: 18px;
+    }
+    .btn-enviar,.btn-agregar{
+        font-size: 15px !important;
+    }
+    .btn-agregar{
+        font-size: 12px;
+    }
+    .btn-carrito{
+        font-size: 12px;
+    }
+    .filtros{
+        justify-content: center;
+        gap: 10px;
+        align-items: center;
+        font-size: 12px;
+    }
+    .btn-filtrar{
+        width: 150px;
+        font-size: 12px;
+    }
+    .btn-Nofiltrar{
+        width: 150px;
+        font-size: 12px;
+    }
+    #filtro_nombre{
+        width: 100%;
+    }
+    .div_btn{
+        
+        justify-content: center;
+        align-items: center;
+    }
+}
